@@ -107,7 +107,6 @@
 
         <!-- SCREEN 1: LANDING & COUNTRY SELECTOR -->
         <section id="screen-landing" class="block space-y-12 py-6">
-            <!-- Hero banner introducing the site concept -->
             <div class="text-center max-w-3xl mx-auto space-y-4">
                 <span class="inline-block px-3 py-1 bg-travel-terracotta/20 border border-travel-terracotta/40 rounded-full text-xs font-semibold uppercase tracking-widest text-travel-terracotta" id="ui-hero-badge">
                     Bilingual Globetrotting Trivia
@@ -116,7 +115,7 @@
                     Where is your next <span class="text-travel-terracotta">Destination</span>?
                 </h2>
                 <p class="text-gray-400 text-sm md:text-base leading-relaxed" id="ui-hero-subtitle">
-                    Select a destination below to initialize a high-stakes Jeopardy-style board themed entirely around the chosen nation's history, landmarks, cuisine, culture, and mysteries.
+                    Select a destination below to initialize a high-stakes Jeopardy-style board themed entirely around the chosen nation's history, landmarks, cuisine, culture, and mysteries. Now featuring 6 expanded categories!
                 </p>
             </div>
 
@@ -136,7 +135,7 @@
                         </div>
                         <div>
                             <h3 class="font-cinzel text-xl text-travel-sand tracking-wide group-hover:text-white transition mt-4" id="country-title-greece">Greece 希臘</h3>
-                            <p class="text-gray-400 text-xs mt-1" id="country-desc-greece">Acropolis architecture, ancient gods, Mediterranean islands, and historic philosophy.</p>
+                            <p class="text-gray-400 text-xs mt-1" id="country-desc-greece">Acropolis architecture, ancient gods, Mediterranean islands, historic philosophy, and classical arts.</p>
                         </div>
                     </div>
 
@@ -149,7 +148,7 @@
                         </div>
                         <div>
                             <h3 class="font-cinzel text-xl text-travel-sand tracking-wide group-hover:text-white transition mt-4" id="country-title-hungary">Hungary 匈牙利</h3>
-                            <p class="text-gray-400 text-xs mt-1" id="country-desc-hungary">Danube riverscapes, therapeutic thermal baths, Rubik puzzles, and sweet Tokaji wine.</p>
+                            <p class="text-gray-400 text-xs mt-1" id="country-desc-hungary">Danube riverscapes, therapeutic thermal baths, Rubik puzzles, sweet Tokaji wine, and romantic symphonies.</p>
                         </div>
                     </div>
 
@@ -162,7 +161,7 @@
                         </div>
                         <div>
                             <h3 class="font-cinzel text-xl text-travel-sand tracking-wide group-hover:text-white transition mt-4" id="country-title-czech">Czech Republic 捷克</h3>
-                            <p class="text-gray-400 text-xs mt-1" id="country-desc-czech">Gothic Prague architectures, ancient Bohemian castles, Kafka literature, and historic Pilsners.</p>
+                            <p class="text-gray-400 text-xs mt-1" id="country-desc-czech">Gothic Prague architectures, ancient Bohemian castles, Kafka literature, historic Pilsners, and sports champions.</p>
                         </div>
                     </div>
 
@@ -175,7 +174,7 @@
                         </div>
                         <div>
                             <h3 class="font-cinzel text-xl text-travel-sand tracking-wide group-hover:text-white transition mt-4" id="country-title-taiwan">Taiwan 台灣</h3>
-                            <p class="text-gray-400 text-xs mt-1" id="country-desc-taiwan">Bustling night markets, towering Taipei 101, semiconductor tech, and high alpine ridges.</p>
+                            <p class="text-gray-400 text-xs mt-1" id="country-desc-taiwan">Bustling night markets, towering Taipei 101, semiconductor tech, high alpine ridges, and local temple cultures.</p>
                         </div>
                     </div>
                 </div>
@@ -270,11 +269,11 @@
             <!-- Two Column Layout: Main Jeopardy Grid + Player Scoreboard -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                 
-                <!-- JEOPARDY GAME BOARD GRID (Left: 9 cols) -->
+                <!-- JEOPARDY GAME BOARD GRID (Left: 9 cols, now configured with 6 dynamic columns) -->
                 <div class="lg:col-span-9 space-y-4">
-                    <!-- Jeopardy Category Grid wrapper -->
+                    <!-- Jeopardy Category Grid wrapper: optimized min-width for 6 categories -->
                     <div class="overflow-x-auto pb-2">
-                        <div id="jeopardy-grid" class="grid grid-cols-5 gap-3 min-w-[700px]">
+                        <div id="jeopardy-grid" class="grid grid-cols-6 gap-3 min-w-[840px]">
                             <!-- Generated dynamically by Javascript -->
                         </div>
                     </div>
@@ -324,21 +323,10 @@
 
     </main>
 
-    <!-- --- FOOTER --- -->
-  <footer class="border-t py-8 mt-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 gap-4">
-      <p>© 2026 KATHERINE SCHAUGHENCY</p>
-      <div class="flex items-center gap-4">
-        <span><a href="https://www.linkedin.com/in/kschaughency/">LinkedIn</a></span>
-        <span>●</span>
-        <span><a href="https://github.com/kcmlin">GitHub</a></span>
-        <span>●</span>
-        <span><a href="https://kcmlin.github.io">Website</a></span>
-      </div>
-    </div>
-  </footer>
-
-
+    <!-- Footer -->
+    <footer class="mt-auto py-6 border-t border-gray-900 bg-gray-950 text-center text-xs text-gray-500">
+        <p>© 2026 Reverse Trivia for Global Trotter. Pure Client-Side Bilingual Implementation.</p>
+    </footer>
 
     <!-- GLOBAL MODAL: Dynamic Clue Popup Modal -->
     <div id="clue-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm hidden">
@@ -479,7 +467,7 @@
                 btnCustomGist: "Load Custom Gist",
                 heroBadge: "Bilingual Globetrotting Trivia",
                 heroTitle: "Where is your next <span class='text-travel-terracotta'>Destination</span>?",
-                heroSub: "Select a destination below to initialize a high-stakes Jeopardy-style board themed entirely around the chosen nation's history, landmarks, cuisine, culture, and mysteries.",
+                heroSub: "Select a destination below to initialize a high-stakes Jeopardy-style board themed entirely around the chosen nation's history, landmarks, cuisine, culture, and mysteries. Now featuring 6 expanded categories!",
                 sectionPlayable: "Playable Destinations",
                 sectionUpcoming: "Upcoming Destinations",
                 tagDefault: "Default",
@@ -513,7 +501,7 @@
                 configGuideSteps: `
                     <li>Create a new public Gist on <a href="https://gist.github.com" target="_blank" class="text-travel-terracotta underline">gist.github.com</a></li>
                     <li>Paste the layout structure exactly like the schema format.</li>
-                    <li>Ensure there are exactly **5 categories** with exactly **5 clues** per category (values 200, 400, 600, 800, 1000).</li>
+                    <li>Ensure there are exactly **6 categories** with exactly **5 clues** per category (values 200, 400, 600, 800, 1000).</li>
                     <li>Click the **"Raw"** button on Gist to get the correct URL starting with 'https://gist.githubusercontent.com/...'</li>
                 `,
                 configBtnClose: "Close Uploader",
@@ -540,7 +528,7 @@
                 btnCustomGist: "載入自訂 Gist",
                 heroBadge: "雙語環球旅行益智問答",
                 heroTitle: "你的下一個<span class='text-travel-terracotta'>目的地</span>是哪裡？",
-                heroSub: "在下方選擇一個目的地，開啟專為該國歷史、地標、美食、文化及奧秘設計的經典 Jeopardy 益智問答板。",
+                heroSub: "在下方選擇一個目的地，開啟專為該國歷史、地標、美食、文化及奧秘設計的經典 Jeopardy 益智問答板。現在全新升級為 6 個類別！",
                 sectionPlayable: "可遊玩目的地",
                 sectionUpcoming: "即將推出目的地",
                 tagDefault: "預設",
@@ -574,7 +562,7 @@
                 configGuideSteps: `
                     <li>在 <a href="https://gist.github.com" target="_blank" class="text-travel-terracotta underline">gist.github.com</a> 上建立一個新的公開 Gist</li>
                     <li>完全按照範本的 JSON 格式貼上您的題目結構。</li>
-                    <li>確保包含 **5 個類別**，且每個類別中剛好有 **5 個線索**（金額依序為 200, 400, 600, 800, 1000）。</li>
+                    <li>確保包含 **6 個類別**，且每個類別中剛好有 **5 個線索**（金額依序為 200, 400, 600, 800, 1000）。</li>
                     <li>點擊 Gist 頁面上的 **「Raw」** 按鈕以取得正確的原始網址（應以 'https://gist.githubusercontent.com/...' 開頭）。</li>
                 `,
                 configBtnClose: "關閉上傳器",
@@ -606,125 +594,125 @@
                 categories: {
                     en: [
                         {
-                            name: "Gods and Heroes",
+                            name: "Ancient Gods",
                             clues: [
-                                { value: 200, question: "He is the king of the Olympian gods, wields the thunderbolt, and is the god of the sky and lightning.", answer: "Who is Zeus?" },
-                                { value: 400, question: "This goddess of wisdom and war is the patron deity of Athens, and myth says she was born fully armed from Zeus's head.", answer: "Who is Athena?" },
-                                { value: 600, question: "This hero of the Trojan War had his only vulnerability in his heel, a term now used to describe a fatal weakness.", answer: "Who is Achilles?" },
-                                { value: 800, question: "He is the god of medicine and healing, wielding a staff entwined with a single snake, which remains a symbol of medicine today.", answer: "Who is Asclepius?" },
-                                { value: 1000, question: "In Greek mythology, this hundred-eyed giant was appointed by Hera to guard Io, who had been turned into a cow, and was eventually killed by Hermes.", answer: "Who is Argus?" }
+                                { value: 200, question: "He commands Mount Olympus as the god of sky, lightning, and thunder.", answer: "Zeus" },
+                                { value: 400, question: "This trident-wielding Olympian governs the vast oceans, storms, and earthquakes.", answer: "Poseidon" },
+                                { value: 600, question: "The goddess of wisdom, strategic warfare, and handicraft, who protects Athens.", answer: "Athena" },
+                                { value: 800, question: "Born from the sea foam, she rules over love, beauty, desire, and fertility.", answer: "Aphrodite" },
+                                { value: 1000, question: "He journeys to the underworld as the messenger of the gods, wearing winged sandals.", answer: "Hermes" }
                             ]
                         },
                         {
-                            name: "Classical Philosophers",
+                            name: "Ancient History",
                             clues: [
-                                { value: 200, question: "This philosopher was the teacher of Plato, left no writings of his own, and was ultimately sentenced to death by drinking hemlock for 'corrupting the youth.'", answer: "Who is Socrates?" },
-                                { value: 400, question: "He founded the famous Academy and presented the renowned 'Allegory of the Cave' in his work, the Republic.", answer: "Who is Plato?" },
-                                { value: 600, question: "As a student of Aristotle, this historical figure established an empire spanning Europe, Asia, and Africa, spreading Greek culture across the known world.", answer: "Who is Alexander the Great?" },
-                                { value: 800, question: "This philosopher and mathematician from Samos formulated the theorem stating that the sum of the squares of the legs of a right triangle equals the square of the hypotenuse.", answer: "Who is Pythagoras?" },
-                                { value: 1000, question: "This philosopher of the Eleatic school is famous for formulating a series of paradoxes regarding motion, the most celebrated being 'Achilles and the Tortoise.'", answer: "Who is Zeno?" }
+                                { value: 200, question: "This legendary militaristic city-state was famed for its heroic defense at Thermopylae.", answer: "Sparta" },
+                                { value: 400, question: "He succeeded his father Philip II, conquering the known world from Greece to India.", answer: "Alexander the Great" },
+                                { value: 600, question: "This legendary battle in 490 BC inspired the modern name of the 26.2-mile footrace.", answer: "The Battle of Marathon" },
+                                { value: 800, question: "Constructed on the Athenian Acropolis, this major temple was built to honor Athena Parthenos.", answer: "The Parthenon" },
+                                { value: 1000, question: "This historic Greek league was founded in 478 BC to combat Persian aggression.", answer: "The Delian League" }
                             ]
                         },
                         {
-                            name: "Geography and Islands",
+                            name: "Islands & Geography",
                             clues: [
-                                { value: 200, question: "This is the capital and largest city of Greece, famous for the ancient Acropolis that stands at its center.", answer: "What is Athens?" },
-                                { value: 400, question: "Famous for its blue-domed churches and stunning sunsets, this volcanic island is the most popular tourist destination in the Cyclades.", answer: "What is Santorini?" },
-                                { value: 600, question: "This is the highest mountain in Greece, mythologically regarded as the home of the Twelve Olympian gods.", answer: "What is Mount Olympus?" },
-                                { value: 800, question: "This is the largest and most populous of the Greek islands, which in antiquity was the core center of the Minoan civilization.", answer: "What is Crete?" },
-                                { value: 1000, question: "This region in northern Greece is home to the famous Meteora monasteries, and its historical sub-region means 'the northern country' in Greek.", answer: "What is Thessaly?" }
+                                { value: 200, question: "This famous volcanic island is praised for its white-washed clifftop buildings in Oia.", answer: "Santorini (Thera)" },
+                                { value: 400, question: "This is the largest and most populous of all the Greek islands.", answer: "Crete" },
+                                { value: 600, question: "This windy island is famous for its preserved windmills and vibrant nightlife.", answer: "Mykonos" },
+                                { value: 800, question: "This highest peak in Greece is legendary for hosting the council of the gods.", answer: "Mount Olympus" },
+                                { value: 1000, question: "This complex system of isolated monasteries is built atop tall natural sandstone pillars.", answer: "Meteora" }
                             ]
                         },
                         {
-                            name: "Ancient History and Wars",
+                            name: "Culinary Heritage",
                             clues: [
-                                { value: 200, question: "In 490 BC, the Athenian army defeated the Persians here, and the legend of the messenger running back to Athens inspired this modern long-distance race.", answer: "What is the Battle of Marathon?" },
-                                { value: 400, question: "This ancient Greek city-state, renowned for its rigorous military training, led 300 warriors against the Persian army at the Battle of Thermopylae.", answer: "What is Sparta?" },
-                                { value: 600, question: "This protracted war in the 5th century BC was fought primarily between the Delian League led by Athens and the Peloponnesian League led by Sparta.", answer: "What is the Peloponnesian War?" },
-                                { value: 800, question: "Located on the Athenian Acropolis, this main temple dedicated to the goddess Athena is the supreme masterpiece of Doric architecture.", answer: "What is the Parthenon?" },
-                                { value: 1000, question: "In 480 BC, the Greek navy, under the leadership of Themistocles, defeated the Persian fleet of Xerxes I in this strait.", answer: "What is the Battle of Salamis?" }
+                                { value: 200, question: "This classic salted yogurt, cucumber, and garlic dip is popular worldwide.", answer: "Tzatziki" },
+                                { value: 400, question: "This brined curd cheese is made traditionally from sheep's milk or goat's milk mixes.", answer: "Feta" },
+                                { value: 600, question: "A savory eggplant-based baked dish featuring spiced meat, topped with creamy bechamel.", answer: "Moussaka" },
+                                { value: 800, question: "This anise-flavored aperitif is widely considered the national liquor of Greece.", answer: "Ouzo" },
+                                { value: 1000, question: "This honey-drenched dessert consists of crisp layers of phyllo pastry and chopped walnuts.", answer: "Baklava" }
                             ]
                         },
                         {
-                            name: "Greek Cuisine and Culture",
+                            name: "Philosophy & Science",
                             clues: [
-                                { value: 200, question: "This international sporting event, held every four years, originated in ancient Greece as a festival to honor Zeus.", answer: "What is the Olympic Games?" },
-                                { value: 400, question: "This traditional Greek cheese is made from sheep's or goat's milk, is white and brined, and is commonly crumbled over Greek salads.", answer: "What is Feta cheese?" },
-                                { value: 600, question: "This is a famous traditional baked Greek dish made of layered minced meat, eggplant, potato slices, and topped with Béchamel sauce.", answer: "What is Moussaka?" },
-                                { value: 800, question: "This clear, anise-flavored aperitif is the most iconic national liquor of Greece, which typically turns milky white when water or ice is added.", answer: "What is Ouzo?" },
-                                { value: 1000, question: "At traditional Greek weddings or celebrations, guests often smash this object on the floor to celebrate, ward off evil spirits, or express intense joy.", answer: "What is smashing plates?" }
+                                { value: 200, question: "This Athenian teacher of Plato was forced to drink hemlock for corrupting youth.", answer: "Socrates" },
+                                { value: 400, question: "This ancient physician of Kos drafted the ethical oath still sworn by doctors today.", answer: "Hippocrates" },
+                                { value: 600, question: "This Syracusan polymath famously shouted 'Eureka!' upon discovering water displacement.", answer: "Archimedes" },
+                                { value: 800, question: "This legendary philosopher founded the Lyceum and tutored young Alexander the Great.", answer: "Aristotle" },
+                                { value: 1000, question: "This pre-Socratic philosopher believed water is the primary substance of all matter.", answer: "Thales of Miletus" }
                             ]
                         },
                         {
-                            name: "Science, Literature, and Language",
+                            name: "Arts & Literature",
                             clues: [
-                                { value: 200, question: "This is the first letter of the Greek alphabet, commonly used in modern science and statistics to represent significance levels or the brightest star.", answer: "What is Alpha?" },
-                                { value: 400, question: "This ancient Greek blind poet is credited as the author of the Iliad and the Odyssey, the foundational works of Western literature.", answer: "Who is Homer?" },
-                                { value: 600, question: "This scientist from Syracuse discovered the principle of buoyancy while taking a bath and was so excited that he ran naked shouting 'Eureka!'", answer: "Who is Archimedes?" },
-                                { value: 800, question: "He is hailed as the 'Father of History,' and his work The Histories detailed the Greco-Persian Wars and various cultures.", answer: "Who is Herodotus?" },
-                                { value: 1000, question: "While the 'Hippocratic Oath' is well known in modern medicine, this ancient Greek physician is recognized as the 'Father of Anatomy' and was the first to perform systematic human dissections.", answer: "Who is Herophilus?" }
+                                { value: 200, question: "This epic ancient blind poet is credited with writing the Iliad and the Odyssey.", answer: "Homer" },
+                                { value: 400, question: "This ancient storyteller is famous for his moral fables featuring anthropomorphic animals.", answer: "Aesop" },
+                                { value: 600, question: "In 1963, this Greek poet won the Nobel Prize in Literature, followed by Odysseas Elytis in 1979.", answer: "Giorgos Seferis" },
+                                { value: 800, question: "This Greek author wrote the iconic 1946 novel 'Zorba the Greek'.", answer: "Nikos Kazantzakis" },
+                                { value: 1000, question: "This classic theatrical form, along with comedy, originated in ancient Greece during festivals honoring Dionysus.", answer: "Tragedy" }
                             ]
                         }
                     ],
                     zh: [
                         {
-                            name: "眾神與英雄",
+                            name: "古希臘神祇",
                             clues: [
-                                { value: 200, question: "祂是奧林帕斯眾神之王，手持雷霆霹靂，同時也是天空與閃電之神", answer: "誰是宙斯（Zeus）？" },
-                                { value: 400, question: "這位智慧與戰爭女神是從雅典娜（Athens）的守護神，傳說中祂是從宙斯的頭部全副武裝誕生。", answer: "誰是雅典娜（Athena）？" },
-                                { value: 600, question: "這位特洛伊戰爭中的英雄唯一弱點在於他的腳踵，如今這個詞被用來形容致命的弱點。", answer: "誰是阿基里斯（Achilles）？" },
-                                { value: 800, question: "祂是醫學與治癒之神，手持一條蛇盤繞的魔杖，如今該魔杖仍是醫學界的象徵。", answer: "誰是阿斯克勒庇俄斯（Asclepius）？" },
-                                { value: 1050, question: "在希臘神話中，這位百眼巨人受赫拉之命看守被變成母牛的伊俄，最終被荷米斯所殺。", answer: "誰是阿耳戈斯（Argus）？" }
+                                { value: 200, question: "祂是天空、閃電與雷霆之神，統領著奧林帕斯山，為眾神之王。", answer: "宙斯 (Zeus)" },
+                                { value: 400, question: "這位手持三叉戟的奧林帕斯主神掌控著遼闊的海洋、風暴與地震。", answer: "波賽頓 (Poseidon)" },
+                                { value: 600, question: "祂是智慧、戰略戰爭與工藝的女神，也是雅典城的守護神。", answer: "雅典娜 (Athena)" },
+                                { value: 800, question: "誕生於海浪的泡沫中，祂主宰著愛、美、慾望與繁衍。", answer: "阿芙蘿黛蒂 (Aphrodite)" },
+                                { value: 1000, question: "祂身穿羽翼神鞋，作為眾神的信使往返於人間與冥界。", answer: "赫密士 (Hermes)" }
                             ]
                         },
                         {
-                            name: "古典哲學家",
+                            name: "古代歷史",
                             clues: [
-                                { value: 200, question: "這位哲學家是柏拉圖的老師，他沒有留下任何著作，最終因「敗壞青年思想」而被判飲毒汁處死。", answer: "誰是蘇格拉底（Socrates）？" },
-                                { value: 400, question: "他創辦了著名的「學園」，並在著作《理想國》中提出了著名著名的「洞穴寓言」。", answer: "誰是柏拉圖（Plato）？" },
-                                { value: 600, question: "作為亞里斯多德的學生，這位歷史名人建立了橫跨歐亞非的帝國，將希臘文化傳播到已知世界。", answer: "誰是亞歷山大大帝（Alexander the Great）？" },
-                                { value: 800, question: "這位來自薩摩斯島的哲學家與數學家，提出了直角三角形「兩股平方和等於斜邊平方」的定理。", answer: "誰是畢達哥拉斯（Pythagoras）？" },
-                                { value: 1000, question: "這位愛利亞學派的哲學家以提出一系列關於運動的悖論而聞名，其中最著名的就是「阿基里斯追不上烏龜」。", answer: "誰是芝諾（Zeno of Elea）？" }
+                                { value: 200, question: "這座傳奇的軍事化城邦，以其在溫泉關戰役中的英雄防守而聞名於世。", answer: "斯巴達 (Sparta)" },
+                                { value: 400, question: "他繼承了父親腓力二世的王位，征服了從希臘到印度邊境的已知世界。", answer: "亞歷山大大帝 (Alexander the Great)" },
+                                { value: 600, question: "這場發生於西元前 490 年的傳奇戰役，啟發了現代 26.2 英里長跑賽事的名稱。", answer: "馬拉松戰役 (Battle of Marathon)" },
+                                { value: 800, question: "建於雅典衛城之上的這座主要神廟，是為了供奉守護神雅典娜·帕德嫩而建。", answer: "帕德嫩神廟 (The Parthenon)" },
+                                { value: 1000, question: "這個歷史悠久的希臘同盟建立於西元前 478 年，旨在共同對抗波斯帝國的侵略。", answer: "提洛同盟 (Delian League)" }
                             ]
                         },
                         {
-                            name: "地理與島嶼",
+                            name: "島嶼與地理",
                             clues: [
-                                { value: 200, question: "這是希臘的首都，也是該國最大的城市，以其市中心的古老衛城聞名。", answer: "什麼是雅典（Athens）？" },
-                                { value: 400, question: "這個以藍頂教堂和絕美日落聞名的火山島，是愛琴海基克拉澤斯群島中最受觀光客歡迎的景點。", answer: "什麼是聖托里尼（Santorini）？" },
-                                { value: 600, question: "它是希臘境內最高的山脈，在神話中被認為是奧林帕斯十二主神的居住地。", answer: "什麼是奧林帕斯山（Mount Olympus）？" },
-                                { value: 800, question: "這是希臘面積最大、人口最多的島嶼，在古代曾是米諾斯文明的核心發源地。", answer: "什麼是克里特島（Crete）？" },
-                                { value: 1000, question: "位於希臘北部的這個地區境內有著名的「天空之城」梅特歐拉，其名稱在希臘語中意為「北方的」。", answer: "什麼是馬其頓（Macedonia）或色薩利（Thessaly，梅特歐拉實際所在地）？" }
+                                { value: 200, question: "這座著名的火山島以其在伊亞（Oia）小鎮的白牆藍頂峭壁建築而聞名全球。", answer: "聖托里尼 (Santorini)" },
+                                { value: 400, question: "這是所有希臘島嶼中面積最大、人口最多的一座島。", answer: "克里特島 (Crete)" },
+                                { value: 600, question: "這座多風的島嶼以其保存完好的風車群和豐富熱鬧的夜生活而聞名。", answer: "米科諾斯島 (Mykonos)" },
+                                { value: 800, question: "這座希臘最高峰在神話中是眾神召開會議與居住的傳奇聖山。", answer: "奧林帕斯山 (Mount Olympus)" },
+                                { value: 1000, question: "這座由多座與世隔絕的修道院組成的古老建築群，建造在巨大的天然砂岩石柱頂端。", answer: "梅特歐拉 (Meteora / 天空之城)" }
                             ]
                         },
                         {
-                            name: "古文明與戰爭",
+                            name: "美食傳承",
                             clues: [
-                                { value: 200, question: "西元前490年，雅典軍隊在此擊敗波斯軍隊，傳令兵奔跑回雅典報信的傳奇成為現代這項長跑運動的起源。", answer: "什麼是馬拉松戰役（Battle of Marathon）？" },
-                                { value: 400, question: "這個以軍事訓練嚴格聞名的古希臘城邦，曾在溫泉關戰役中率領300名勇士對抗波斯大軍。", answer: "什麼是斯巴達（Sparta）？" },
-                                { value: 600, question: "這場爆發於西元前5世紀的漫長戰爭，主要是以雅典為首的提洛同盟與以斯巴達為首的伯羅奔尼撒同盟之間的對決。", answer: "什麼是伯羅奔尼撒戰爭（Peloponnesian War）？" },
-                                { value: 800, question: "位於雅典衛城上，這座供奉雅典娜女神的主神廟是多立克柱式建築的最高傑作。", answer: "什麼是帕德嫩神廟（Parthenon）？" },
-                                { value: 1000, question: "西元前480年，希臘海軍在特米斯托克利統帥下，於這個海峽擊敗了薛西斯一世率領的波斯艦隊。", answer: "什麼是薩拉米斯戰役（Battle of Salamis）？" }
+                                { value: 200, question: "這款經典的希臘沾醬是由優格、黃瓜和大蒜製成，廣受世界喜愛。", answer: "優格黃瓜醬 (Tzatziki)" },
+                                { value: 400, question: "這種鹽漬乳酪傳統上完全由羊乳或混合山羊乳製成，是希臘沙拉的主角。", answer: "費塔起司 (Feta)" },
+                                { value: 600, question: "這道烘烤的主食以茄子、絞肉為基礎，最上層淋上濃郁的貝夏美白醬。", answer: "希臘茄子千層派 (Moussaka)" },
+                                { value: 800, question: "這種帶有茴香氣味的開胃酒，被廣泛視為希臘的國酒。", answer: "烏佐酒 (Ouzo)" },
+                                { value: 1000, question: "這道甜美的甜點由多層薄如蟬翼的菲洛餅皮夾入碎核桃，並淋上濃郁蜂蜜烤製。", answer: "果仁蜜餅 (Baklava)" }
                             ]
                         },
                         {
-                            name: "希臘美食與文化",
+                            name: "哲學與科學",
                             clues: [
-                                { value: 200, question: "這項每四年舉辦一次的國際體育盛事發源於古希臘，當時是為了向宙斯致敬。", answer: "什麼是奧林匹克運動會（Olympic Games）？" },
-                                { value: 400, question: "這種傳統的希臘起司主要由綿羊乳或山羊乳製成，呈白色、帶有鹹味，常切丁放入希臘沙拉中。", answer: "什麼是費塔起司（Feta Cheese）？" },
-                                { value: 600, question: "這是一道著名的希臘傳統烘烤料理，由絞肉、茄子、馬鈴薯片疊加，並淋上法式白醬烘烤而成。", answer: "什麼是慕沙卡（Moussaka）？" },
-                                { value: 800, question: "這種帶有獨特茴香風味的澄清茴香烈酒，是希臘最具代表性的國民酒，通常加水或冰塊後會變成乳白色。", answer: "什麼是烏佐酒（Ouzo）？" },
-                                { value: 1000, question: "在希臘傳統婚禮或慶典上，賓客常會摔碎這種物品以示慶祝、驅邪或表達極度喜悅。", answer: "什麼是瓷盤（Plates）？" }
+                                { value: 200, question: "這位柏拉圖的雅典導師，因被控「腐蝕青年思想」而被判處飲鴆自盡。", answer: "蘇格拉底 (Socrates)" },
+                                { value: 400, question: "這位來自科斯島的古代醫生起草了道德誓言，至今仍被現代醫生宣誓效法。", answer: "希波克拉底 (Hippocrates)" },
+                                { value: 600, question: "這位敘拉古的博學家在洗澡發現排水排量時，興奮地高喊「尤里卡！」（我發現了）。", answer: "阿基米德 (Archimedes)" },
+                                { value: 800, question: "這位傳奇哲學家創立了呂克昂學園，並曾擔任年輕亞歷山大大帝的導師。", answer: "亞里斯多德 (Aristotle)" },
+                                { value: 1000, question: "這位前蘇格拉底時期的哲學家兼科學家，認為「水」是萬物唯一的原始物質。", answer: "泰利斯 (Thales of Miletus)" }
                             ]
                         },
                         {
-                            name: "科學、文學與語言",
+                            name: "文學與藝術",
                             clues: [
-                                { value: 200, question: "它是希臘字母的第一個字母，在現代科學與統計中常用來代表顯著水準或第一顆星。", answer: "什麼是Alpha？" },
-                                { value: 400, question: "這位古希臘盲詩人被認為是西方文學基石《伊利亞德》與《奧德賽》的作者。", answer: "誰是荷馬（Homer）？" },
-                                { value: 600, question: "這位敘拉古的科學家在洗澡時發現了浮力原理，激動得光著身子大喊「尤里卡！」（我找到了）。", answer: "誰是阿基米德（Archimedes）？" },
-                                { value: 800, question: "他被譽為「歷史之父」，其著作《歷史》詳細記錄了希波戰爭的始末與各地的風土人情。", answer: "誰是希羅多德（Herodotus）？" },
-                                { value: 1000, question: "現代醫學的「希波克拉底誓言」家喻戶曉，但這位被稱為「解剖學之父」、首位進行系統性人體解剖的古希臘醫生卻另有其人。", answer: "誰是赫洛菲洛斯（Herophilus）？" }
+                                { value: 200, question: "這位傳奇的盲人史詩詩人被公認為是《伊利亞德》和《奧德賽》的作者。", answer: "荷馬 (Homer)" },
+                                { value: 400, question: "這位古代故事家以創作以擬人化動物為主角、蘊含寓意的寓言而聞名。", answer: "伊索寓言 (Aesop)" },
+                                { value: 600, question: "1963年，這位希臘詩人榮獲諾貝爾文學獎，是希臘首位諾貝爾獎得主。", answer: "喬治·塞菲里斯 (Giorgos Seferis)" },
+                                { value: 800, question: "這位希臘作家撰寫了1946年的經典小說《希臘左巴》。", answer: "尼可斯·卡山札基 (Nikos Kazantzakis)" },
+                                { value: 1000, question: "這種經典的戲劇形式，與喜劇一同起源於古代希臘祭祀戴歐尼修斯的慶典。", answer: "悲劇 (Tragedy)" }
                             ]
                         }
                     ]
@@ -735,125 +723,125 @@
                 categories: {
                     en: [
                         {
-                            name: "Geography & Cities",
+                            name: "Budapest Landmarks",
                             clues: [
-                                { value: 200, question: "This beautiful Hungarian capital was formed by the merger of two historic cities on the banks of the Danube.", answer: "What is Budapest?" },
-                                { value: 400, question: "This is the largest freshwater lake in Central Europe, often called the 'Hungarian Sea' due to its azure waters and beaches.", answer: "What is Lake Balaton?" },
-                                { value: 600, question: "Located in southern Hungary, this city is famous for its ornate Zsolnay ceramics, Early Christian Necropolis, and history as a cultural melting pot.", answer: "What is Pécs?" },
-                                { value: 800, question: "It is Hungary's largest national park, protecting Europe's largest natural grassland known as the 'Puszta'.", answer: "What is Hortobágy National Park?" },
-                                { value: 1000, question: "This city is a Baroque gem in northern Hungary, boasting one of the three northernmost Ottoman-era minarets in Europe and producing the famous 'Bull's Blood' wine.", answer: "What is Eger?" }
+                                { value: 200, question: "This massive Gothic Revival building on the Danube banks is the largest in Hungary.", answer: "The Hungarian Parliament Building" },
+                                { value: 400, question: "This famous yellow-colored medicinal bath in Budapest is one of Europe's largest spa complexes.", answer: "Széchenyi Thermal Bath" },
+                                { value: 600, question: "This historic suspension bridge was the first permanent bridge to connect Buda and Pest.", answer: "The Széchenyi Chain Bridge" },
+                                { value: 800, question: "This historical palace complex of Hungarian kings sits atop Buda's Castle Hill.", answer: "Buda Castle" },
+                                { value: 1000, question: "This neo-Romanesque terrace in Budapest is famous for its 7 stone towers representing Hungarian tribes.", answer: "Fisherman's Bastion" }
                             ]
                         },
                         {
-                            name: "Historical Chronicles",
+                            name: "Hungarian History",
                             clues: [
-                                { value: 200, question: "Led by Grand Prince Árpád, the Hungarians settled in the Carpathian Basin in the late 9th century, historically known as this ethnic group.", answer: "What are the Magyars?" },
-                                { value: 400, question: "Crowned in the year 1000 (or 1001), this king became the first Christian monarch and the founding patron saint of the Kingdom of Hungary.", answer: "Who is Saint Stephen I?" },
-                                { value: 600, question: "The Austro-Hungarian Compromise of 1867 established a dual monarchy. This legendary figure ruled alongside Austrian Emperor Franz Joseph I as the Queen of Hungary.", answer: "Who is Empress Elisabeth (Sisi)?" },
-                                { value: 800, question: "Signed in 1920 between the Allies and Hungary after WWI, this treaty resulted in Hungary losing over two-thirds of its pre-war territory.", answer: "What is the Treaty of Trianon?" },
-                                { value: 1000, question: "Known as 'The Just', this 15th-century Hungarian king established the powerful mercenary 'Black Army' and brought Hungary into a Renaissance golden age.", answer: "Who is Matthias Corvinus?" }
+                                { value: 200, question: "He was the first King of Hungary, crowned on Christmas Day in the year 1000.", answer: "King Stephen I" },
+                                { value: 400, question: "This dual monarchy union was established in 1867 and dissolved after World War I.", answer: "The Austro-Hungarian Empire" },
+                                { value: 600, question: "This legendary leader of the Huns is deeply woven into Hungarian historical lineage.", answer: "Attila the Hun" },
+                                { value: 800, question: "This nationwide 1956 revolt against Soviet-imposed policies was crushed by Soviet tanks.", answer: "The Hungarian Revolution" },
+                                { value: 1000, question: "Signed in 1920, this post-WWI treaty caused Hungary to lose over 70% of its pre-war territory.", answer: "Treaty of Trianon" }
                             ]
                         },
                         {
-                            name: "Inventions & Sciences",
+                            name: "Culinary & Wines",
                             clues: [
-                                { value: 200, question: "Invented by a Hungarian architecture professor in 1974, this 3D combination puzzle became a worldwide toy phenomenon.", answer: "What is the Rubik's Cube?" },
-                                { value: 400, question: "Hungarian-born scientist Katalin Karikó won the 2023 Nobel Prize in Medicine for her research on this technology, which played a critical role in COVID-19 vaccines.", answer: "What is mRNA?" },
-                                { value: 600, question: "This 19th-century Hungarian physician is celebrated as the 'savior of mothers' for discovering that handwashing drastically reduced puerperal fever mortality.", answer: "Who is Ignaz Semmelweis?" },
-                                { value: 800, question: "Hungarian inventor László Bíró created this revolutionary everyday writing instrument in the 1930s, which is still named after him in many English-speaking countries.", answer: "What is a ballpoint pen?" },
-                                { value: 1000, question: "This Hungarian-born polymath is hailed as one of the 'fathers of the computer,' formulating the stored-program computer architecture and contributing greatly to game theory.", answer: "Who is John von Neumann?" }
+                                { value: 200, question: "This traditional meat and vegetable soup or stew is seasoned heavily with red paprika.", answer: "Goulash (Gulyás)" },
+                                { value: 400, question: "This ground sweet pepper spice is the ultimate cornerstone of Hungarian seasonings.", answer: "Paprika" },
+                                { value: 600, question: "This legendary sweet white dessert wine from Hungary was called 'Wine of Kings' by Louis XIV.", answer: "Tokaji" },
+                                { value: 800, question: "A beloved Hungarian street food consisting of deep-fried dough topped with garlic, sour cream, and cheese.", answer: "Lángos" },
+                                { value: 1000, question: "This sweet spit-roasted bread is wrapped around a cylinder, grilled, and coated in sugar.", answer: "Kürtőskalács (Chimney Cake)" }
                             ]
                         },
                         {
-                            name: "Arts & Music",
+                            name: "Inventions & Science",
                             clues: [
-                                { value: 200, question: "This 19th-century piano virtuoso and composer is famous for his technically demanding 'Hungarian Rhapsodies' and triggered a fan frenzy across Europe.", answer: "Who is Franz Liszt?" },
-                                { value: 400, question: "Originating in Hungary, this traditional folk dance features a fast tempo and men slapping their boots and thighs, which Liszt and Brahms incorporated into their works.", answer: "What is Csárdás?" },
-                                { value: 600, question: "This 20th-century Hungarian composer was a pioneer in ethnomusicology, collecting folk songs from the countryside and composing the opera 'Duke Bluebeard's Castle'.", answer: "Who is Béla Bartók?" },
-                                { value: 800, question: "Hailed as a mentor to the 'Master of Suspense' Alfred Hitchcock, this famous director directed 'Casablanca' and won an Oscar for Best Director in Hollywood.", answer: "Who is Michael Curtiz?" },
-                                { value: 1000, question: "This Hungarian Romantic poet penned the 'National Song' (Nemzeti Dal) and heroically died in the Hungarian Revolution of 1848, becoming a soulful symbol of the nation.", answer: "Who is Sándor Petőfi?" }
+                                { value: 200, question: "Invented by Erno Rubik in 1974, this 3-dimensional combination puzzle is a global phenomenon.", answer: "Rubik's Cube" },
+                                { value: 400, question: "This everyday rolling-ball writing tool was patented by Laszlo Biro in 1938.", answer: "The Ballpoint Pen (Biro)" },
+                                { value: 600, question: "This Hungarian physiologist won a Nobel Prize for discovering and isolating Vitamin C.", answer: "Albert Szent-Györgyi" },
+                                { value: 800, question: "This technique for recording 3D holographic images was invented by Dennis Gabor, winning a Nobel.", answer: "Holography" },
+                                { value: 1000, question: "János Irinyi invented the noiseless and non-explosive version of this fire-starting stick in 1836.", answer: "The Safety Match" }
                             ]
                         },
                         {
-                            name: "Culinary & Wine",
+                            name: "Nature & Culture",
                             clues: [
-                                { value: 200, question: "This is Hungary's most famous national dish, a rich stew or soup made of meat, vegetables, and seasoned heavily with paprika.", answer: "What is Goulash?" },
-                                { value: 400, question: "This aromatic, deep-red spice is the soul of Hungarian cuisine, available in varying grades ranging from sweet to hot.", answer: "What is paprika?" },
-                                { value: 600, question: "Produced in northeastern Hungary, this premium sweet white wine was praised by French King Louis XIV as the 'Wine of Kings, King of Wines.'", answer: "What is Tokaji Aszú?" },
-                                { value: 800, question: "This traditional Hungarian street food is a spit cake made from yeast dough wrapped around a cylinder, baked, and topped with cinnamon or sugar, resembling a chimney.", answer: "What is a Chimney Cake (Kürtőskalács)?" },
-                                { value: 1000, question: "Made from over 40 herbs and spiced according to a secret Zwack family recipe, this herbal digestif liqueur is a national spirit of Hungary, identifiable by its iconic green bottle with a cross.", answer: "What is Unicum?" }
+                                { value: 200, question: "Often called the 'Hungarian Sea', this is the largest lake in Central Europe.", answer: "Lake Balaton" },
+                                { value: 400, question: "This Mohács carnival features scary wooden masks to scare away winter and honor folklore.", answer: "Busójárás" },
+                                { value: 600, question: "Held on Óbuda Island, this is one of Europe's largest music and cultural festivals.", answer: "Sziget Festival" },
+                                { value: 800, question: "This vast, flat grassland biome in eastern Hungary is famous for traditional horse shows.", answer: "Puszta" },
+                                { value: 1000, question: "This luxury hand-painted porcelain manufacture was a favorite of Queen Victoria.", answer: "Herend Porcelain" }
                             ]
                         },
                         {
-                            name: "Language & Culture",
+                            name: "Music & Composers",
                             clues: [
-                                { value: 200, question: "Renowned for its abundant geothermal resources, Budapest boasts famous venues like Széchenyi and Gellért, earning it this long-standing moniker.", answer: "What is the City of Baths?" },
-                                { value: 400, question: "Unlike its neighboring Slavic or Germanic languages, Hungarian belongs to this distinct language family, distantly related to Finnish and Estonian.", answer: "What is the Uralic (Finno-Ugric) language family?" },
-                                { value: 600, question: "In Budapest, unique bars converted from abandoned pre-WWII buildings have become highly popular, known collectively by this name.", answer: "What are Ruin Bars (Romkocsma)?" },
-                                { value: 800, question: "When introducing oneself, the Hungarian language follows this specific Eastern name order, making it a rare Western exception where this name part comes first.", answer: "What is the Eastern name order (Surname first)?" },
-                                { value: 1000, question: "Originating in Mohács in southern Hungary, this traditional masked spring festival is inscribed on the UNESCO Intangible Cultural Heritage list and aims to scare away winter.", answer: "What is Busójárás?" }
+                                { value: 200, question: "This Hungarian virtuoso pianist and composer wrote the famous 'Hungarian Rhapsodies'.", answer: "Franz Liszt" },
+                                { value: 400, question: "He co-founded ethnomusicology and composed the orchestral piece 'Concerto for Orchestra'.", answer: "Béla Bartók" },
+                                { value: 600, question: "This Hungarian educator developed a world-famous ear-training method of music education.", answer: "Zoltán Kodály" },
+                                { value: 800, question: "This romantic instrument, the national instrument of Hungary, is a type of hammered dulcimer.", answer: "Cimbalom" },
+                                { value: 1000, question: "This fast-paced Hungarian folk dance features synchronized boot-slapping and syncopation.", answer: "Csárdás" }
                             ]
                         }
                     ],
                     zh: [
                         {
-                            name: "地理與城市",
+                            name: "布達佩斯地標",
                             clues: [
-                                { value: 200, question: "這座美麗的匈牙利首都由多瑙河畔的兩個歷史古城合併而成。", answer: "什麼是布達佩斯（Budapest）？" },
-                                { value: 400, question: "這是中歐最大的淡水湖，因其蔚藍的湖水與沙灘而常被稱為「匈牙利海」。", answer: "什麼是巴拉頓湖（Lake Balaton）？" },
-                                { value: 600, question: "這座位於匈牙利南部的城市以其華麗的喬納伊（Zsolnay）陶瓷、早期基督教墓群以及身為文化大熔爐的歷史而聞名。", answer: "什麼是佩奇（Pécs）？" },
-                                { value: 800, question: "它是匈牙利面積最大的國家公園，保護著歐洲最大的自然草原——「普斯塔」平原。", answer: "什麼是霍爾托巴吉國家公園（Hortobágy National Park）？" },
-                                { value: 1000, question: "這座城市是匈牙利北部的巴洛克珍珠，除了擁有歐洲最北端的三個鄂圖曼帝國時期尖塔之一，還出產著名的「牛血酒」。", answer: "什麼是埃格爾（Eger）？" }
+                                { value: 200, question: "這座坐落於多瑙河畔、宏偉的新哥德式建築是匈牙利最大且最具指標性的建築。", answer: "匈牙利國會大廈 (Hungarian Parliament Building)" },
+                                { value: 400, question: "這座位於布達佩斯、著名的黃色藥用溫泉是歐洲最大的溫泉浴場之一。", answer: "塞切尼溫泉 (Széchenyi Thermal Bath)" },
+                                { value: 600, question: "這座歷史昂貴的懸索橋，是歷史上第一座連接布達與佩斯的永久性橋樑。", answer: "塞切尼鏈橋 (Chain Bridge)" },
+                                { value: 800, question: "這座匈牙利國王的歷史城堡與奢華宮殿群，坐落於布達的城堡山上。", answer: "布達城堡 (Buda Castle)" },
+                                { value: 1000, question: "這座新羅馬式露台以其 7 座石塔聞名，代表著定居匈牙利的 7 個馬扎爾部落。", answer: "漁人堡 (Fisherman's Bastion)" }
                             ]
                         },
                         {
-                            name: "歷史風雲",
+                            name: "匈牙利歷史",
                             clues: [
-                                { value: 200, question: "匈牙利人在 9 世紀末由阿爾帕德（Árpád）大公率領定居於喀爾巴阡盆地，他們在歷史上被稱為這個民族。", answer: "什麼是馬扎爾人（Magyars）？" },
-                                { value: 400, question: "這位國王於公元 1000 年（或 1001 年）加冕，成為匈牙利王國的第一位基督教君主與開國聖人。", answer: "誰是聖伊什特萬一世（Saint Stephen I）？" },
-                                { value: 600, question: "1867 年的奧匈折衷方案（Ausgleich）建立了一個雙元帝國，當時與奧地利皇帝法蘭茲·約瑟夫一世共同統治的匈牙利王后是這位傳奇人物。", answer: "誰是茜茜公主／伊麗莎白皇后（Empress Elisabeth / Sisi）？" },
-                                { value: 800, question: "在一戰結束後的 1920 年，協約國與匈牙利簽署了這項條約，導致匈牙利失去了戰前超過三分之二的領土。", answer: "什麼是特里亞農條約（Treaty of Trianon）？" },
-                                { value: 1000, question: "這位 15 世紀的匈牙利國王被稱為「正義王」，他建立了一支強大的「黑軍」黑衫僱傭兵，並將匈牙利帶入文藝復興的黃金時代。", answer: "誰是馬加什一世／馬蒂亞斯·科維努斯（Matthias Corvinus）？" }
+                                { value: 200, question: "他是匈牙利的第一位國王，於西元 1000 年的聖誕節加冕登基，確立天主教為國教。", answer: "聖伊什特萬一世 (King Stephen I)" },
+                                { value: 400, question: "這座強大的雙元君主制聯合帝國建立於 1867 年，並在第一次世界大戰後瓦解。", answer: "奧匈帝國 (Austro-Hungarian Empire)" },
+                                { value: 600, question: "這位傳奇的匈人領袖深深交織在匈牙利的史詩民俗與建國神話血脈中。", answer: "匈人阿提拉 (Attila the Hun)" },
+                                { value: 800, question: "這場發生於 1956 年的全國性起義旨在反抗蘇聯高壓統治，最終遭到蘇聯坦克鎮壓。", answer: "匈牙利十月事件 (1956年革命)" },
+                                { value: 1000, question: "簽署於 1920 年，這份一戰戰敗合約導致匈牙利失去了戰前超過 70% 的國土與人口。", answer: "特里亞農條約 (Treaty of Trianon)" }
+                            ]
+                        },
+                        {
+                            name: "美食與美酒",
+                            clues: [
+                                { value: 200, question: "這道傳統的牛肉燉湯加入了大量蔬菜，並以紅椒粉進行標誌性的調味調色。", answer: "匈牙利湯 (Goulash / Gulyás)" },
+                                { value: 400, question: "這種由甜椒磨製而成的紅色香料，是匈牙利料理風味中不可或缺的絕對霛魂。", answer: "紅椒粉 (Paprika)" },
+                                { value: 600, question: "這種產自東北部的傳奇甜白酒，曾被法國國王路易十四讚譽為「王者之酒」。", answer: "托卡伊甜酒 (Tokaji)" },
+                                { value: 800, question: "這道著名的街頭小吃是由油炸麵團抹上大蒜汁、酸奶油並撒上大量起司製成。", answer: "蘭戈斯 (Lángos)" },
+                                { value: 1000, question: "這種空心的旋轉烤麵包包裹在圓筒上烤製，外層裹上閃亮焦糖與肉桂砂糖粉。", answer: "煙囪捲 (Kürtőskalács)" }
                             ]
                         },
                         {
                             name: "發明與科學",
                             clues: [
-                                { value: 200, question: "這款由匈牙利建築學教授於 1974 年發明的 3D 組合謎題，成為了風靡全球的益智玩具。", answer: "什麼是魔術方塊（Rubik's Cube）？" },
-                                { value: 400, question: "匈牙利裔科學家卡塔林·考里科（Katalin Karikó）因對這項技術的研究而榮獲 2023 年諾貝爾醫學獎，該技術在新冠肺炎疫苗中發揮了關鍵作用。", answer: "什麼是mRNA / 微體核糖核酸（mRNA）？" },
-                                { value: 600, question: "這位 19 世紀的匈牙利內科醫生被譽為「母親的救星」，他發現洗手能大幅降低產褥熱的死亡率。", answer: "誰是伊格納茲·塞麥爾維斯（Ignaz Semmelweis）？" },
-                                { value: 800, question: "匈牙利發明家拉斯洛·比羅（László Bíró）在 1930 年代發明了這項革命性的日常書寫工具，在許多英語國家，該工具至今仍以他的名字命名。", answer: "蘭什麼是原子筆（Ballpoint pen）？" },
-                                { value: 1000, question: "這位匈牙利裔全才科學家被譽為「電腦之父」之一，他提出了現代電腦的儲存程序架構，並對博弈論做出了巨大貢獻。", answer: "誰是約翰·馮·紐曼（John von Neumann）？" }
+                                { value: 200, question: "由厄爾諾·魯比克於 1974 年發明，這款三維組合益智玩具至今風靡全球。", answer: "魔術方塊 (Rubik's Cube)" },
+                                { value: 400, question: "這款實用的日常鋼珠書寫工具，是由拉斯洛·比羅於 1938 年在匈牙利取得專利。", answer: "原子筆 (Ballpoint Pen / Biro)" },
+                                { value: 600, question: "這位科學家因成功從紅椒中發現、提取並分離出「維生素 C」而榮獲諾貝爾獎。", answer: "聖捷爾吉·阿爾伯特 (Albert Szent-Györgyi)" },
+                                { value: 800, question: "這種利用雷射記錄與重現物體三維圖像的技術由丹尼斯·加博爾發明，並獲諾貝爾獎。", answer: "全像術 / 全像攝影 (Holography)" },
+                                { value: 1000, question: "化學家伊里尼·亞諾什於 1836 年發明了這種點火安全、無噪音且不會劇烈爆炸的工具。", answer: "安全火柴 (Safety Match)" }
                             ]
                         },
                         {
-                            name: "文藝與音樂",
+                            name: "自然與文化",
                             clues: [
-                                { value: 200, question: "這位 19 世紀的鋼琴大師和作曲家以其高難度的《匈牙利狂想曲》聞名，並在歐洲引發了如現代搖滾樂迷般的狂熱。", answer: "誰是法蘭茲·李斯特（Franz Liszt）？" },
-                                { value: 400, question: "這種發源於匈牙利的傳統民間舞蹈以其快速的節奏和男舞者的拍腿動作為特徵，李斯特和布拉姆斯都曾將其融入作品中。", answer: "什麼是查爾達什（Csárdás）？" },
-                                { value: 600, question: "這位 20 世紀的匈牙利作曲家是民族音樂學的先驅，他深入鄉間採集民謠，並創作了歌劇《藍鬍子公爵的城堡》。", answer: "誰是貝拉·巴爾托克（Béla Bartók）？" },
-                                { value: 800, question: "這位著名導演被譽為「懸疑大師」希區考克的導師，他執導了《北非諜影》（Casablanca），並在好萊塢獲得了奧斯卡最佳導演獎。", answer: "誰是麥可·柯蒂斯（Michael Curtiz）？" },
-                                { value: 1000, question: "這位匈牙利浪漫主義詩人創作了《民族之歌》（Nemzeti Dal），並在 1848 年匈牙利革命中英勇犧牲，成為國家的靈魂象徵。", answer: "誰是裴多菲·山多爾（Sándor Petőfi）？" }
+                                { value: 200, question: "常被溫馨地稱為「匈牙利之海」，這是中歐地區面積最大的淡水湖泊。", answer: "巴拉頓湖 (Lake Balaton)" },
+                                { value: 400, question: "這項每年在摩哈赤舉辦的古老嘉年華活動，人們會戴上恐怖的木製面具來驅逐寒冬。", answer: "布索狂歡節 (Busójárás)" },
+                                { value: 600, question: "這項每年在布達佩斯島嶼上舉辦的盛會，是歐洲規模最大的露天音樂與文化節之一。", answer: "島嶼音樂節 (Sziget Festival)" },
+                                { value: 800, question: "這片位於東部的遼闊平坦草地，是歐洲著名的溫帶草原，以傳統馬術表演聞名。", answer: "普斯塔草原 (Puszta)" },
+                                { value: 1000, question: "這家創立於 1826 年的頂級手繪瓷器製造商，是英國維多利亞女王一生的鍾愛收藏。", answer: "赫倫瓷器 (Herend Porcelain)" }
                             ]
                         },
                         {
-                            name: "美食與佳釀",
+                            name: "音樂與作曲家",
                             clues: [
-                                { value: 200, question: "這是匈牙利最著名的國菜，一種由肉類、蔬菜和大量紅椒粉燉煮而成的濃湯。", answer: "什麼是匈牙利燉牛肉／古拉什（Goulash）？" },
-                                { value: 400, question: "這種香氣濃郁的深紅色香料是匈牙利料理的靈魂，分為甜味與辣味等多種等級。", answer: "什麼是紅椒粉（Paprika）？" },
-                                { value: 600, question: "這款產自匈牙利東北部的頂級甜白酒被法國國王路易十四讚譽為「國王之酒，酒中之王」。", answer: "什麼是托凱貴腐酒（Tokaji Aszú）？" },
-                                { value: 800, question: "這是一種類似甜甜圈的匈牙利傳統街頭小吃，將麵團纏繞在滾筒上烘烤，表面撒上肉桂或砂糖，形似煙囪。", answer: "什麼是煙囪捲（Chimney Cake / Kürtőskalács）？" },
-                                { value: 1000, question: "這款由 40 多種草藥製成的草本苦味酒由齊克（Zwack）家族秘密配方釀造，是匈牙利的國寶級烈酒，其標誌是一個十字綠瓶。", answer: "什麼是烏尼空草本酒（Unicum）？" }
-                            ]
-                        },
-                        {
-                            name: "語文與文化",
-                            clues: [
-                                { value: 200, question: "布達佩斯以其豐富的地熱資源聞名，擁有塞切尼（Széchenyi）和蓋勒特（Gellért）等著名場所，使其獲得了這個悠久的稱號。", answer: "什麼是溫泉之都（City of Baths）？" },
-                                { value: 400, question: "與鄰近的斯拉夫或日耳曼語系不同，匈牙利語屬於這個獨特的語系，與芬蘭語和愛沙尼亞語有著遙遠的親緣關係。", answer: "什麼是烏拉爾語系／芬蘭-烏格爾語族（Uralic / Finno-Ugric language family）？" },
-                                { value: 600, question: "什麼是烏拉爾語系／芬蘭-烏格爾語族（Uralic / Finno-Ugric language family）？", answer: "什麼是廢墟酒吧（Ruin Bars / Romkocsma）？" },
-                                { value: 800, question: "當向別人介紹自己時，匈牙利語在姓名排列上與東亞（如中文）相同，都遵循這個特殊的西方例外規則。", answer: "什麼是姓氏在前，名字在後／東方姓名順序（Eastern name order / Surname first）？" },
-                                { value: 1000, question: "這種發源於匈牙利南部莫哈奇（Mohács）的傳統春季面具遊行，已被列入聯合國教科文組織人類非物質文化遺產，旨在嚇走冬天。", answer: "什麼是布索狂歡節（Busójárás）？" }
+                                { value: 200, question: "這位匈牙利鋼琴演奏大師兼作曲家創作了著名的《匈牙利狂想曲》。", answer: "李斯特 (Franz Liszt)" },
+                                { value: 400, question: "他與他人共同創立了民族音樂學，並創作了管弦樂作品《管弦樂協奏曲》。", answer: "貝拉·巴爾托克 (Béla Bartók)" },
+                                { value: 600, question: "這位匈牙利音樂教育家開發了享譽世界的音樂教學法（手勢與視唱練耳）。", answer: "高大宜 (Zoltán Kodály)" },
+                                { value: 800, question: "這種帶有琴槌的擊弦樂器是匈牙利的代表性民族樂器。", answer: "匈牙利揚琴 (Cimbalom)" },
+                                { value: 1000, question: "這種節奏輕快、極具爆發力的匈牙利傳統雙人舞蹈，以拍打靴子和同步切分音為特色。", answer: "查爾達什舞 (Csárdás)" }
                             ]
                         }
                     ]
@@ -864,125 +852,125 @@
                 categories: {
                     en: [
                         {
-                            name: "Geography and Cities",
+                            name: "Prague Wonders",
                             clues: [
-                                { value: 200, question: "This capital and largest city of Czechia is famous for its well-preserved Old Town and the Charles Bridge spanning the Vltava River.", answer: "What is Prague?" },
-                                { value: 400, question: "This second-largest city in the Czech Republic is the historical capital of Moravia and the seat of the country's judicial authority.", answer: "What is Brno?" },
-                                { value: 600, question: "This charming South Bohemian town is famous for its fairytale castle and medieval architecture nestled inside a horseshoe bend of the Vltava River.", answer: "What is Český Krumlov?" },
-                                { value: 800, question: "The three historical lands of Czechia are Bohemia, Moravia, and this region, of which only a small fragment lies within Czech borders today, adjacent to Poland.", answer: "What is Silesia?" },
-                                { value: 1000, question: "Rising to 1,603 meters, this peak in the Krkonoše Mountains on the Polish border is the highest point in Czechia.", answer: "What is Sněžka?" }
+                                { value: 200, question: "This historic Gothic stone bridge across the Vltava River is lined with 30 statues of saints.", answer: "Charles Bridge" },
+                                { value: 400, question: "Installed in 1410, this is the oldest astronomical clock still operating in the world.", answer: "The Prague Astronomical Clock" },
+                                { value: 600, question: "According to Guinness World Records, this is the largest ancient castle complex in the world.", answer: "Prague Castle" },
+                                { value: 800, question: "This spectacular Gothic cathedral is located entirely within the Prague Castle walls.", answer: "St. Vitus Cathedral" },
+                                { value: 1000, question: "This city wall has been filled with peace-themed graffiti and lyrics since the 1980s.", answer: "The John Lennon Wall" }
                             ]
                         },
                         {
-                            name: "History and Politics",
+                            name: "Czech History",
                             clues: [
-                                { value: 200, question: "Before the 'Velvet Divorce' of 1993, Czechia and its neighbor Slovakia were part of this single federal state.", answer: "What is Czechoslovakia?" },
-                                { value: 400, question: "Occurring in 1968, this brief period of political liberalization led by Alexander Dubček was crushed by a Soviet-led Warsaw Pact invasion.", answer: "What is the Prague Spring?" },
-                                { value: 600, question: "This renowned dissident playwright led the Velvet Revolution in 1989 and subsequently became the first president of post-communist Czechoslovakia.", answer: "Who is Václav Havel?" },
-                                { value: 800, question: "This 1618 religious and political event, where two Imperial governors were thrown out of a window by Protestants, triggered the Thirty Years' War.", answer: "What is the Defenestration of Prague?" },
-                                { value: 1000, question: "In the 15th century, the execution of this religious reformer at the stake led to a series of wars between his followers and the Holy Roman Empire.", answer: "Who is Jan Hus?" }
+                                { value: 200, question: "This beloved King of Bohemia and Holy Roman Emperor founded Central Europe's first university.", answer: "Charles IV" },
+                                { value: 400, question: "This peaceful, non-violent transition of power in 1989 ended Communist rule in Czechoslovakia.", answer: "The Velvet Revolution" },
+                                { value: 600, question: "This Christian reformer was burned at the stake in 1415, sparking major Hussite wars.", answer: "Jan Hus" },
+                                { value: 800, question: "These historical acts of throwing government officials out of windows sparked European wars.", answer: "The Defenestrations of Prague" },
+                                { value: 1000, question: "This historical Great Slavic empire flourished in Central Europe during the 9th century.", answer: "Great Moravia" }
                             ]
                         },
                         {
-                            name: "Literature and Art",
+                            name: "Beer & Culinary",
                             clues: [
-                                { value: 200, question: "Born in Prague, this German-language Jewish writer achieved worldwide fame with his novella 'The Metamorphosis', in which the protagonist transforms into an insect.", answer: "Who is Franz Kafka?" },
-                                { value: 400, question: "This Art Nouveau master gained international fame for his stylized posters of elegant women and decorative panels, notably those creating a sensation for actress Sarah Bernhardt.", answer: "Who is Alphonse Mucha?" },
-                                { value: 600, question: "This titan of contemporary Czech literature authored 'The Unbearable Lightness of Being', exploring existentialism and life under communist totalitarianism.", answer: "Who is Milan Kundera?" },
-                                { value: 800, question: "Author Karel Čapek introduced this now-ubiquitous technological term to the world in his 1920 science fiction play "R.U.R." (Rossum's Universal Robots).", answer: "What is a Robot?" },
-                                { value: 1000, question: "This 19th-century Romantic poet wrote the epic masterpiece 'Máj' (May), a cornerstone of modern Czech poetry, and is honored with a statue on Prague's Petřín Hill.", answer: "Who is Karel Hynek Mácha?" }
+                                { value: 200, question: "This is the world's first golden pale lager, originally brewed in Plzeň in 1842.", answer: "Pilsner Urquell" },
+                                { value: 400, question: "These traditional steamed bread or potato dumplings are sliced and served with meat gravies.", answer: "Knedlíky (Czech Dumplings)" },
+                                { value: 600, question: "A signature dish consisting of beef sirloin in a rich vegetable cream sauce with cranberries.", answer: "Svíčková" },
+                                { value: 800, question: "This high-proof anise spirit is famously served in Prague over a burning sugar spoon.", answer: "Absinthe" },
+                                { value: 1000, question: "Though Transylvanian, this sweet spit-dough pastry coated in walnuts is highly popular in Prague.", answer: "Trdelník" }
                             ]
                         },
                         {
-                            name: "Classical Music and Opera",
+                            name: "Castles & Chateaux",
                             clues: [
-                                { value: 200, question: "One of Czechia's greatest composers, he captured his impressions of America in his celebrated Symphony No. 9, subtitled 'From the New World'.", answer: "Who is Antonín Dvořák?" },
-                                { value: 400, question: "Hailed as the father of Czech music, Bedřich Smetana composed this famous cycle of six symphonic poems radiating with national pride.", answer: "What is Má vlast?" },
-                                { value: 600, question: "The second and most famous movement of Smetana's 'Má vlast' sonically traces the journey of this river, which flows through the heart of Prague.", answer: "What is the Vltava? (Accept 'The Moldau')" },
-                                { value: 800, question: "This early 20th-century composer is famous for his innovative operas like 'Jenůfa' and 'The Cunning Little Vixen', deeply rooted in Moravian folk speech melodies.", answer: "Who is Leoš Janáček?" },
-                                { value: 1000, question: "In 1787, Wolfgang Amadeus Mozart personally conducted the world premiere of his opera 'Don Giovanni' at this historic Prague venue.", answer: "What is the Estates Theatre? (Accept 'Stavovské divadlo')" }
+                                { value: 200, question: "This majestic Gothic castle was founded in 1348 by Charles IV to safeguard the crown jewels.", answer: "Karlštejn Castle" },
+                                { value: 400, question: "This scenic castle rises above a medieval loop of the Vltava River in Southern Bohemia.", answer: "Český Krumlov Castle" },
+                                { value: 600, question: "This gorgeous English Gothic palace boasts premium greenhouses and landscaped parks.", answer: "Lednice Chateau" },
+                                { value: 800, question: "Often called the most beautiful Czech castle, it is styled after England's Windsor Castle.", answer: "Hluboká Castle" },
+                                { value: 1000, question: "This castle was the final home of Archduke Franz Ferdinand, whose assassination sparked WWI.", answer: "Konopiště Castle" }
                             ]
                         },
                         {
-                            name: "Food, Beverage, and Culture",
+                            name: "Arts & Science",
                             clues: [
-                                { value: 200, question: "Czechia ranks first in the world for the per capita consumption of this alcoholic beverage, and its Pilsner method revolutionized global brewing.", answer: "What is beer?" },
-                                { value: 400, question: "Originating in the Czech city of Plzeň, this golden, bottom-fermented lager became the blueprint for more than two-thirds of the beer produced worldwide today.", answer: "What is Pilsner? (Accept 'Pilsner Urquell')" },
-                                { value: 600, question: "These traditional, sliced Czech dumplings, typically made from wheat or potato dough, are the quintessential side dish for goulash or roast pork.", answer: "What are Knedlíky? (Accept 'Czech dumplings')" },
-                                { value: 800, question: "Produced in the spa town of Karlovy Vary, this traditional herbal bitters made from a secret blend of herbs is often jokingly called the town's '13th spring'.", answer: "What is Becherovka?" },
-                                { value: 1000, question: "In Czech tradition, this specific fish is the absolute star of the Christmas Eve dinner, with many families keeping it alive in their bathtubs days beforehand.", answer: "What is a Carp?" }
+                                { value: 200, question: "This Prague-born novelist wrote the masterpieces 'The Metamorphosis' and 'The Trial'.", answer: "Franz Kafka" },
+                                { value: 400, question: "This word for an artificial worker was coined in Prague and debuted in the 1920 play R.U.R.", answer: "Robot" },
+                                { value: 600, question: "This world-renowned Czech composer is most famous for his 9th Symphony, 'From the New World'.", answer: "Antonín Dvořák" },
+                                { value: 800, question: "This Art Nouveau painter is legendary for his stylized posters of elegant theatrical women.", answer: "Alphonse Mucha" },
+                                { value: 1000, question: "This Brno monk conducted pea plant experiments, establishing genetic inheritance laws.", answer: "Gregor Mendel" }
                             ]
                         },
                         {
-                            name: "Science, Invention, and Industry",
+                            name: "Modern Culture & Sports",
                             clues: [
-                                { value: 200, question: "Founded in 1895 initially as a bicycle repair shop, this iconic Czech automobile brand is now a highly successful subsidiary of the Volkswagen Group.", answer: "What is Škoda?" },
-                                { value: 400, question: "Since the Renaissance, the Bohemia region of Czechia has been globally renowned for its high-quality, beautifully cut, and engraved craft of this material.", answer: "What is Bohemian Crystal? (Accept 'Bohemian glass')" },
-                                { value: 600, question: "Conducting his meticulous pea plant experiments in a Brno monastery, this 19th-century friar discovered the fundamental laws of modern genetics.", answer: "Who is Gregor Mendel?" },
-                                { value: 800, question: "In 1959, Czech chemist Otto Wichterle invented the soft version of this medical optical device using a homemade apparatus built from a children's building set.", answer: "What are soft contact lenses?" },
-                                { value: 1000, question: "This highly powerful and malleable plastic explosive, notoriously used in international military and counter-terrorism contexts, was invented in Czechoslovakia in the 1960s.", answer: "What is Semtex?" }
+                                { value: 200, question: "This Prague-born tennis legend won 18 Grand Slam singles titles and 31 major doubles titles.", answer: "Martina Navratilova" },
+                                { value: 400, question: "This is the most popular team sport in the Czech Republic, historically boasting gold medals at Nagano 1998.", answer: "Ice Hockey" },
+                                { value: 600, question: "This Czech long-distance runner, nicknamed the 'Locomotive', won three gold medals at the 1952 Olympics.", answer: "Emil Zátopek" },
+                                { value: 800, question: "This internationally celebrated film director won Oscars for 'One Flew Over the Cuckoo's Nest' and 'Amadeus'.", answer: "Miloš Forman" },
+                                { value: 1000, question: "This ancient term, referencing the historic West Slavic land, is synonymous with an unconventional, artistic lifestyle.", answer: "Bohemian" }
                             ]
                         }
                     ],
                     zh: [
                         {
-                            name: "地理與城市",
+                            name: "布拉格奇觀",
                             clues: [
-                                { value: 200, question: "這是捷克的首都與最大城市，以其保存完好的中世紀老城區和伏爾塔瓦河上的查理大橋聞名。", answer: "什麼是布拉格（Prague）？" },
-                                { value: 400, question: "這座捷克第二大城市是摩拉維亞地區的歷史中心，也是該國最高法院的所在地。", answer: "什麼是布爾諾（Brno）？" },
-                                { value: 600, question: "這座位於南波希米亞的迷人小鎮以其圍繞著伏爾塔瓦河馬蹄形彎道的城堡和童話般的中世紀建築而聞名。", answer: "什麼是庫倫洛夫（Český Krumlov）？" },
-                                { value: 800, question: "捷克歷史上的三大地理區域分別是波希米亞、摩拉維亞，以及這塊與波蘭接壤、僅有一小部分屬於捷克的歷史區域。", answer: "什麼是西里西亞（Silesia / Czech Silesia）？" },
-                                { value: 1000, question: "這是捷克的最高峰，海拔 1603 公尺，位於與波蘭交界的克爾科諾謝山脈中。", answer: "什麼是斯涅日卡山（Sněžka）？" }
+                                { value: 200, question: "這座橫跨伏爾塔瓦河的歷史哥德式石橋上，整齊排列著 30 尊精美的聖人雕像。", answer: "查理大橋 (Charles Bridge)" },
+                                { value: 400, question: "這座安裝於 1410 年的複雜時鐘，是世界上仍在運作、最古老的天文鐘。", answer: "布拉格天文鐘 (Astronomical Clock)" },
+                                { value: 600, question: "根據金氏世界紀錄，這座歷史悠久的權力中樞是世界上規模最大的古城堡群。", answer: "布拉格城堡 (Prague Castle)" },
+                                { value: 800, question: "這座波希米亞最重要的哥德式主教堂，完全裝在布拉格城堡的圍牆防線內。", answer: "聖維特大教堂 (St. Vitus Cathedral)" },
+                                { value: 1000, question: "這面歷史牆壁自 1980 年代起，寫滿了象徵自由、和平的愛與約翰·藍儂主題塗鴉。", answer: "約翰·藍儂牆 (John Lennon Wall)" }
                             ]
                         },
                         {
-                            name: "歷史與政治",
+                            name: "捷克歷史",
                             clues: [
-                                { value: 200, question: "在 1993 年「天鵝絨分離」之前，捷克與鄰國斯洛伐克曾共同組成這個聯邦國家。", answer: "什麼是捷克斯洛伐克（Czechoslovakia）？" },
-                                { value: 400, question: "發生於 1968 年，這場由杜布切克發起的政治民主化運動，最終遭到蘇聯及華沙條約組織軍隊的武力鎮壓。", answer: "什麼是布拉格之春（Prague Spring）？" },
-                                { value: 600, question: "這位著名的異議劇作家是 1989 年天鵝絨革命的領導者，隨後成為捷克斯洛伐克民主化後的第一任總統。", answer: "誰是瓦茨拉夫·哈維爾（Václav Havel）？" },
-                                { value: 800, question: "這場爆發於 1618 年的宗教與政治事件，起因於兩名神聖羅馬帝國使者被新教徒從窗戶扔出，進而引發了三十年戰爭。", answer: "什麼是布拉格拋窗事件（Defenestrations of Prague）？" },
-                                { value: 1000, question: "在 15 世紀，這位宗教改革先驅在布拉格被判處火刑後，其追隨者與神聖羅馬帝國之間爆發了長達十多年的戰爭。", answer: "誰是揚·胡斯（Jan Hus）？" }
+                                { value: 200, question: "這位備受愛戴的波希米亞國王暨神聖羅馬帝國皇帝，在布拉格創立了中歐第一所大學。", answer: "查理四世 (Charles IV)" },
+                                { value: 400, question: "這場發生於 1989 年的和平非暴力革命，結束了共產黨在捷克斯洛伐克的統治。", answer: "天鵝絨革命 (Velvet Revolution)" },
+                                { value: 600, question: "這位偉大的基督教改革家和哲學家於 1415 年被處以火刑，隨後引發了長期的胡斯戰爭。", answer: "揚·胡斯 (Jan Hus)" },
+                                { value: 800, question: "捷克歷史上數次將政府官員直接從窗戶扔出去的激烈抗爭行動，每次都點燃了歐洲大戰。", answer: "布拉格拋窗事件 (Defenestrations)" },
+                                { value: 1000, question: "這個興盛於 9 世紀的強大斯拉夫古國，曾是中歐基督教化的先鋒發源地。", answer: "大摩拉維亞公國 (Great Moravia)" }
                             ]
                         },
                         {
-                            name: "文學與藝術",
+                            name: "啤酒與美食",
                             clues: [
-                                { value: 200, question: "這位出生於布拉格的德語猶太作家，以其小說《變形記》中主角變成巨大甲蟲的故事聞名於世。", answer: "誰是法蘭茲·卡夫卡（Franz Kafka）？" },
-                                { value: 400, question: "這位捷克新藝術運動大師以其精美的女性海報、裝飾面板以及為女演員莎拉·伯恩哈特設計的舞台海報而聲名大噪。", answer: "誰是阿爾豐斯·慕夏（Alfons Mucha）？" },
-                                { value: 600, question: "這位捷克當代文學巨擘著有《生命中不能承受之輕》，其作品深刻探討了存在主義與共產政權下的權力關係。", answer: "誰是米蘭·昆德拉（Milan Kundera）？" },
-                                { value: 800, question: "卡爾·恰佩克在 1920 年的科幻劇作《羅梭的萬能工人》中，首次創造了這個如今在科技界無處不在的詞彙。", answer: "什麼是機器人（Robot）？" },
-                                { value: 1000, question: "這位波希米亞裔的浪漫主義詩人創作了捷克文學史上的史詩經典《五月》，在布拉格的佩特任山上立有他的雕像。", answer: "誰是卡雷爾·海內克·馬哈（Karel Hynek Mácha）？" }
+                                { value: 200, question: "這是世界上第一款黃金清亮拉格啤酒，於 1842 年在捷克皮爾森市研發釀造而成。", answer: "皮爾森歐克 (Pilsner Urquell)" },
+                                { value: 400, question: "這些切片的傳統蒸麵包或馬鈴薯糰子，是捷克餐桌上用來吸附濃郁肉汁的靈魂副食。", answer: "捷克麵糰子 (Knedlíky)" },
+                                { value: 600, question: "這道經典捷克宮廷菜是由牛沙朗肉淋上甜美的蔬菜奶油醬，再搭配酸甜的慢越莓食用。", answer: "奶油醬烤牛肉 (Svíčková)" },
+                                { value: 800, question: "這款高酒精度、帶有強烈草本與茴香味的綠色烈酒，在布拉格常搭配燒糖勺一同飲用。", answer: "艾碧斯 (Absinthe)" },
+                                { value: 1000, question: "雖然起源於特蘭西瓦尼亞，但這種在炭火上旋轉烤製並撒上糖與核桃粉的空心捲極受遊客喜愛。", answer: "肉桂煙囪捲 (Trdelník)" }
                             ]
                         },
                         {
-                            name: "古典音樂與歌劇",
+                            name: "城堡與宮殿",
                             clues: [
-                                { value: 200, question: "這位捷克最偉大的作曲家之一，在旅美期間創作了著名的《第九號交響曲：新世界》。", answer: "誰是安東寧·德弗札克（Antonin Dvořák）？" },
-                                { value: 400, question: "被譽為「捷克音樂之父」的貝多伊齊·史麥塔納，創作了這套包含六首交響詩的著名愛國巨作。", answer: "什麼是我的祖國（Má vlast）？" },
-                                { value: 600, question: "在史麥塔納的交響詩《我的祖國》中，最著名的第二首樂章描繪了這條流經布拉格、被視為捷克母親河的河流。", answer: "什麼是伏爾塔瓦河（Vltava / Moldau）？" },
-                                { value: 800, question: "這位 20 世紀初的捷克作曲家以其獨特的現代歌劇聞名，作品《耶奴發》和《狡猾的小狐狸》深受摩拉維亞民歌音調的啟發。", answer: "誰是萊奧什·雅納切克（Leoš Janáček）？" },
-                                { value: 1000, question: "沃夫岡·阿瑪迪斯·莫札特於 1787 年在布拉格的這座歷史悠久的劇院，親自指揮了他的歌劇名作《唐·喬凡尼》的世界首演。", answer: "什麼是埃斯塔特斯劇院（Estates Theatre）？" }
+                                { value: 200, question: "這座宏偉的皇家防衛哥德式城堡由查理四世於 1348 年建立，用於守護帝國聖物及皇冠。", answer: "卡爾斯坦城堡 (Karlštejn Castle)" },
+                                { value: 400, question: "這座童話般的小鎮城堡，高聳在南波希米亞伏爾塔瓦河如畫般的Ｓ型河道上方。", answer: "庫倫洛夫城堡 (Český Krumlov Castle)" },
+                                { value: 600, question: "這座壯麗的英國歌德式宮殿被巨大的聯合國教科文組織景觀公園與溫室群所環抱。", answer: "萊德尼采城堡 (Lednice Chateau)" },
+                                { value: 800, question: "這座被公認為捷克最浪漫的雪白宮殿，其仿效英國溫莎城堡的哥德式風格改造設計。", answer: "赫盧博卡城堡 (Hluboká Castle)" },
+                                { value: 1000, question: "這座城堡是奧匈帝國斐迪南大公生前的最後府邸，大公在塞拉耶佛遇刺隨後引爆了一戰。", answer: "科諾皮什切城堡 (Konopiště Castle)" }
                             ]
                         },
                         {
-                            name: "飲食與生活文化",
+                            name: "藝術與科學",
                             clues: [
-                                { value: 200, question: "捷克人均這種含酒精飲料的消耗量位居全球第一，其著名的皮爾森工藝更影響了全世界的釀造法。", answer: "什麼是啤酒（Beer）？" },
-                                { value: 400, question: "這種發源於捷克皮爾森市的金色下層發酵拉格啤酒，是現今全球超過三分之二的啤酒風格始祖。", answer: "什麼是皮爾森啤酒（Pilsner）？" },
-                                { value: 600, question: "這種傳統的捷克麵食通常切成片狀，是搭配捷克燉牛肉或烤豬肉時不可或缺的主食。", answer: "什麼是捷克麵糰子（Knedlíky）？" },
-                                { value: 800, question: "這種由捷克溫泉小鎮卡羅維瓦利生產的草本苦味酒，富含 20 多種藥材，常被戲稱為該鎮的「第十三座溫泉」。", answer: "什麼是貝赫洛夫卡酒（Becherovka）？" },
-                                { value: 1000, question: "在捷克傳統中，這種魚是平安夜晚餐的絕對主角，而且許多家庭會在聖誕節前幾天將活魚養在浴缸裡。", answer: "什麼是鯉魚（Carp）？" }
+                                { value: 200, question: "這位出生於布拉格、使用德語寫作的猶太裔大師創作了《變形記》和《審判》等名作。", answer: "法蘭茲·卡夫卡 (Franz Kafka)" },
+                                { value: 400, question: "這個指代「自動勞動者」的字彙誕生於布拉格，最早出現在卡雷爾·恰佩克 1920 年的劇作中。", answer: "機器人 (Robot)" },
+                                { value: 600, question: "這位享譽世界的捷克國民樂派作曲家，最著名的代表作是第九交響曲《自新世界》。", answer: "安東寧·德弗札克 (Antonín Dvořák)" },
+                                { value: 800, question: "這位捷克新藝術運動畫家因在巴黎為名伶繪製一系列柔美、精緻且極具裝飾風格的海報而永垂不朽。", answer: "阿爾豐斯·慕夏 (Alphonse Mucha)" },
+                                { value: 1000, question: "這位在布爾諾修道院進行豌豆雜交實驗的科學家，成功揭示了生物的遺傳規律。", answer: "葛雷哥·孟德爾 (Gregor Mendel)" }
                             ]
                         },
                         {
-                            name: "科學、發明與產業",
+                            name: "現代文化與體育",
                             clues: [
-                                { value: 200, question: "這家創立於 1895 年的捷克百年汽車品牌，如今已是福斯集團旗下的核心成員之一。", answer: "什麼是斯柯達汽車（Škoda Auto）？" },
-                                { value: 400, question: "捷克的波希米亞地區自中世紀起就以生產這種高結晶度、雕刻精美的工藝品而享譽歐洲。", answer: "什麼是波希米亞水晶／玻璃（Bohemian Crystal / Glass）？" },
-                                { value: 600, question: "這位 19 世紀的捷克科學家在布爾諾的修道院中透過豌豆實驗，發現了現代遺傳學的核心定律。", answer: "誰是葛雷哥·孟德爾（Gregor Mendel）？" },
-                                { value: 800, question: "捷克化學家奧托·威特勒在 1959 年利用自製的設備，發明了這項造福全球無數近視患者的醫療用品。", answer: "什麼是軟性隱形眼鏡（Soft contact lenses）？" },
-                                { value: 1000, question: "這種在防衛科技與軍事領域中極為著名的塑膠炸藥，是由捷克斯洛伐克的爆炸物製造商「意斯特西亞」於 1960 年代研發成功的。", answer: "什麼是塞姆汀炸藥（Semtex）？" }
+                                { value: 200, question: "這位出生於布拉格的網球傳奇女將贏得了 18 個大滿貫單打冠軍。", answer: "瑪蒂娜·娜拉提洛娃 (Martina Navratilova)" },
+                                { value: 400, question: "這是捷克最受歡迎的團隊運動，國家隊曾在 1998 年長野冬奧會上奪得金牌。", answer: "冰上曲棍球 (Ice Hockey)" },
+                                { value: 600, question: "這位綽號為「火車頭」的捷克長跑名將，在 1952 年奧運會上包攬了三枚長跑金牌。", answer: "埃米爾·扎托佩克 (Emil Zátopek)" },
+                                { value: 800, question: "這位國際知名的捷克裔電影導演憑藉《飛越杜鵑窩》和《阿瑪迪斯》榮獲奧斯卡金像獎。", answer: "米洛斯·福曼 (Miloš Forman)" },
+                                { value: 1000, question: "這個歷史悠久的地理區域名稱，如今也常被用來代稱不拘泥於傳統、充滿藝術氣息的生活方式。", answer: "波希米亞 (Bohemian)" }
                             ]
                         }
                     ]
@@ -993,125 +981,125 @@
                 categories: {
                     en: [
                         {
-                            name: "Geography & Natural Landscapes",
+                            name: "Formosa Geography",
                             clues: [
-                                { value: 200, question: "This is the highest peak in Taiwan and the tallest mountain in Northeast Asia, standing at an elevation of 3,952 meters.", answer: "What is Yushan (Mount Jade)?" },
-                                { value: 400, question: "This marble gorge landscape located in eastern Taiwan is internationally famous and was primarily carved out by the Liwu River.", answer: "What is Taroko National Park?" },
-                                { value: 600, question: "Divided by Lalu Island, Taiwan's largest natural freshwater lake is named after the distinct shapes of its northern and southern parts.", answer: "What is Sun Moon Lake?" },
-                                { value: 800, question: "This river is the longest in Taiwan, featuring a vast drainage basin before emptying into the Taiwan Strait at the border of Changhua and Yunlin counties.", answer: "What is the Zhuoshui River?" },
-                                { value: 1000, question: "Located at the easternmost point of Taiwan's main island, the 'Sandiaojiao' in Sandiaojiao Lighthouse is traditionally believed to derive from the language of this 17th-century European country.", answer: "What is Spain? (Note: Derived from San Diego)" }
+                                { value: 200, question: "This historical Portuguese name for Taiwan translates to 'Beautiful Island'.", answer: "Formosa" },
+                                { value: 400, question: "This is the tallest mountain peak in Taiwan and Northeast Asia, standing at 3,952 meters.", answer: "Mount Jade (Yushan)" },
+                                { value: 600, question: "This spectacular marble canyon is carved by the Liwu River and protected as a national park.", answer: "Taroko Gorge" },
+                                { value: 800, question: "Located in Nantou County, this is the largest alpine body of water in Taiwan.", answer: "Sun Moon Lake" },
+                                { value: 1000, question: "This offshore archipelago in the Taiwan Strait is famous for its basalt columns and Double-Heart Stone Weir.", answer: "Penghu Islands" }
                             ]
                         },
                         {
-                            name: "Culinary Delights",
+                            name: "Night Market Bites",
                             clues: [
-                                { value: 200, question: "This globally popular Taiwanese national beverage typically consists of black tea, milk, and dark, chewy tapioca pearls.", answer: "What is Pearl Milk Tea (Bubble Tea)?" },
-                                { value: 400, question: "Famous worldwide for its 'golden 18-fold' xiaolongbao (soup dumplings), this Taiwanese restaurant was once named one of the top ten restaurants in the world by The New York Times.", answer: "What is Din Tai Fung?" },
-                                { value: 600, question: "This Taiwanese street food is made by pan-frying fresh oysters, eggs, and garland chrysanthemum or cabbage coated in a sweet potato starch batter, then topped with a sweet and savory sauce.", answer: "What is an Oyster Omelet?" },
-                                { value: 800, question: "This traditional Taiwanese pastry is typically square-shaped with a crumbly crust and a filling made of winter melon or pure pineapple, making it a must-buy souvenir for tourists.", answer: "What is Pineapple Cake?" },
-                                { value: 1000, question: "Produced by King Car Group in Yilan, this whisky brand has won numerous international awards in recent years and takes its name from an indigenous tribe in eastern Taiwan.", answer: "What is Kavalan Whisky?" }
+                                { value: 200, question: "This globally famous sweet tea beverage features chewy tapioca pearls and originated in Taichung.", answer: "Bubble Tea (Boba)" },
+                                { value: 400, question: "This deeply aromatic fermented bean curd dish is typically served deep-fried with pickled cabbage.", answer: "Stinky Tofu" },
+                                { value: 600, question: "This hearty Taiwanese comfort bowl features slow-braised beef, wheat noodles, and rich spiced broth.", answer: "Beef Noodle Soup" },
+                                { value: 800, question: "This crumbly butter pastry filled with sweet candied pineapple is Taiwan's top edible souvenir.", answer: "Pineapple Cake" },
+                                { value: 1000, question: "This classic comfort dish consists of minced pork belly slow-cooked in soy sauce and ladled over rice.", answer: "Lu Rou Fan (Minced Pork Rice)" }
                             ]
                         },
                         {
-                            name: "History & Footprints",
+                            name: "Landmarks & Tech",
                             clues: [
-                                { value: 200, question: "In the mid-16th century, Portuguese sailors exclaimed this word upon seeing Taiwan from their ship, amazed by its beauty, which later became the Western name for the island.", answer: "What is Formosa?" },
-                                { value: 400, question: "Taiwan officially began its democratic transition in 1987 when it lifted this 38-year-old decree that had heavily restricted citizens' civil liberties.", answer: "What is Martial Law?" },
-                                { value: 600, question: "Built in 1624, this ancient fortress in Tainan was originally constructed by the Dutch East India Company and was known back then as 'Fort Zeelandia.'", answer: "What is Anping Fort?" },
-                                { value: 800, question: "He was the first Qing Dynasty governor of Taiwan, governing the island and pushing for its official establishment as a province in 1887.", answer: "Who is Liu Ming-chuan?" },
-                                { value: 1000, question: "Following the Qing Dynasty's defeat in the First Sino-Japanese War in 1895, Li Hongzhang and Japanese representative Ito Hirobumi signed this treaty in Shimonoseki, Japan, ceding Taiwan.", answer: "What is the Treaty of Shimonoseki?" }
+                                { value: 200, question: "This iconic skyscraper was the world's tallest building from 2004 to 2010.", answer: "Taipei 101" },
+                                { value: 400, question: "This Hsinchu-based tech titan is the world's largest dedicated independent semiconductor foundry.", answer: "TSMC" },
+                                { value: 600, question: "Located in Taipei, this is widely considered the largest and most famous night market in Taiwan.", answer: "Shilin Night Market" },
+                                { value: 800, question: "This museum houses nearly 700,000 ancient Chinese imperial artifacts, including the Jadeite Cabbage.", answer: "The National Palace Museum" },
+                                { value: 1000, question: "This prominent landmark in Taipei features a blue octagonal roof and 89 white marble steps.", answer: "Chiang Kai-shek Memorial Hall" }
                             ]
                         },
                         {
-                            name: "Tech & Economic Miracles",
+                            name: "Indigenous & History",
                             clues: [
-                                { value: 200, question: "Commonly abbreviated as TSMC, this enterprise is the world's largest dedicated independent semiconductor foundry and is hailed as Taiwan's 'Silicon Shield.'", answer: "What is Taiwan Semiconductor Manufacturing Company?" },
-                                { value: 400, question: "Once the world's tallest skyscraper, this building's architecture blends traditional pagoda design with images of bamboo, and its annual New Year's Eve fireworks show draws global attention.", answer: "What is Taipei 101?" },
-                                { value: 600, question: "Spearheaded by the government in the 1970s, this major infrastructure initiative included the Sun Yat-sen Freeway and Taoyuan International Airport, laying the foundation for Taiwan's economic boom.", answer: "What are the Ten Major Construction Projects?" },
-                                { value: 800, question: "Established in 1980, this science park is the birthplace of Taiwan's high-tech industry and is often referred to as 'Taiwan's Silicon Valley.'", answer: "What is the Hsinchu Science Park?" },
-                                { value: 1000, question: "Born in Tainan and later immigrating to the United States, this entrepreneur is the co-founder and CEO of the tech giant NVIDIA.", answer: "Who is Jensen Huang?" }
+                                { value: 200, question: "Linguistic and genetic evidence indicates Taiwan is the ancestral homeland of this global language family.", answer: "Austronesian" },
+                                { value: 400, question: "From 1624 to 1662, this European colonial power established Fort Zeelandia in Tainan.", answer: "The Dutch East India Company" },
+                                { value: 600, question: "This Ming-loyalist general expelled the European colonizers in 1662, establishing his own kingdom in Tainan.", answer: "Koxinga (Zheng Chenggong)" },
+                                { value: 800, question: "This indigenous group, originally inhabiting the Yilan plain, lends its name to Taiwan's world-champion whisky.", answer: "Kavalan" },
+                                { value: 1000, question: "Signed in 1895, this treaty ceded sovereignty of Taiwan from the Qing Dynasty to the Empire of Japan.", answer: "Treaty of Shimonoseki" }
                             ]
                         },
                         {
-                            name: "Culture, Arts & Entertainment",
+                            name: "Nature & Mountains",
                             clues: [
-                                { value: 200, question: "This Taiwanese director won the Academy Award for Best Director twice, for his films Brokeback Mountain and Life of Pi.", answer: "Who is Ang Lee?" },
-                                { value: 400, question: "Hailed as the 'King of Mandopop,' this Taiwanese singer took the global Chinese-speaking market by storm with his unique 'Chou Style' music, which blends Eastern and Western musical elements.", answer: "Who is Jay Chou?" },
-                                { value: 600, question: "Founded by Lin Hwai-min, this contemporary dance company was Taiwan's first professional dance troupe, earning international acclaim for works like Songs of the Wanderers.", answer: "What is the Cloud Gate Dance Theatre?" },
-                                { value: 800, question: "Held annually during the Lantern Festival in Yanshui, Tainan, this traditional folklore event is famous for its thrilling, intense display of launching thousands of bottle rockets simultaneously.", answer: "What is the Yanshui Beehive Fireworks?" },
-                                { value: 1000, question: "This is the name of the director behind The Great Buddha+, the Taiwanese movie that won Best Feature Film at the Golden Horse Awards in 2017.", answer: "Who is Huang Hsin-yao?" }
+                                { value: 200, question: "This unique endemic subspecies of bear features a distinctive white V-shaped mark on its chest.", answer: "The Formosan Black Bear" },
+                                { value: 400, question: "This mountain resort is famous for its historic forest railway, sea of clouds, and spectacular sunrises.", answer: "Alishan" },
+                                { value: 600, question: "Located at Taiwan's southern tip, this tropical paradise is famous for white sand beaches and coral reefs.", answer: "Kenting" },
+                                { value: 800, question: "This spotted deer species, once nearly extinct in the wild, has been successfully restored in Kenting.", answer: "Formosan Sika Deer" },
+                                { value: 1000, question: "This national park near Taipei is active with volcanic fumaroles, hot springs, and seasonal cherry blossoms.", answer: "Yangmingshan" }
                             ]
                         },
                         {
-                            name: "Taiwan on the World Stage",
+                            name: "Festivals & Beliefs",
                             clues: [
-                                { value: 200, question: "This former world No. 1 Taiwanese female badminton player won a silver medal in women's singles at the Tokyo Olympics and is renowned for her masterclass shot-making and deception.", answer: "Who is Tai Tzu-ying?" },
-                                { value: 400, question: "By passing relevant legislation in 2019, Taiwan became the first country in this continent or region to legalize same-sex marriage.", answer: "What is Asia?" },
-                                { value: 600, question: "This Taiwanese baseball superstar once played for the New York Yankees, securing back-to-back 19-win seasons in 2006 and 2007.", answer: "Who is Chien-Ming Wang?" },
-                                { value: 800, question: "This fashion designer from Taiwan shot to international fame after designing the inaugural ball gown for former U.S. First Lady Michelle Obama.", answer: "Who is Jason Wu?" },
-                                { value: 1000, question: "In 2002, Taiwan officially joined this international economic organization under the name 'Separate Customs Territory of Taiwan, Penghu, Kinmen and Matsu.'", answer: "What is the World Trade Organization?" }
+                                { value: 200, question: "Celebrated on the 15th day of the first lunar month, this festival features glowing sky lanterns in Pingxi.", answer: "Lantern Festival" },
+                                { value: 400, question: "This nine-day, 300-kilometer pilgrimage honors this highly revered sea goddess across western Taiwan.", answer: "Mazu Pilgrimage" },
+                                { value: 600, question: "This famous mountain town in New Taipei City was once a gold mining hub and is famous for red lanterns.", answer: "Jiufen" },
+                                { value: 800, question: "This historic temple in Wanhua, Taipei, was built in 1738 and is dedicated to Guanyin and other deities.", answer: "Lungshan Temple" },
+                                { value: 1000, question: "Held in Tainan, this explosive festival involves thousands of bottle rockets launched directly into massive crowds.", answer: "Yanshui Beehive Fireworks" }
                             ]
                         }
                     ],
                     zh: [
                         {
-                            name: "地理與自然景觀",
+                            name: "美麗島地理",
                             clues: [
-                                { value: 200, question: "這是台灣的最高峰，也是東北亞的第一高峰，海拔 3,952 公尺。", answer: "什麼是玉山 (Yushan / Mount Jade)？" },
-                                { value: 400, question: "這座位於台灣東部的大理岩峽谷景觀聞名國際，主要由立霧溪 (Liwu River) 切割而成。", answer: "什麼是太魯閣國家公園 (Taroko National Park)？" },
-                                { value: 600, question: "這座台灣最大的天然淡水湖泊，以拉魯島 (Lalu Island) 為界，因其南北形狀各異而得名。", answer: "什麼是日月潭 (Sun Moon Lake)？" },
-                                { value: 800, question: "這條河流是台灣最長的河流，流域面積廣大，最後在彰化與雲林交界處注入台灣海峽。", answer: "什麼是濁水溪 (Zhuoshui River)？" },
-                                { value: 1000, question: "這座位於台灣本島最東端的三貂角燈塔 (Sandiaojiao Lighthouse)，其「三貂」之名據傳是源自於 17 世紀此一歐洲國家的語言。", answer: "什麼是西班牙 (Spain)？（註：源自聖地牙哥 San Diego）" }
+                                { value: 200, question: "這個由葡萄牙船員賦予台灣的歷史名稱，其意為「美麗之島」。", answer: "福爾摩沙 (Formosa)" },
+                                { value: 400, question: "這是台灣暨整個東北亞地區的第一高峰，海拔高達 3,952 公尺。", answer: "玉山 (Mount Jade)" },
+                                { value: 600, question: "這座世界級的雄偉大理石峽谷，是由立霧溪深切切割而成並受到國家公園保護。", answer: "太魯閣峽谷 (Taroko Gorge)" },
+                                { value: 800, question: "位於南投縣，這是台灣面積最大且風景秀麗的半天然高山湖泊。", answer: "日月潭 (Sun Moon Lake)" },
+                                { value: 1000, question: "這個位於台灣海峽的離島群島以其壯麗的玄武岩石柱、陽光沙灘及雙心石滬聞名。", answer: "澎湖群島 (Penghu Islands)" }
                             ]
                         },
                         {
-                            name: "美味台灣",
+                            name: "夜市美食",
                             clues: [
-                                { value: 200, question: "這款風靡全球的台灣國民飲料，通常由紅茶、牛奶以及外觀黑亮、口感Q彈的粉圓組成。", answer: "什麼是珍珠奶茶 (Pearl Milk Tea / Bubble Tea)？" },
-                                { value: 400, question: "這家以「黃金十八摺」小籠包聞名全球的台灣餐廳，曾被《紐約時報》評為世界十大餐廳之一。", answer: "什麼是鼎泰豐 (Din Tai Fung)？" },
-                                { value: 600, question: "這道台灣小吃由鮮蚵、雞蛋、茼蒿或白菜裹上太白粉水煎熟，最後淋上甜辣醬。", answer: "什麼是蚵仔煎 (Oyster Omelet)？" },
-                                { value: 800, question: "這款台灣傳統甜點通常呈現方塊狀，外皮酥脆，內餡由冬瓜或純鳳梨製成，是觀光客必買伴手禮。", answer: "什麼是鳳梨酥 (Pineapple Cake)？" },
-                                { value: 1000, question: "這款由宜蘭金車公司生產的威士忌，近年屢獲國際大獎，其品牌名稱源自於台灣東部的原住民族。", answer: "什麼是噶瑪蘭威士忌 (Kavalan Whisky)？" }
+                                { value: 200, question: "這款風靡全球的甜茶飲料以帶有嚼勁的粉圓（珍珠）為特色，起源於台中地區。", answer: "珍珠奶茶 (Bubble Tea / Boba)" },
+                                { value: 400, question: "這道香氣（或臭氣）獨特的發酵豆腐料理，通常經油炸後搭配台式酸甜泡菜一同食用。", answer: "臭豆腐 (Stinky Tofu)" },
+                                { value: 600, question: "這道暖胃的台灣平民美食以慢火紅燒燉煮的牛肉、小麥麵條和香濃湯頭為特色。", answer: "牛肉麵 (Beef Noodle Soup)" },
+                                { value: 800, question: "這款外皮香酥、內餡填滿甜美金黃鳳梨餡的奶油糕點是台灣最具代表性的伴手禮。", answer: "鳳梨酥 (Pineapple Cake)" },
+                                { value: 1000, question: "這道經典家常美食是由切碎的豬五花肉與醬油、五香及紅蔥頭慢火燉煮後澆淋在白飯上。", answer: "滷肉飯 (Lu Rou Fan)" }
                             ]
                         },
                         {
-                            name: "歷史與足跡",
+                            name: "地標與科技",
                             clues: [
-                                { value: 200, question: "16 世紀中葉，葡萄牙水手在航經台灣時，因驚嘆於其美麗而高喊了這個詞，隨後成為西方對台灣的代稱。", answer: "什麼是福爾摩沙 (Formosa)？" },
-                                { value: 400, question: "台灣於 1987 年宣告解除這項長達 38 年、限制了民眾諸多自由的法令，正式開啟了民主轉型。", answer: "什麼是戒嚴令 (Martial Law)？" },
-                                { value: 600, question: "這座建於 1624 年的古老城堡位於台南，最初由荷蘭東印度公司 (Dutch East India Company) 所建，當時稱為「熱蘭遮城」。", answer: "什麼是安平古堡 (Anping Fort)？" },
-                                { value: 800, question: "清領時期統領台灣、並在 1887 年推動台灣正式建省的清朝首任台灣巡撫。", answer: "誰是劉銘傳 (Liu Ming-chuan)？" },
-                                { value: 1000, question: "1895 年甲午戰爭清廷戰敗後，李鴻章與日本代表伊藤博文在日本下關簽署了這項割讓台灣的條約。", answer: "什麼是馬關條約 (Treaty of Shimonoseki)？" }
+                                { value: 200, question: "這座高度達到 508 公尺的標誌性建築，在 2004 年至 2010 年間曾榮登世界第一高樓。", answer: "台北 101 (Taipei 101)" },
+                                { value: 400, question: "這家總部位於新竹科學園區的全球科技巨頭，是全世界最大的獨立半導體晶圓代工廠。", answer: "台積電 (TSMC)" },
+                                { value: 600, question: "這座位於台北市士林區的市集，被廣泛公認為台灣規模最大、外國觀光客最喜愛朝聖的夜市。", answer: "士林夜市 (Shilin Night Market)" },
+                                { value: 800, question: "這家國家級博物館收藏了近 70 萬件古代中華皇家精美文物，包括鎮館之寶「翠玉白菜」。", answer: "國立故宮博物院 (National Palace Museum)" },
+                                { value: 1000, question: "這座位於台北市中心的宏偉歷史地標，擁有蔚藍八角形屋頂與 89 階白色大理石階梯。", answer: "中正紀念堂 (Chiang Kai-shek Memorial Hall)" }
                             ]
                         },
                         {
-                            name: "科技與經濟奇蹟",
+                            name: "原住民與歷史",
                             clues: [
-                                { value: 200, question: "這家簡稱為 TSMC 的企業是全球最大的晶圓代工半導體製造廠，被譽為台灣的「護國神山」。", answer: "什麼是台灣積體電路製造 (Taiwan Semiconductor Manufacturing Company)？" },
-                                { value: 400, question: "這棟曾為世界第一高的摩天大樓，其設計融合了傳統寶塔與竹子的意象，每年跨年煙火皆吸引全球目光。", answer: "什麼是台北101 (Taipei 101)？" },
-                                { value: 600, question: "1970 年代由政府主導的這項重大基建計畫，包含了南北高速公路、桃園國際機場等，奠定了台灣經濟騰飛的基礎。", answer: "什麼是十大建設 (Ten Major Construction Projects)？" },
-                                { value: 800, question: "成立於 1980 年的這座科學園區，是台灣高科技產業的發源地，常被稱為「台灣的矽谷」。", answer: "什麼是新竹科學園區 (Hsinchu Science Park)？" },
-                                { value: 1000, question: "這位出生於台南、隨後移居美國的企業家，是科技巨頭輝達 (NVIDIA) 的共同創辦人兼執行長。", answer: "誰是黃仁勳 (Jensen Huang)？" }
+                                { value: 200, question: "現今語言學與基因證據皆指向，台灣是這個分布於半個地球的全球龐大語族的共同祖居地。", answer: "南島語族 (Austronesian)" },
+                                { value: 400, question: "自 1624 年至 1662 年間，這個歐洲殖民強權佔領台灣南部並建立大本營「熱蘭遮城」。", answer: "荷蘭東印度公司 (The Dutch)" },
+                                { value: 600, question: "這位奉明朝為正統的明鄭將領在 1662 年擊敗並驅逐了荷蘭殖民者，在台南建立了自己的政權。", answer: "鄭成功 / 國姓爺 (Koxinga)" },
+                                { value: 800, question: "這個最初居住於宜蘭平原的原住民族，其部族名稱成為了台灣榮獲多項世界冠軍威士忌的品牌名稱。", answer: "噶瑪蘭族 (Kavalan)" },
+                                { value: 1000, question: "簽署於 1895 年，清廷因甲午戰爭戰敗在此合約中將台灣與澎湖之主權永久割讓給大日本帝國。", answer: "馬關條約 (Treaty of Shimonoseki)" }
                             ]
                         },
                         {
-                            name: "文化、藝術與娛樂",
+                            name: "自然與山脈",
                             clues: [
-                                { value: 200, question: "這位台灣導演曾憑藉《斷背山》(Brokeback Mountain) 與《少年PI的奇幻漂流》(Life of Pi) 兩度榮獲奧斯卡最佳導演獎。", answer: "誰是李安 (Ang Lee)？" },
-                                { value: 400, question: "這位被譽為「華語流行天王」的台灣歌手，以融合中西元素的「周氏風格」音樂席捲全球華語市場。", answer: "誰是周杰倫 (Jay Chou)？" },
-                                { value: 600, question: "這個由林懷民創立的現代舞團，是台灣第一個職業舞團，其作品如《流浪者之歌》在國際上享有極高聲譽。", answer: "什麼是雲門舞集 (Cloud Gate Dance Theatre)？" },
-                                { value: 800, question: "每年農曆元宵節在台南鹽水舉行的這項傳統民俗活動，以施放大量蜂炮、萬箭齊發的震撼場面著稱。", answer: "什麼是鹽水蜂炮 (Yanshui Beehive Fireworks)？" },
-                                { value: 1000, question: "2017 年上映、奪得金馬獎最佳劇情片的台灣電影《大佛普拉斯》，其導演的名字是。", answer: "誰是黃信堯 (Huang Hsin-yao)？" }
+                                { value: 200, question: "這種台灣特有的亞洲黑熊亞種，最顯著的辨識特徵是其胸前有著耀眼的白色 V 字形斑紋。", answer: "台灣黑熊 (Formosan Black Bear)" },
+                                { value: 400, question: "這處森林風景區以其歷史悠久的森林小火車、夢幻雲海、參天神木與阿里山日出聞名遐邇。", answer: "阿里山 (Alishan)" },
+                                { value: 600, question: "位於台灣最南端的熱帶半島，這座度假天堂以金黃沙灘、海浪與發育良好的珊瑚礁群著稱。", answer: "墾丁 (Kenting)" },
+                                { value: 800, question: "這種帶有美麗白色梅花斑點的鹿科動物曾一度在台灣野外絕跡，近年在墾丁國家公園成功進行了野外復育。", answer: "台灣梅花鹿 (Formosan Sika Deer)" },
+                                { value: 1000, question: "這座鄰近台北都會區的國家公園至今仍有活躍的火山地質，擁有多個火山噴氣孔、溫泉以及成片的季節櫻花。", answer: "陽明山 (Yangmingshan)" }
                             ]
                         },
                         {
-                            name: "台灣之光",
+                            name: "節慶與信仰",
                             clues: [
-                                { value: 200, question: "這位前世界女子羽球排名第一的台灣選手，曾奪得東京奧運女單銀牌，並以精湛的球技與假動作聞名。", answer: "誰是戴資穎 (Tai Tzu-ying)？" },
-                                { value: 400, question: "台灣在 2019 年通過了相關法案，成為這個大洲或地區中第一個同性婚姻合法化的國家。", answer: "什麼是亞洲 (Asia)？" },
-                                { value: 600, question: "這位台灣棒球巨星曾效力於紐約洋基隊 (New York Yankees)，並在 2006、2007 連續兩個賽季奪得單季 19 勝。", answer: "誰是王建民 (Chien-Ming Wang)？" },
-                                { value: 800, question: "這位來自台灣的服飾設計師，曾為美國前第一夫人蜜雪兒·歐巴馬 (Michelle Obama) 設計總統就職舞會禮服而名聲大噪。", answer: "誰是吳季剛 (Jason Wu)？" },
-                                { value: 1000, question: "2002 年，台灣以「台澎金馬個別關稅領域」的名義，正式加入了這個國際經濟組織。", answer: "什麼是世界貿易組織 (World Trade Organization)？" }
+                                { value: 200, question: "於農曆正月十五慶祝，這個節日以平溪施放五彩繽紛的天燈為特色。", answer: "元宵節 (Lantern Festival)" },
+                                { value: 400, question: "這項長達九天八夜、跋涉超過300公里的宗教盛事，是為了向台灣最受敬仰的哪位海上守護神致敬？", answer: "媽祖遶境 (Mazu Pilgrimage)" },
+                                { value: 600, question: "這座位於新北市的著名山城曾是黃金採礦中心，以其在崎嶇峭壁上的白牆、茶樓及紅色燈籠而聞名。", answer: "九份 (Jiufen)" },
+                                { value: 800, question: "這座位於台北萬華的歷史寺廟建於 1738 年，是台北最古老且香火最鼎盛的廟宇之一。", answer: "龍山寺 (Lungshan Temple)" },
+                                { value: 1000, question: "這項在台南鹽水舉辦的震撼節慶，成千上萬的蜂炮會直接朝向圍觀人群發射，象徵驅邪避災。", answer: "鹽水蜂炮 (Yanshui Beehive Fireworks)" }
                             ]
                         }
                     ]
@@ -1253,19 +1241,19 @@
             // Update Card descriptions based on current active language
             const cards_desc = {
                 en: {
-                    greece: "Acropolis architecture, ancient gods, Mediterranean islands, and historic philosophy.",
-                    hungary: "Danube riverscapes, therapeutic thermal baths, Rubik puzzles, and sweet Tokaji wine.",
-                    czech: "Prague architecture, ancient Bohemian castles, Kafka literature, and historic Pilsners.",
-                    taiwan: "Bustling night markets, towering Taipei 101, semiconductor tech, and high alpine ridges.",
+                    greece: "Acropolis architecture, ancient gods, Mediterranean islands, historic philosophy, and classical arts.",
+                    hungary: "Danube riverscapes, therapeutic thermal baths, Rubik puzzles, sweet Tokaji wine, and romantic symphonies.",
+                    czech: "Prague architecture, ancient Bohemian castles, Kafka literature, historic Pilsners, and sports champions.",
+                    taiwan: "Bustling night markets, towering Taipei 101, semiconductor tech, high alpine ridges, and local temple cultures.",
                     peru: "Machu Picchu, ancient Inca empires, and wild Amazonian ecology.",
                     australia: "Great Barrier Reef corals, Outback adventures, and Sydney Opera landmark.",
                     kazakhstan: "Central Asian Silk Road trails, Charyn Canyon, and vast wild steppes."
                 },
                 zh: {
-                    greece: "衛城遺址、古希臘神祇、迷人的愛琴海島嶼以及深奧的古代西方哲學。",
-                    hungary: "多瑙河畔風光、療癒的溫泉、魔術方塊發源地以及著名的托卡伊甜酒。",
-                    czech: "布拉格的歌德式建築、古老波希米亞城堡、卡夫卡文學以及頂級皮爾森啤酒。",
-                    taiwan: "熱鬧非凡的夜市美食、高聳的台北 101、世界級晶圓科技以及高山自然生態。",
+                    greece: "衛城遺址、古希臘神祇、迷人的愛琴海島嶼、深奧的古代西方哲學與古典文學藝術。",
+                    hungary: "多瑙河畔風光、療癒的溫泉、魔術方塊發源地、著名的托卡伊甜酒及浪漫樂派交響曲。",
+                    czech: "布拉格的歌德式建築、古老波希米亞城堡、卡夫卡文學、頂級皮爾森啤酒及體育世界冠軍。",
+                    taiwan: "熱鬧非凡的夜市美食、高聳的台北 101、世界級晶圓科技、高山自然生態及在地宮廟神祇文化。",
                     peru: "馬丘比丘天空之城、神秘的古印加帝國遺跡以及豐富的亞馬遜雨林生態系統。",
                     australia: "壯觀的大堡礁珊瑚群、紅土內陸冒險之旅以及雪梨歌劇院世界級地標。",
                     kazakhstan: "中亞古絲路歷史文化、壯麗的恰倫大峽谷以及遼闊無際的塞外野生大草原。"
@@ -1349,9 +1337,12 @@
 
             // Fallback safety if loaded categories is completely blank
             if (categories.length === 0) {
-                gridContainer.innerHTML = `<p class="col-span-5 text-center text-red-400 py-6">No loaded questions found. Please check data structures.</p>`;
+                gridContainer.innerHTML = `<p class="col-span-6 text-center text-red-400 py-6">No loaded questions found. Please check data structures.</p>`;
                 return;
             }
+
+            // Dynamic layout adjustment for grid columns
+            gridContainer.className = `grid grid-cols-${categories.length} gap-3 min-w-[840px]`;
 
             // Setup Categories Headers
             categories.forEach((category) => {
@@ -1409,7 +1400,7 @@
                 
                 const data = await response.json();
                 
-                // Validate Schema Structure before injecting
+                // Validate Schema Structure before injecting (requires at least 6 categories now)
                 if (!data.country || (!data.categories && !data.categories_en && !data.categories_zh)) {
                     throw new Error("Invalid schema structure. Must contain a 'country' and questions categories array.");
                 }
@@ -1662,13 +1653,13 @@
         }
 
         function copySchemaTemplate() {
-            const templateText = '{
+            const templateText = `{
   "country": "Italy / 義大利",
   "categories_en": [
     {
       "name": "Historical Monuments",
       "clues": [
-        { "value": 200, "question": "This amphitheater in Rome welcomed gladiator battles.", "answer": "What is the Colosseum?" }
+        { "value": 200, "question": "This amphitheater in Rome welcomed gladiator battles.", "answer": "The Colosseum" }
       ]
     }
   ],
@@ -1676,12 +1667,11 @@
     {
       "name": "歷史古蹟遺跡",
       "clues": [
-        { "value": 200, "question": "這座位於羅馬的宏偉圓形競技場曾是古羅馬角鬥士廝殺的舞台。", "answer": "什麼是羅馬競技場 (The Colosseum)？" }
+        { "value": 200, "question": "這座位於羅馬的宏偉圓形競技場曾是古羅馬角鬥士廝殺的舞台。", "answer": "羅馬競技場 (The Colosseum)" }
       ]
     }
   ]
-}';
-            
+}`;
             // Use browser-native text area select to bypass copy sandbox restriction
             const tempTextArea = document.createElement("textarea");
             tempTextArea.value = templateText;
