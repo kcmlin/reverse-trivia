@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Trivia for Global Trotter | 環球旅行家特約益智問答</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        travel: {
+                            navy: '#0B192C',
+                            ocean: '#1E3E62',
+                            terracotta: '#D1512D',
+                            sand: '#F1DEC9',
+                            gold: '#FFD700'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans TC', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts for premium typography and traditional Chinese compatibility -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .glass-panel {
+            background: rgba(15, 32, 54, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .clue-card {
+            perspective: 1000px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .clue-card:hover:not(.disabled) {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(209, 81, 45, 0.3);
+            border-color: #D1512D;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B192C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E3E62;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1512D;
+        }
+    </style>
+</head>
+<body class="bg-travel-navy text-gray-100 font-sans min-h-screen flex flex-col selection:bg-travel-terracotta selection:text-white">
+
+    <!-- Global Navigation Header -->
+    <header class="glass-panel sticky top-0 z-40 border-b border-gray-800 px-4 py-4 md:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            <!-- Branding Link -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="showScreen('landing')">
+                <svg class="w-8 h-8 text-travel-terracotta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5A1.5 1.5 0 0018 10.5V8.5a.5.5 0 00-.5-.5h-1a1 1 0 01-1-1V5a2 2 0 00-2-2.5H12a3 3 0 00-3 3v.03z"></path>
+                </svg>
+                <div>
+                    <h1 class="font-cinzel text-lg md:text-xl tracking-wider text-travel-sand" id="ui-nav-title">Reverse Trivia</h1>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-widest -mt-1" id="ui-nav-subtitle">For Global Trotter</p>
+                </div>
+            </div>
+            
+            <!-- Nav Actions & Language Toggle -->
+            <div class="flex flex-wrap items-center justify-center gap-4 text-sm">
+                
+                <!-- Navigation Items -->
+                <button onclick="showScreen('landing')" class="text-gray-300 hover:text-travel-terracotta transition font-medium text-xs md:text-sm" id="ui-btn-change-country">Change Country</button>
+                <button onclick="openConfigModal()" class="flex items-center gap-2 px-3 py-1.5 bg-travel-ocean/50 hover:bg-travel-ocean border border-gray-700 hover:border-travel-terracotta rounded-lg text-gray-200 text-xs md:text-sm transition">
+                    <svg class="w-4 h-4 text-travel-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <span id="ui-btn-custom-gist">Load Custom Gist</span>
+                </button>
+
+                <!-- Language Toggle Button -->
+                <button onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-1.5 bg-travel-terracotta hover:bg-opacity-90 border border-transparent rounded-lg text-white text-xs font-bold transition shadow-md">
+                    <span class="text-sm">🌐</span>
+                    <span id="ui-lang-indicator">English</span>
+                </button>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Interface Viewports -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-8 flex flex-col justify-center">
+
+        <!-- SCREEN 1: LANDING & COUNTRY SELECTOR -->
+        <section id="screen-landing" class="block space-y-12 py-6">
+            <!-- Hero banner introducing the site concept -->
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="inline-block px-3 py-1 bg-travel-terracotta/20 border border-travel-terracotta/40 rounded-full text-xs font-semibold uppercase tracking-widest text-travel-terracotta" id="ui-hero-badge">
+                    Bilingual Globetrotting Trivia
+                </span>
+                <h2 class="font-cinzel text-3xl md:text-5xl text-white tracking-wider leading-tight" id="ui-hero-title">
+                    Where is your next <span class="text-travel-terracotta">Destination</span>?
+                </h2>
+                <p class="text-gray-400 text-sm md:text-base leading-relaxed" id="ui-hero-subtitle">
+                    Select a destination below to initialize a high-stakes Jeopardy-style board themed entirely around the chosen nation's history, landmarks, cuisine, culture, and mysteries.
+                </p>
+            </div>
+
+            <!-- Active Playable Country Selection Grid -->
+            <div class="space-y-4">
+                <h3 class="font-cinzel text-lg md:text-xl text-travel-sand tracking-wider border-b border-gray-800 pb-2 flex items-center gap-2">
+                    <span>🗺️</span> <span id="ui-section-playable">Playable Destinations</span>
+                </h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Greece Option (Default Selection) -->
+                    <div onclick="selectCountry('greece')" class="group relative cursor-pointer overflow-hidden rounded-2xl border border-gray-800 bg-gradient-to-br from-travel-ocean/30 to-travel-navy hover:border-travel-terracotta transition-all duration-300 p-5 flex flex-col justify-between min-h-[200px]">
+                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-3xl">🇬🇷</span>
+                            <span class="px-2 py-0.5 bg-travel-terracotta text-white rounded text-[9px] uppercase font-bold tracking-widest opacity-90 group-hover:opacity-100 transition" id="ui-tag-default">Default</span>
+                        </div>
+                        <div>
+                            <h3 class="font-cinzel text-xl text-travel-sand tracking-wide group-hover:text-white transition mt-4" id="country-title-greece">Greece 希臘</h3>
+                            <p class="text-gray-400 text-xs mt-1" id="country-desc-greece">Acropolis architecture, ancient gods, Mediterranean islands, and historic philosophy.</p>
+                        </div>
+                    </div>
+
+                    <!-- Hungary Option -->
+                    <div onclick="selectCountry('hungary')" class="group relative cursor-pointer overflow-hidden rounded-2xl border border-gray-800 bg-gradient-to-br from-travel-ocean/30 to-travel-navy hover:border-travel-terracotta transition-all duration-300 p-5 flex flex-col justify-between min-h-[200px]">
+                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-3xl">🇭🇺</span>
+                            <span class="px-2 py-0.5 bg-gray-800 text-gray-400 rounded text-[9px] uppercase font-bold tracking-widest group-hover:bg-travel-terracotta group-hover:text-white transition" id="ui-tag-ready-1">Ready</span>
+                        </div>
+                        <div>
+                            <h3 class="font-cinzel text-xl text-travel-sand tracking-wide group-hover:text-white transition mt-4" id="country-title-hungary">Hungary 匈牙利</h3>
+                            <p class="text-gray-400 text-xs mt-1" id="country-desc-hungary">Danube riverscapes, therapeutic thermal baths, Rubik puzzles, and sweet Tokaji wine.</p>
+                        </div>
+                    </div>
+
+                    <!-- Czech Republic Option -->
+                    <div onclick="selectCountry('czech')" class="group relative cursor-pointer overflow-hidden rounded-2xl border border-gray-800 bg-gradient-to-br from-travel-ocean/30 to-travel-navy hover:border-travel-terracotta transition-all duration-300 p-5 flex flex-col justify-between min-h-[200px]">
+                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-3xl">🇨🇿</span>
+                            <span class="px-2 py-0.5 bg-gray-800 text-gray-400 rounded text-[9px] uppercase font-bold tracking-widest group-hover:bg-travel-terracotta group-hover:text-white transition" id="ui-tag-ready-2">Ready</span>
+                        </div>
+                        <div>
+                            <h3 class="font-cinzel text-xl text-travel-sand tracking-wide group-hover:text-white transition mt-4" id="country-title-czech">Czech Republic 捷克</h3>
+                            <p class="text-gray-400 text-xs mt-1" id="country-desc-czech">Gothic Prague architectures, ancient Bohemian castles, Kafka literature, and historic Pilsners.</p>
+                        </div>
+                    </div>
+
+                    <!-- Taiwan Option -->
+                    <div onclick="selectCountry('taiwan')" class="group relative cursor-pointer overflow-hidden rounded-2xl border border-gray-800 bg-gradient-to-br from-travel-ocean/30 to-travel-navy hover:border-travel-terracotta transition-all duration-300 p-5 flex flex-col justify-between min-h-[200px]">
+                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-3xl">🇹🇼</span>
+                            <span class="px-2 py-0.5 bg-gray-800 text-gray-400 rounded text-[9px] uppercase font-bold tracking-widest group-hover:bg-travel-terracotta group-hover:text-white transition" id="ui-tag-ready-3">Ready</span>
+                        </div>
+                        <div>
+                            <h3 class="font-cinzel text-xl text-travel-sand tracking-wide group-hover:text-white transition mt-4" id="country-title-taiwan">Taiwan 台灣</h3>
+                            <p class="text-gray-400 text-xs mt-1" id="country-desc-taiwan">Bustling night markets, towering Taipei 101, semiconductor tech, and high alpine ridges.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming locked country deck -->
+            <div class="space-y-4">
+                <h3 class="font-cinzel text-lg md:text-xl text-gray-400 tracking-wider border-b border-gray-900 pb-2 flex items-center gap-2">
+                    <span>🔒</span> <span id="ui-section-upcoming">Upcoming Destinations</span>
+                </h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <!-- Peru Card -->
+                    <div onclick="triggerLockAlert('peru')" class="group cursor-pointer rounded-2xl border border-gray-900 bg-gray-950/40 p-5 flex flex-col justify-between min-h-[140px] opacity-60 hover:opacity-100 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl">🇵🇪</span>
+                            <span class="px-2 py-0.5 bg-gray-900 text-gray-500 rounded text-[9px] font-bold uppercase tracking-widest group-hover:text-travel-terracotta transition" id="ui-tag-upcoming-1">Upcoming</span>
+                        </div>
+                        <div>
+                            <h4 class="font-cinzel text-lg text-gray-300 tracking-wide mt-2" id="country-title-peru">Peru 秘魯</h4>
+                            <p class="text-gray-500 text-xs mt-1" id="country-desc-peru">Machu Picchu, ancient Inca empires, and wild Amazonian ecology.</p>
+                        </div>
+                    </div>
+
+                    <!-- Australia Card -->
+                    <div onclick="triggerLockAlert('australia')" class="group cursor-pointer rounded-2xl border border-gray-900 bg-gray-950/40 p-5 flex flex-col justify-between min-h-[140px] opacity-60 hover:opacity-100 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl">🇦🇺</span>
+                            <span class="px-2 py-0.5 bg-gray-900 text-gray-500 rounded text-[9px] font-bold uppercase tracking-widest group-hover:text-travel-terracotta transition" id="ui-tag-upcoming-2">Upcoming</span>
+                        </div>
+                        <div>
+                            <h4 class="font-cinzel text-lg text-gray-300 tracking-wide mt-2" id="country-title-australia">Australia 澳洲</h4>
+                            <p class="text-gray-500 text-xs mt-1" id="country-desc-australia">Great Barrier Reef corals, Outback adventures, and Sydney Opera landmark.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kazakhstan Card -->
+                    <div onclick="triggerLockAlert('kazakhstan')" class="group cursor-pointer rounded-2xl border border-gray-900 bg-gray-950/40 p-5 flex flex-col justify-between min-h-[140px] opacity-60 hover:opacity-100 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl">🇰🇿</span>
+                            <span class="px-2 py-0.5 bg-gray-900 text-gray-500 rounded text-[9px] font-bold uppercase tracking-widest group-hover:text-travel-terracotta transition" id="ui-tag-upcoming-3">Upcoming</span>
+                        </div>
+                        <div>
+                            <h4 class="font-cinzel text-lg text-gray-300 tracking-wide mt-2" id="country-title-kazakhstan">Kazakhstan 哈薩克</h4>
+                            <p class="text-gray-500 text-xs mt-1" id="country-desc-kazakhstan">Central Asian Silk Road trails, Charyn Canyon, and vast wild steppes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Gist Promotion Section -->
+            <div class="max-w-2xl mx-auto glass-panel p-6 rounded-2xl text-center space-y-4 border border-gray-800">
+                <h4 class="font-cinzel text-lg text-travel-sand tracking-wide" id="ui-promo-title">Hosting your own Custom Trivia Boards?</h4>
+                <p class="text-gray-400 text-xs leading-relaxed" id="ui-promo-desc">
+                    You can host custom country databases on GitHub Gist! Paste the raw JSON gist link using the setting tool at the top right, and load custom questions dynamically.
+                </p>
+                <button onclick="openConfigModal()" class="px-4 py-2 bg-travel-terracotta hover:bg-opacity-90 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition inline-flex items-center gap-2">
+                    <span id="ui-promo-btn">Configure Custom Database 🧭</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- SCREEN 2: JEOPARDY GAME ROOM -->
+        <section id="screen-game" class="hidden space-y-6 py-4">
+            
+            <!-- Room Info & Status Bar -->
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-gray-800 pb-4">
+                <div>
+                    <div class="flex items-center gap-3">
+                        <button onclick="showScreen('landing')" class="text-gray-400 hover:text-white bg-gray-800/50 hover:bg-gray-800 p-2 rounded-lg transition" title="Go back">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        </button>
+                        <div>
+                            <span id="game-badge" class="inline-block px-2 py-0.5 bg-travel-terracotta/20 border border-travel-terracotta/40 rounded text-[10px] uppercase font-semibold text-travel-terracotta tracking-wider">Local Dataset</span>
+                            <h2 id="game-title" class="font-cinzel text-2xl md:text-3xl text-white tracking-wide">Greece Trivia Expedition</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Configured custom actions -->
+                <div class="flex items-center gap-2">
+                    <button onclick="resetEntireBoard()" class="px-3 py-1.5 bg-gray-850 hover:bg-gray-800 border border-gray-700 hover:border-gray-600 rounded-lg text-xs font-medium text-gray-300 transition flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-travel-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.213 6h-3.07"></path></svg>
+                        <span id="ui-btn-reset-board">Reset Board</span>
+                    </button>
+                    <button id="toggle-sounds-btn" onclick="toggleMute()" class="p-1.5 bg-gray-850 hover:bg-gray-800 border border-gray-700 hover:border-gray-600 rounded-lg text-gray-300 transition" title="Toggle sound effects">
+                        🔊
+                    </button>
+                </div>
+            </div>
+
+            <!-- Two Column Layout: Main Jeopardy Grid + Player Scoreboard -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                
+                <!-- JEOPARDY GAME BOARD GRID (Left: 9 cols) -->
+                <div class="lg:col-span-9 space-y-4">
+                    <!-- Jeopardy Category Grid wrapper -->
+                    <div class="overflow-x-auto pb-2">
+                        <div id="jeopardy-grid" class="grid grid-cols-5 gap-3 min-w-[700px]">
+                            <!-- Generated dynamically by Javascript -->
+                        </div>
+                    </div>
+                    
+                    <p class="text-center text-xs text-gray-500 italic" id="ui-tips">
+                        Tip: Click any active cell to reveal the trivia question. Work dynamically across categories!
+                    </p>
+                </div>
+
+                <!-- PLAYERS & SCOREBOARD SYSTEM (Right: 3 cols) -->
+                <div class="lg:col-span-3 space-y-4">
+                    <div class="glass-panel p-5 rounded-2xl border border-gray-800 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-cinzel text-lg text-travel-sand tracking-wider flex items-center gap-2">
+                                <span>👥</span> <span id="ui-scoreboard-title">Team Scoreboard</span>
+                            </h3>
+                            <button onclick="promptAddPlayer()" class="text-[11px] bg-travel-terracotta hover:bg-opacity-90 text-white font-semibold py-1 px-2.5 rounded-lg transition" id="ui-btn-add-player">
+                                + Add
+                            </button>
+                        </div>
+                        
+                        <!-- Player List -->
+                        <div id="player-list" class="space-y-3 max-h-[250px] overflow-y-auto pr-1">
+                            <!-- Generated Dynamically by JS -->
+                        </div>
+
+                        <!-- Reset Scores -->
+                        <button onclick="resetScores()" class="w-full text-center py-2 text-xs border border-gray-700 hover:border-gray-600 hover:text-white rounded-lg transition text-gray-400 font-medium" id="ui-btn-reset-scores">
+                            Reset All Scores to Zero
+                        </button>
+                    </div>
+
+                    <!-- Gist Instructions Module on game page for easy developer access -->
+                    <div class="glass-panel p-5 rounded-2xl border border-gray-800 text-xs space-y-2">
+                        <div class="font-bold text-travel-sand uppercase tracking-wider flex items-center gap-1.5">
+                            <span>💡</span> <span id="ui-inst-title">Setup Custom Clues</span>
+                        </div>
+                        <p class="text-gray-400" id="ui-inst-desc">
+                            Host your own questions! Simply save a dynamic `.json` layout inside a GitHub Gist, fetch its raw URL, and upload it here.
+                        </p>
+                        <a href="javascript:void(0)" onclick="openConfigModal()" class="text-travel-terracotta hover:underline font-semibold block" id="ui-inst-link">View suggested template structure &rarr;</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-auto py-6 border-t border-gray-900 bg-gray-950 text-center text-xs text-gray-500">
+        <p>© 2026 Reverse Trivia for Global Trotter. Pure Client-Side Bilingual Implementation.</p>
+    </footer>
+
+    <!-- GLOBAL MODAL: Dynamic Clue Popup Modal -->
+    <div id="clue-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm hidden">
+        <div class="glass-panel max-w-2xl w-full rounded-2xl border border-travel-terracotta overflow-hidden shadow-2xl relative transform transition-all duration-300 scale-95 opacity-0" id="clue-modal-content">
+            
+            <!-- Modal Header: Category & Score info -->
+            <div class="p-5 border-b border-gray-800 flex items-center justify-between bg-travel-ocean/30">
+                <div>
+                    <h4 id="clue-category" class="font-cinzel text-xs text-travel-terracotta uppercase tracking-widest font-bold">Category Name</h4>
+                    <span id="clue-value" class="text-xl font-bold text-travel-gold">$200 Value</span>
+                </div>
+                <!-- Countdown Timer Display -->
+                <div class="flex items-center gap-2 px-3 py-1 bg-gray-800/80 border border-gray-700 rounded-full">
+                    <span class="text-[10px] uppercase font-bold text-gray-400 tracking-wider" id="ui-clue-timer-label">Time Remaining:</span>
+                    <span id="clue-timer" class="font-mono text-sm font-bold text-travel-terracotta">15</span>s
+                </div>
+            </div>
+
+            <!-- Clue Question Body -->
+            <div class="p-8 text-center space-y-6">
+                <!-- Answer Reveal View State -->
+                <div id="clue-view-question" class="space-y-6">
+                    <p class="text-sm text-travel-sand uppercase tracking-widest font-semibold" id="ui-clue-label">The Clue:</p>
+                    <h3 id="clue-question-text" class="text-xl md:text-2xl text-white font-medium leading-relaxed font-cinzel">Loading Question details...</h3>
+                    <button onclick="revealAnswer()" class="mx-auto block px-6 py-3 bg-travel-terracotta hover:bg-opacity-95 text-white font-bold text-sm tracking-wider rounded-xl transition duration-300 transform hover:scale-105 shadow-lg" id="ui-btn-reveal">
+                        Reveal Answer
+                    </button>
+                </div>
+
+                <!-- Answer Checked View State -->
+                <div id="clue-view-answer" class="hidden space-y-6">
+                    <div class="space-y-2">
+                        <p class="text-sm text-travel-terracotta uppercase tracking-widest font-semibold" id="ui-clue-ans-label">The Correct Answer:</p>
+                        <h3 id="clue-answer-text" class="text-xl md:text-2xl text-travel-gold font-bold font-cinzel">Correct Answer Value</h3>
+                    </div>
+                    
+                    <!-- Reward Score Panel for Multi-player support -->
+                    <div class="border-t border-gray-800 pt-6 space-y-4">
+                        <p class="text-xs text-gray-400 uppercase tracking-widest font-medium" id="ui-clue-award-label">Award Points to Player:</p>
+                        <div id="score-award-list" class="flex flex-wrap justify-center gap-2">
+                            <!-- Populated with buttons of active playing teams -->
+                        </div>
+                        <div class="flex justify-center gap-3 mt-4">
+                            <button onclick="closeClueModal(false)" class="px-5 py-2.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg text-xs font-semibold transition" id="ui-btn-skip">
+                                Skip / Nobody
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal close (Safeguard) -->
+            <button onclick="closeClueModal(false)" class="absolute top-4 right-4 text-gray-400 hover:text-white transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- CONFIGURATION & GIST UPLOADER MODAL -->
+    <div id="config-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-sm hidden">
+        <div class="glass-panel max-w-2xl w-full rounded-2xl border border-gray-800 p-6 md:p-8 space-y-6 overflow-y-auto max-h-[90vh]">
+            
+            <div class="flex justify-between items-start border-b border-gray-800 pb-4">
+                <div>
+                    <h3 class="font-cinzel text-xl text-white tracking-wider" id="ui-config-title">GitHub Gist Trivia Settings</h3>
+                    <p class="text-xs text-gray-400 mt-1" id="ui-config-sub">Host and dynamically load your custom jeopardy game data</p>
+                </div>
+                <button onclick="closeConfigModal()" class="text-gray-400 hover:text-white transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Gist Input Form -->
+            <div class="space-y-4">
+                <div class="space-y-2">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-travel-sand" id="ui-config-url-label">Raw GitHub Gist URL</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="gist-url-input" placeholder="https://gist.githubusercontent.com/username/gist_id/raw/..." class="flex-grow bg-gray-900 border border-gray-700 focus:border-travel-terracotta focus:ring-1 focus:ring-travel-terracotta rounded-xl px-4 py-3 text-sm text-white focus:outline-none placeholder-gray-500 transition">
+                        <button onclick="loadGistData()" class="px-5 py-3 bg-travel-terracotta hover:bg-opacity-90 rounded-xl text-xs font-bold uppercase tracking-widest text-white transition whitespace-nowrap" id="ui-config-btn-load">
+                            Load Board 🚀
+                        </button>
+                    </div>
+                    <p class="text-[11px] text-gray-500" id="ui-config-note">Note: Always make sure you copy the "Raw" URL from your Gist to bypass browser CORS or parsing obstacles.</p>
+                </div>
+
+                <!-- Custom Gist Code Format Suggestion Pane -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-bold uppercase tracking-wider text-travel-sand" id="ui-config-schema-title">JSON Coding Format Schema</span>
+                        <button onclick="copySchemaTemplate()" class="text-[11px] text-travel-terracotta hover:underline font-semibold flex items-center gap-1">
+                            <span id="copy-status-text">Copy Template Schema</span> 📋
+                        </button>
+                    </div>
+                    <!-- Raw pre block for layout preview -->
+                    <pre class="bg-gray-950 p-4 rounded-xl text-[11px] font-mono text-gray-300 overflow-x-auto border border-gray-800 max-h-[220px]"><code>{
+  "country": "Italy",
+  "categories": [
+    {
+      "name": "Historical Monuments",
+      "clues": [
+        { "value": 200, "question": "This amphitheater in Rome welcomed gladiator battles.", "answer": "The Colosseum" },
+        { "value": 400, "question": "The world famous leaning bell tower is situated in this Italian city.", "answer": "Pisa" },
+        { "value": 600, "question": "This massive dome in Florence was designed by Filippo Brunelleschi.", "answer": "The Duomo" },
+        { "value": 800, "question": "These preserved ruins sit at the base of Mount Vesuvius.", "answer": "Pompeii" },
+        { "value": 1000, "question": "This Venice bridge spans the Grand Canal and dates back to 1591.", "answer": "Rialto Bridge" }
+      ]
+    }
+  ]
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Troubleshooting guide -->
+            <div class="text-xs text-gray-400 bg-gray-900/50 border border-gray-800 p-4 rounded-xl space-y-1">
+                <span class="font-bold text-white uppercase tracking-wider text-[10px]" id="ui-config-guide-title">💡 Fast Setup Checklist:</span>
+                <ul class="list-disc pl-4 space-y-1" id="ui-config-guide-steps">
+                    <!-- Loaded dynamically via js Translation dictionary -->
+                </ul>
+            </div>
+
+            <div class="pt-2 border-t border-gray-800 flex justify-end">
+                <button onclick="closeConfigModal()" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-xs font-semibold text-gray-300 transition" id="ui-config-btn-close">
+                    Close Uploader
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT: Trivia Engine & Logic Controller -->
+    <script>
+        // Bilingual UI Copy Dictionary
+        const i18n = {
+            en: {
+                navTitle: "Reverse Trivia",
+                navSub: "For Global Trotter",
+                btnChangeCountry: "Change Country",
+                btnCustomGist: "Load Custom Gist",
+                heroBadge: "Bilingual Globetrotting Trivia",
+                heroTitle: "Where is your next <span class='text-travel-terracotta'>Destination</span>?",
+                heroSub: "Select a destination below to initialize a high-stakes Jeopardy-style board themed entirely around the chosen nation's history, landmarks, cuisine, culture, and mysteries.",
+                sectionPlayable: "Playable Destinations",
+                sectionUpcoming: "Upcoming Destinations",
+                tagDefault: "Default",
+                tagReady: "Ready",
+                tagUpcoming: "Upcoming",
+                promoTitle: "Hosting your own Custom Trivia Boards?",
+                promoDesc: "You can host custom country databases on GitHub Gist! Paste the raw JSON gist link using the setting tool at the top right, and load custom questions dynamically.",
+                promoBtn: "Configure Custom Database 🧭",
+                btnResetBoard: "Reset Board",
+                tips: "Tip: Click any active cell to reveal the trivia question. Work dynamically across categories!",
+                scoreboardTitle: "Team Scoreboard",
+                btnAddPlayer: "+ Add",
+                btnResetScores: "Reset All Scores to Zero",
+                instTitle: "Setup Custom Clues",
+                instDesc: "Host your own questions! Simply save a dynamic `.json` layout inside a GitHub Gist, fetch its raw URL, and upload it here.",
+                instLink: "View suggested template structure &rarr;",
+                clueTimerLabel: "Time Remaining:",
+                clueLabel: "The Clue:",
+                btnReveal: "Reveal Answer",
+                clueAnsLabel: "The Correct Answer:",
+                clueAwardLabel: "Award Points to Player:",
+                btnSkip: "Skip / Nobody",
+                configTitle: "GitHub Gist Trivia Settings",
+                configSub: "Host and dynamically load your custom jeopardy game data",
+                configUrlLabel: "Raw GitHub Gist URL",
+                configBtnLoad: "Load Board 🚀",
+                configNote: "Note: Always make sure you copy the 'Raw' URL from your Gist to bypass browser CORS or parsing obstacles.",
+                configSchemaTitle: "JSON Coding Format Schema",
+                btnCopySchema: "Copy Template Schema",
+                configGuideTitle: "💡 Fast Setup Checklist:",
+                configGuideSteps: `
+                    <li>Create a new public Gist on <a href="https://gist.github.com" target="_blank" class="text-travel-terracotta underline">gist.github.com</a></li>
+                    <li>Paste the layout structure exactly like the schema format.</li>
+                    <li>Ensure there are exactly **5 categories** with exactly **5 clues** per category (values 200, 400, 600, 800, 1000).</li>
+                    <li>Click the **"Raw"** button on Gist to get the correct URL starting with 'https://gist.githubusercontent.com/...'</li>
+                `,
+                configBtnClose: "Close Uploader",
+                alertLock: "This country is currently locked! We are actively organizing its deep historical trivia databases. Stay tuned for our future release!",
+                promptAddPlayer: "Enter a team name or traveler username:",
+                toastCreatedPlayer: "Created player profile:",
+                toastResetBoard: "Trivia board restarted!",
+                toastResetScores: "Reset everyone's total bank credits back to $0?",
+                toastResetScoresSuccess: "Scores successfully reset!",
+                toastCorrect: "Correct! Added $[VAL] to [NAME]'s balance.",
+                toastIncorrect: "Incorrect response! Deducted $[VAL] from [NAME].",
+                toastTimeUp: "Time's up! Let's reveal the correct answer.",
+                toastGistSuccess: "Custom Gist Board Loaded Successfully! 🌐",
+                toastGistErrorUrl: "Please enter a valid GitHub Gist raw URL first",
+                toastGistFetching: "Fetching raw Gist file content...",
+                badgeGist: "GitHub Gist Board",
+                badgeLocal: "Local Dataset",
+                resetConfirm: "Are you sure you want to reset the current trivia board progress? All completed cells will be unlocked."
+            },
+            zh: {
+                navTitle: "環球旅行問答",
+                navSub: "專為環球旅行家打造",
+                btnChangeCountry: "切換國家",
+                btnCustomGist: "載入自訂 Gist",
+                heroBadge: "雙語環球旅行益智問答",
+                heroTitle: "你的下一個<span class='text-travel-terracotta'>目的地</span>是哪裡？",
+                heroSub: "在下方選擇一個目的地，開啟專為該國歷史、地標、美食、文化及奧秘設計的經典 Jeopardy 益智問答板。",
+                sectionPlayable: "可遊玩目的地",
+                sectionUpcoming: "即將推出目的地",
+                tagDefault: "預設",
+                tagReady: "已就緒",
+                tagUpcoming: "即將推出",
+                promoTitle: "想要託管您自己的專屬問答板？",
+                promoDesc: "您可以在 GitHub Gist 上託管自訂國家問答資料庫！使用右上角的設定工具貼上 Raw JSON 原始連結，即可動態載入您的問題。",
+                promoBtn: "設定自訂資料庫 🧭",
+                btnResetBoard: "重設題板",
+                tips: "提示：點擊任何啟用的格子以顯示線索。在不同的類別之間自由選擇吧！",
+                scoreboardTitle: "隊伍計分板",
+                btnAddPlayer: "+ 新增",
+                btnResetScores: "將所有分數歸零",
+                instTitle: "設定自訂問答",
+                instDesc: "編寫自己的題目！只需在 GitHub Gist 內儲存動態的 `.json` 格式檔案，獲取其 Raw 原始網址並在此上傳即可。",
+                instLink: "查看建議的範本架構 &rarr;",
+                clueTimerLabel: "剩餘時間：",
+                clueLabel: "線索：",
+                btnReveal: "顯示答案",
+                clueAnsLabel: "正確答案：",
+                clueAwardLabel: "將分數獎勵給玩家：",
+                btnSkip: "跳過 / 無人答對",
+                configTitle: "GitHub Gist 問答設定",
+                configSub: "託管並動態載入您的自訂 Jeopardy 遊戲數據",
+                configUrlLabel: "Raw GitHub Gist 網址",
+                configBtnLoad: "載入問答板 🚀",
+                configNote: "注意：請務必從您的 Gist 複製「Raw」原始連結，以避免瀏覽器 CORS 限制或解析問題。",
+                configSchemaTitle: "JSON 程式碼格式架構",
+                btnCopySchema: "複製範本架構",
+                configGuideTitle: "💡 快速設定檢查清單：",
+                configGuideSteps: `
+                    <li>在 <a href="https://gist.github.com" target="_blank" class="text-travel-terracotta underline">gist.github.com</a> 上建立一個新的公開 Gist</li>
+                    <li>完全按照範本的 JSON 格式貼上您的題目結構。</li>
+                    <li>確保包含 **5 個類別**，且每個類別中剛好有 **5 個線索**（金額依序為 200, 400, 600, 800, 1000）。</li>
+                    <li>點擊 Gist 頁面上的 **「Raw」** 按鈕以取得正確的原始網址（應以 'https://gist.githubusercontent.com/...' 開頭）。</li>
+                `,
+                configBtnClose: "關閉上傳器",
+                alertLock: "此國家目前尚未解鎖！我們正在積極整理其豐富的歷史問答資料庫。敬請期待未來的更新發布！",
+                promptAddPlayer: "輸入隊伍名稱或旅行家玩家名稱：",
+                toastCreatedPlayer: "已建立玩家檔案：",
+                toastResetBoard: "問答板已重新啟動！",
+                toastResetScores: "要將所有人的累計分數歸零嗎？",
+                toastResetScoresSuccess: "分數已成功重設歸零！",
+                toastCorrect: "答對了！已將 $[VAL] 加到 [NAME] 的餘額中。",
+                toastIncorrect: "回答錯誤！已自 [NAME] 扣除 $[VAL]。",
+                toastTimeUp: "時間到！讓我們顯示正確答案。",
+                toastGistSuccess: "自訂 Gist 問答板載入成功！🌐",
+                toastGistErrorUrl: "請先輸入有效的 GitHub Gist Raw 原始網址",
+                toastGistFetching: "正在獲取 Raw Gist 檔案內容...",
+                badgeGist: "GitHub Gist 題庫",
+                badgeLocal: "內建資料庫",
+                resetConfirm: "您確定要重設當前問答板進度嗎？所有已完成的格子將會重新開啟。"
+            }
+        };
+
+        // Current Language State (Default: Traditional Chinese as it fits best, can toggle)
+        let currentLang = 'en';
+
+        // Dynamic Bilingual Database
+        const localDatabase = {
+            greece: {
+                country: { en: "Greece", zh: "希臘" },
+                categories: {
+                    en: [
+                        {
+                            name: "Ancient Gods",
+                            clues: [
+                                { value: 200, question: "He commands Mount Olympus as the god of sky, lightning, and thunder.", answer: "Zeus" },
+                                { value: 400, question: "This trident-wielding Olympian governs the vast oceans, storms, and earthquakes.", answer: "Poseidon" },
+                                { value: 600, question: "The goddess of wisdom, strategic warfare, and handicraft, who protects Athens.", answer: "Athena" },
+                                { value: 800, question: "Born from the sea foam, she rules over love, beauty, desire, and fertility.", answer: "Aphrodite" },
+                                { value: 1000, question: "He journeys to the underworld as the messenger of the gods, wearing winged sandals.", answer: "Hermes" }
+                            ]
+                        },
+                        {
+                            name: "Ancient History",
+                            clues: [
+                                { value: 200, question: "This legendary militaristic city-state was famed for its heroic defense at Thermopylae.", answer: "Sparta" },
+                                { value: 400, question: "He succeeded his father Philip II, conquering the known world from Greece to India.", answer: "Alexander the Great" },
+                                { value: 600, question: "This legendary battle in 490 BC inspired the modern name of the 26.2-mile footrace.", answer: "The Battle of Marathon" },
+                                { value: 800, question: "Constructed on the Athenian Acropolis, this major temple was built to honor Athena Parthenos.", answer: "The Parthenon" },
+                                { value: 1000, question: "This historic Greek league was founded in 478 BC to combat Persian aggression.", answer: "The Delian League" }
+                            ]
+                        },
+                        {
+                            name: "Islands & Geography",
+                            clues: [
+                                { value: 200, question: "This famous volcanic island is praised for its white-washed clifftop buildings in Oia.", answer: "Santorini (Thera)" },
+                                { value: 400, question: "This is the largest and most populous of all the Greek islands.", answer: "Crete" },
+                                { value: 600, question: "This windy island is famous for its preserved windmills and vibrant nightlife.", answer: "Mykonos" },
+                                { value: 800, question: "This highest peak in Greece is legendary for hosting the council of the gods.", answer: "Mount Olympus" },
+                                { value: 1000, question: "This complex system of isolated monasteries is built atop tall natural sandstone pillars.", answer: "Meteora" }
+                            ]
+                        },
+                        {
+                            name: "Culinary Heritage",
+                            clues: [
+                                { value: 200, question: "This classic salted yogurt, cucumber, and garlic dip is popular worldwide.", answer: "Tzatziki" },
+                                { value: 400, question: "This brined curd cheese is made traditionally from sheep's milk or goat's milk mixes.", answer: "Feta" },
+                                { value: 600, question: "A savory eggplant-based baked dish featuring spiced meat, topped with creamy bechamel.", answer: "Moussaka" },
+                                { value: 800, question: "This anise-flavored aperitif is widely considered the national liquor of Greece.", answer: "Ouzo" },
+                                { value: 1000, question: "This honey-drenched dessert consists of crisp layers of phyllo pastry and chopped walnuts.", answer: "Baklava" }
+                            ]
+                        },
+                        {
+                            name: "Philosophy & Science",
+                            clues: [
+                                { value: 200, question: "This Athenian teacher of Plato was forced to drink hemlock for corrupting youth.", answer: "Socrates" },
+                                { value: 400, question: "This ancient physician of Kos drafted the ethical oath still sworn by doctors today.", answer: "Hippocrates" },
+                                { value: 600, question: "This Syracusan polymath famously shouted 'Eureka!' upon discovering water displacement.", answer: "Archimedes" },
+                                { value: 800, question: "This legendary philosopher founded the Lyceum and tutored young Alexander the Great.", answer: "Aristotle" },
+                                { value: 1000, question: "This pre-Socratic philosopher believed water is the primary substance of all matter.", answer: "Thales of Miletus" }
+                            ]
+                        }
+                    ],
+                    zh: [
+                        {
+                            name: "古希臘神祇",
+                            clues: [
+                                { value: 200, question: "祂是天空、閃電與雷霆之神，統領著奧林帕斯山，為眾神之王。", answer: "宙斯 (Zeus)" },
+                                { value: 400, question: "這位手持三叉戟的奧林帕斯主神掌控著遼闊的海洋、風暴與地震。", answer: "波賽頓 (Poseidon)" },
+                                { value: 600, question: "祂是智慧、戰略戰爭與工藝的女神，也是雅典城的守護神。", answer: "雅典娜 (Athena)" },
+                                { value: 800, question: "誕生於海浪的泡沫中，祂主宰著愛、美、慾望與繁衍。", answer: "阿芙蘿黛蒂 (Aphrodite)" },
+                                { value: 1050, question: "祂身穿羽翼神鞋，作為眾神的信使往返於人間與冥界。", answer: "赫密士 (Hermes)" }
+                            ]
+                        },
+                        {
+                            name: "古代歷史",
+                            clues: [
+                                { value: 200, question: "這座傳奇的軍事化城邦，以其在溫泉關戰役中的英雄防守而聞名於世。", answer: "斯巴達 (Sparta)" },
+                                { value: 400, question: "他繼承了父親腓力二世的王位，征服了從希臘到印度邊境的已知世界。", answer: "亞歷山大大帝 (Alexander the Great)" },
+                                { value: 600, question: "這場發生於西元前 490 年的傳奇戰役，啟發了現代 26.2 英里長跑賽事的名稱。", answer: "馬拉松戰役 (Battle of Marathon)" },
+                                { value: 800, question: "建於雅典衛城之上的這座主要神廟，是為了供奉守護神雅典娜·帕德嫩而建。", answer: "帕德嫩神廟 (The Parthenon)" },
+                                { value: 1000, question: "這個歷史悠久的希臘同盟建立於西元前 478 年，旨在共同對抗波斯帝國的侵略。", answer: "提洛同盟 (Delian League)" }
+                            ]
+                        },
+                        {
+                            name: "島嶼與地理",
+                            clues: [
+                                { value: 200, question: "這座著名的火山島以其在伊亞（Oia）小鎮的白牆藍頂峭壁建築而聞名全球。", answer: "聖托里尼 (Santorini)" },
+                                { value: 400, question: "這是所有希臘島嶼中面積最大、人口最多的一座島。", answer: "克里特島 (Crete)" },
+                                { value: 600, question: "這座多風的島嶼以其保存完好的風車群和豐富熱鬧的夜生活而聞名。", answer: "米科諾斯島 (Mykonos)" },
+                                { value: 800, question: "這座希臘最高峰在神話中是眾神召開會議與居住的傳奇聖山。", answer: "奧林帕斯山 (Mount Olympus)" },
+                                { value: 1000, question: "這座由多座與世隔絕的修道院組成的古老建築群，建造在巨大的天然砂岩石柱頂端。", answer: "梅特歐拉 (Meteora / 天空之城)" }
+                            ]
+                        },
+                        {
+                            name: "美食傳承",
+                            clues: [
+                                { value: 200, question: "這款經典的希臘沾醬是由優格、黃瓜和大蒜製成，廣受世界喜愛。", answer: "優格黃瓜醬 (Tzatziki)" },
+                                { value: 400, question: "這種鹽漬乳酪傳統上完全由羊乳或混合山羊乳製成，是希臘沙拉的主角。", answer: "費塔起司 (Feta)" },
+                                { value: 600, question: "這道烘烤的主食以茄子、絞肉為基礎，最上層淋上濃郁的貝夏美白醬。", answer: "希臘茄子千層派 (Moussaka)" },
+                                { value: 800, question: "這種帶有茴香氣味的開胃酒，被廣泛視為希臘的國酒。", answer: "烏佐酒 (Ouzo)" },
+                                { value: 1000, question: "這道甜美的甜點由多層薄如蟬翼的菲洛餅皮夾入碎核桃，並淋上濃郁蜂蜜烤製。", answer: "果仁蜜餅 (Baklava)" }
+                            ]
+                        },
+                        {
+                            name: "哲學與科學",
+                            clues: [
+                                { value: 200, question: "這位柏拉圖的雅典導師，因被控「腐蝕青年思想」而被判處飲鴆自盡。", answer: "蘇格拉底 (Socrates)" },
+                                { value: 400, question: "這位來自科斯島的古代醫生起草了道德誓言，至今仍被現代醫生宣誓效法。", answer: "希波克拉底 (Hippocrates)" },
+                                { value: 600, question: "這位敘拉古的博學家在洗澡發現排水排量時，興奮地高喊「尤里卡！」（我發現了）。", answer: "阿基米德 (Archimedes)" },
+                                { value: 800, question: "這位傳奇哲學家創立了呂克昂學園，並曾擔任年輕亞歷山大大帝的導師。", answer: "亞里斯多德 (Aristotle)" },
+                                { value: 1000, question: "這位前蘇格拉底時期的哲學家兼科學家，認為「水」是萬物唯一的原始物質。", answer: "泰利斯 (Thales of Miletus)" }
+                            ]
+                        }
+                    ]
+                }
+            },
+            hungary: {
+                country: { en: "Hungary", zh: "匈牙利" },
+                categories: {
+                    en: [
+                        {
+                            name: "Budapest Landmarks",
+                            clues: [
+                                { value: 200, question: "This massive Gothic Revival building on the Danube banks is the largest in Hungary.", answer: "The Hungarian Parliament Building" },
+                                { value: 400, question: "This famous yellow-colored medicinal bath in Budapest is one of Europe's largest spa complexes.", answer: "Széchenyi Thermal Bath" },
+                                { value: 600, question: "This historic suspension bridge was the first permanent bridge to connect Buda and Pest.", answer: "The Széchenyi Chain Bridge" },
+                                { value: 800, question: "This historical palace complex of Hungarian kings sits atop Buda's Castle Hill.", answer: "Buda Castle" },
+                                { value: 1000, question: "This neo-Romanesque terrace in Budapest is famous for its 7 stone towers representing Hungarian tribes.", answer: "Fisherman's Bastion" }
+                            ]
+                        },
+                        {
+                            name: "Hungarian History",
+                            clues: [
+                                { value: 200, question: "He was the first King of Hungary, crowned on Christmas Day in the year 1000.", answer: "King Stephen I" },
+                                { value: 400, question: "This dual monarchy union was established in 1867 and dissolved after World War I.", answer: "The Austro-Hungarian Empire" },
+                                { value: 600, question: "This legendary leader of the Huns is deeply woven into Hungarian historical lineage.", answer: "Attila the Hun" },
+                                { value: 800, question: "This nationwide 1956 revolt against Soviet-imposed policies was crushed by Soviet tanks.", answer: "The Hungarian Revolution" },
+                                { value: 1000, question: "Signed in 1920, this post-WWI treaty caused Hungary to lose over 70% of its pre-war territory.", answer: "Treaty of Trianon" }
+                            ]
+                        },
+                        {
+                            name: "Culinary & Wines",
+                            clues: [
+                                { value: 200, question: "This traditional meat and vegetable soup or stew is seasoned heavily with red paprika.", answer: "Goulash (Gulyás)" },
+                                { value: 400, question: "This ground sweet pepper spice is the ultimate cornerstone of Hungarian seasonings.", answer: "Paprika" },
+                                { value: 600, question: "This legendary sweet white dessert wine from Hungary was called 'Wine of Kings' by Louis XIV.", answer: "Tokaji" },
+                                { value: 800, question: "A beloved Hungarian street food consisting of deep-fried dough topped with garlic, sour cream, and cheese.", answer: "Lángos" },
+                                { value: 1000, question: "This sweet spit-roasted bread is wrapped around a cylinder, grilled, and coated in sugar.", answer: "Kürtőskalács (Chimney Cake)" }
+                            ]
+                        },
+                        {
+                            name: "Inventions & Science",
+                            clues: [
+                                { value: 200, question: "Invented by Erno Rubik in 1974, this 3-dimensional combination puzzle is a global phenomenon.", answer: "Rubik's Cube" },
+                                { value: 400, question: "This everyday rolling-ball writing tool was patented by Laszlo Biro in 1938.", answer: "The Ballpoint Pen (Biro)" },
+                                { value: 600, question: "This Hungarian physiologist won a Nobel Prize for discovering and isolating Vitamin C.", answer: "Albert Szent-Györgyi" },
+                                { value: 800, question: "This technique for recording 3D holographic images was invented by Dennis Gabor, winning a Nobel.", answer: "Holography" },
+                                { value: 1000, question: "János Irinyi invented the noiseless and non-explosive version of this fire-starting stick in 1836.", answer: "The Safety Match" }
+                            ]
+                        },
+                        {
+                            name: "Nature & Culture",
+                            clues: [
+                                { value: 200, question: "Often called the 'Hungarian Sea', this is the largest lake in Central Europe.", answer: "Lake Balaton" },
+                                { value: 400, question: "This Mohács carnival features scary wooden masks to scare away winter and honor folklore.", answer: "Busójárás" },
+                                { value: 600, question: "Held on Óbuda Island, this is one of Europe's largest music and cultural festivals.", answer: "Sziget Festival" },
+                                { value: 800, question: "This vast, flat grassland biome in eastern Hungary is famous for traditional horse shows.", answer: "Puszta" },
+                                { value: 1000, question: "This luxury hand-painted porcelain manufacture was a favorite of Queen Victoria.", answer: "Herend Porcelain" }
+                            ]
+                        }
+                    ],
+                    zh: [
+                        {
+                            name: "布達佩斯地標",
+                            clues: [
+                                { value: 200, question: "這座坐落於多瑙河畔、宏偉的新哥德式建築是匈牙利最大且最具指標性的建築。", answer: "匈牙利國會大廈 (Hungarian Parliament Building)" },
+                                { value: 400, question: "這座位於布達佩斯、著名的黃色藥用溫泉是歐洲最大的溫泉浴場之一。", answer: "塞切尼溫泉 (Széchenyi Thermal Bath)" },
+                                { value: 600, question: "這座歷史昂貴的懸索橋，是歷史上第一座連接布達與佩斯的永久性橋樑。", answer: "塞切尼鏈橋 (Chain Bridge)" },
+                                { value: 800, question: "這座匈牙利國王的歷史城堡與奢華宮殿群，坐落於布達的城堡山上。", answer: "布達城堡 (Buda Castle)" },
+                                { value: 1000, question: "這座新羅馬式露台以其 7 座石塔聞名，代表著定居匈牙利的 7 個馬扎爾部落。", answer: "漁人堡 (Fisherman's Bastion)" }
+                            ]
+                        },
+                        {
+                            name: "匈牙利歷史",
+                            clues: [
+                                { value: 200, question: "他是匈牙利的第一位國王，於西元 1000 年的聖誕節加冕登基，確立天主教為國教。", answer: "聖伊什特萬一世 (King Stephen I)" },
+                                { value: 400, question: "這座強大的雙元君主制聯合帝國建立於 1867 年，並在第一次世界大戰後瓦解。", answer: "奧匈帝國 (Austro-Hungarian Empire)" },
+                                { value: 600, question: "這位傳奇的匈人領袖深深交織在匈牙利的史詩民俗與建國神話血脈中。", answer: "匈人阿提拉 (Attila the Hun)" },
+                                { value: 800, question: "這場發生於 1956 年的全國性起義旨在反抗蘇聯高壓統治，最終遭到蘇聯坦克鎮壓。", answer: "匈牙利十月事件 (1956年革命)" },
+                                { value: 1000, question: "簽署於 1920 年，這份一戰戰敗合約導致匈牙利失去了戰前超過 70% 的國土與人口。", answer: "特里亞農條約 (Treaty of Trianon)" }
+                            ]
+                        },
+                        {
+                            name: "美食與美酒",
+                            clues: [
+                                { value: 200, question: "這道傳統的牛肉燉湯加入了大量蔬菜，並以紅椒粉進行標誌性的調味調色。", answer: "匈牙利湯 (Goulash / Gulyás)" },
+                                { value: 400, question: "這種由甜椒磨製而成的紅色香料，是匈牙利料理風味中不可或缺的絕對霛魂。", answer: "紅椒粉 (Paprika)" },
+                                { value: 600, question: "這種產自東北部的傳奇甜白酒，曾被法國國王路易十四讚譽為「王者之酒」。", answer: "托卡伊甜酒 (Tokaji)" },
+                                { value: 800, question: "這道著名的街頭小吃是由油炸麵團抹上大蒜汁、酸奶油並撒上大量起司製成。", answer: "蘭戈斯 (Lángos)" },
+                                { value: 1000, question: "這種空心的旋轉烤麵包包裹在圓筒上烤製，外層裹上閃亮焦糖與肉桂砂糖粉。", answer: "煙囪捲 (Kürtőskalács)" }
+                            ]
+                        },
+                        {
+                            name: "發明與科學",
+                            clues: [
+                                { value: 200, question: "由厄爾諾·魯比克於 1974 年發明，這款三維組合益智玩具至今風靡全球。", answer: "魔術方塊 (Rubik's Cube)" },
+                                { value: 400, question: "這款實用的日常鋼珠書寫工具，是由拉斯洛·比羅於 1938 年在匈牙利取得專利。", answer: "原子筆 (Ballpoint Pen / Biro)" },
+                                { value: 600, question: "這位科學家因成功從紅椒中發現、提取並分離出「維生素 C」而榮獲諾貝爾獎。", answer: "聖捷爾吉·阿爾伯特 (Albert Szent-Györgyi)" },
+                                { value: 800, question: "這種利用雷射記錄與重現物體三維圖像的技術由丹尼斯·加博爾發明，並獲諾貝爾獎。", answer: "全像術 / 全像攝影 (Holography)" },
+                                { value: 1000, question: "化學家伊里尼·亞諾什於 1836 年發明了這種點火安全、無噪音且不會劇烈爆炸的工具。", answer: "安全火柴 (Safety Match)" }
+                            ]
+                        },
+                        {
+                            name: "自然與文化",
+                            clues: [
+                                { value: 200, question: "常被溫馨地稱為「匈牙利之海」，這是中歐地區面積最大的淡水湖泊。", answer: "巴拉頓湖 (Lake Balaton)" },
+                                { value: 400, question: "這項每年在摩哈赤舉辦的古老嘉年華活動，人們會戴上恐怖的木製面具來驅逐寒冬。", answer: "布索狂歡節 (Busójárás)" },
+                                { value: 600, question: "這項每年在布達佩斯島嶼上舉辦的盛會，是歐洲規模最大的露天音樂與文化節之一。", answer: "島嶼音樂節 (Sziget Festival)" },
+                                { value: 800, question: "這片位於東部的遼闊平坦草地，是歐洲著名的溫帶草原，以傳統馬術表演聞名。", answer: "普斯塔草原 (Puszta)" },
+                                { value: 1000, question: "這家創立於 1826 年的頂級手繪瓷器製造商，是英國維多利亞女王一生的鍾愛收藏。", answer: "赫倫瓷器 (Herend Porcelain)" }
+                            ]
+                        }
+                    ]
+                }
+            },
+            czech: {
+                country: { en: "Czech Republic", zh: "捷克共和國" },
+                categories: {
+                    en: [
+                        {
+                            name: "Prague Wonders",
+                            clues: [
+                                { value: 200, question: "This historic Gothic stone bridge across the Vltava River is lined with 30 statues of saints.", answer: "Charles Bridge" },
+                                { value: 400, question: "Installed in 1410, this is the oldest astronomical clock still operating in the world.", answer: "The Prague Astronomical Clock" },
+                                { value: 600, question: "According to Guinness World Records, this is the largest ancient castle complex in the world.", answer: "Prague Castle" },
+                                { value: 800, question: "This spectacular Gothic cathedral is located entirely within the Prague Castle walls.", answer: "St. Vitus Cathedral" },
+                                { value: 1000, question: "This city wall has been filled with peace-themed graffiti and lyrics since the 1980s.", answer: "The John Lennon Wall" }
+                            ]
+                        },
+                        {
+                            name: "Czech History",
+                            clues: [
+                                { value: 200, question: "This beloved King of Bohemia and Holy Roman Emperor founded Central Europe's first university.", answer: "Charles IV" },
+                                { value: 400, question: "This peaceful, non-violent transition of power in 1989 ended Communist rule in Czechoslovakia.", answer: "The Velvet Revolution" },
+                                { value: 600, question: "This Christian reformer was burned at the stake in 1415, sparking major Hussite wars.", answer: "Jan Hus" },
+                                { value: 800, question: "These historical acts of throwing government officials out of windows sparked European wars.", answer: "The Defenestrations of Prague" },
+                                { value: 1000, question: "This historical Great Slavic empire flourished in Central Europe during the 9th century.", answer: "Great Moravia" }
+                            ]
+                        },
+                        {
+                            name: "Beer & Culinary",
+                            clues: [
+                                { value: 200, question: "This is the world's first golden pale lager, originally brewed in Plzeň in 1842.", answer: "Pilsner Urquell" },
+                                { value: 400, question: "These traditional steamed bread or potato dumplings are sliced and served with meat gravies.", answer: "Knedlíky (Czech Dumplings)" },
+                                { value: 600, question: "A signature dish consisting of beef sirloin in a rich vegetable cream sauce with cranberries.", answer: "Svíčková" },
+                                { value: 800, question: "This high-proof anise spirit is famously served in Prague over a burning sugar spoon.", answer: "Absinthe" },
+                                { value: 1000, question: "Though Transylvanian, this sweet spit-dough pastry coated in walnuts is highly popular in Prague.", answer: "Trdelník" }
+                            ]
+                        },
+                        {
+                            name: "Castles & Chateaux",
+                            clues: [
+                                { value: 200, question: "This majestic Gothic castle was founded in 1348 by Charles IV to safeguard the crown jewels.", answer: "Karlštejn Castle" },
+                                { value: 400, question: "This scenic castle rises above a medieval loop of the Vltava River in Southern Bohemia.", answer: "Český Krumlov Castle" },
+                                { value: 600, question: "This gorgeous English Gothic palace boasts premium greenhouses and landscaped parks.", answer: "Lednice Chateau" },
+                                { value: 800, question: "Often called the most beautiful Czech castle, it is styled after England's Windsor Castle.", answer: "Hluboká Castle" },
+                                { value: 1000, question: "This castle was the final home of Archduke Franz Ferdinand, whose assassination sparked WWI.", answer: "Konopiště Castle" }
+                            ]
+                        },
+                        {
+                            name: "Arts & Science",
+                            clues: [
+                                { value: 200, question: "This Prague-born novelist wrote the masterpieces 'The Metamorphosis' and 'The Trial'.", answer: "Franz Kafka" },
+                                { value: 400, question: "This word for an artificial worker was coined in Prague and debuted in the 1920 play R.U.R.", answer: "Robot" },
+                                { value: 600, question: "This world-renowned Czech composer is most famous for his 9th Symphony, 'From the New World'.", answer: "Antonín Dvořák" },
+                                { value: 800, question: "This Art Nouveau painter is legendary for his stylized posters of elegant theatrical women.", answer: "Alphonse Mucha" },
+                                { value: 1000, question: "This Brno monk conducted pea plant experiments, establishing genetic inheritance laws.", answer: "Gregor Mendel" }
+                            ]
+                        }
+                    ],
+                    zh: [
+                        {
+                            name: "布拉格奇觀",
+                            clues: [
+                                { value: 200, question: "這座橫跨伏爾塔瓦河的歷史哥德式石橋上，整齊排列著 30 尊精美的聖人雕像。", answer: "查理大橋 (Charles Bridge)" },
+                                { value: 400, question: "這座安裝於 1410 年的複雜時鐘，是世界上仍在運作、最古老的天文鐘。", answer: "布拉格天文鐘 (Astronomical Clock)" },
+                                { value: 600, question: "根據金氏世界紀錄，這座歷史悠久的權力中樞是世界上規模最大的古城堡群。", answer: "布拉格城堡 (Prague Castle)" },
+                                { value: 800, question: "這座波希米亞最重要的哥德式主教堂，完全坐落於布拉格城堡的圍牆防線內。", answer: "聖維特大教堂 (St. Vitus Cathedral)" },
+                                { value: 1000, question: "這面歷史牆壁自 1980 年代起，寫滿了象徵自由、和平的愛與約翰·藍儂主題塗鴉。", answer: "約翰·藍儂牆 (John Lennon Wall)" }
+                            ]
+                        },
+                        {
+                            name: "捷克歷史",
+                            clues: [
+                                { value: 200, question: "這位備受愛戴的波希米亞國王暨神聖羅馬帝國皇帝，在布拉格創立了中歐第一所大學。", answer: "查理四世 (Charles IV)" },
+                                { value: 400, question: "這場發生於 1989 年的和平非暴力革命，結束了共產黨在捷克斯洛伐克的統治。", answer: "天鵝絨革命 (Velvet Revolution)" },
+                                { value: 600, question: "這位偉大的基督教改革家和哲學家於 1415 年被處以火刑，隨後引發了長期的胡斯戰爭。", answer: "揚·胡斯 (Jan Hus)" },
+                                { value: 800, question: "捷克歷史上數次將政府官員直接從窗戶扔出去的激烈抗爭行動，每次都點燃了歐洲大戰。", answer: "布拉格拋窗事件 (Defenestrations)" },
+                                { value: 1000, question: "這個興盛於 9 世紀的強大斯拉夫古國，曾是中歐基督教化的先鋒發源地。", answer: "大摩拉維亞公國 (Great Moravia)" }
+                            ]
+                        },
+                        {
+                            name: "啤酒與美食",
+                            clues: [
+                                { value: 200, question: "這是世界上第一款黃金清亮拉格啤酒，於 1842 年在捷克皮爾森市研發釀造而成。", answer: "皮爾森歐克 (Pilsner Urquell)" },
+                                { value: 400, question: "這些切片的傳統蒸麵包或馬鈴薯糰子，是捷克餐桌上用來吸附濃郁肉汁的靈魂副食。", answer: "捷克麵糰子 (Knedlíky)" },
+                                { value: 600, question: "這道經典捷克宮廷菜是由牛沙朗肉淋上甜美的蔬菜奶油醬，再搭配酸甜的蔓越莓食用。", answer: "奶油醬烤牛肉 (Svíčková)" },
+                                { value: 800, question: "這款高酒精度、帶有強烈草本與茴香味的綠色烈酒，在布拉格常搭配燒糖勺一同飲用。", answer: "艾碧斯 (Absinthe)" },
+                                { value: 1000, question: "雖然起源於特蘭西瓦尼亞，但這種在炭火上旋轉烤製並撒上糖與核桃粉的空心捲極受遊客喜愛。", answer: "肉桂煙囪捲 (Trdelník)" }
+                            ]
+                        },
+                        {
+                            name: "城堡與宮殿",
+                            clues: [
+                                { value: 200, question: "這座宏偉的皇家防衛哥德式城堡由查理四世於 1348 年建立，用於守護帝國聖物及皇冠。", answer: "卡爾斯坦城堡 (Karlštejn Castle)" },
+                                { value: 400, question: "這座童話般的小鎮城堡，高聳在南波希米亞伏爾塔瓦河如畫般的Ｓ型河道上方。", answer: "庫倫洛夫城堡 (Český Krumlov Castle)" },
+                                { value: 600, question: "這座壯麗的英國歌德式宮殿被巨大的聯合國教科文組織景觀公園與溫室群所環抱。", answer: "萊德尼采城堡 (Lednice Chateau)" },
+                                { value: 800, question: "這座被公認為捷克最浪漫的雪白宮殿，其仿效英國溫莎城堡的哥德式風格改造設計。", answer: "赫盧博卡城堡 (Hluboká Castle)" },
+                                { value: 1000, question: "這座城堡是奧匈帝國斐迪南大公生前的最後府邸，大公在塞拉耶佛遇刺隨後引爆了一戰。", answer: "科諾皮什切城堡 (Konopiště Castle)" }
+                            ]
+                        },
+                        {
+                            name: "藝術與科學",
+                            clues: [
+                                { value: 200, question: "這位出生於布拉格、使用德語寫作的猶太裔大師創作了《變形記》和《審判》等名作。", answer: "法蘭茲·卡夫卡 (Franz Kafka)" },
+                                { value: 400, question: "這個指代「自動勞動者」的字彙誕生於布拉格，最早出現在卡雷爾·恰佩克 1920 年的劇作中。", answer: "機器人 (Robot)" },
+                                { value: 600, question: "這位享譽世界的捷克國民樂派作曲家，最著名的代表作是第九交響曲《自新世界》。", answer: "安東寧·德弗札克 (Antonín Dvořák)" },
+                                { value: 800, question: "這位捷克新藝術運動畫家因在巴黎為名伶繪製一系列柔美、精緻且極具裝飾風格的海報而永垂不朽。", answer: "阿爾豐斯·慕夏 (Alphonse Mucha)" },
+                                { value: 1000, question: "這位在布爾諾修道院進行豌豆雜交實驗的科學家，成功揭示了生物的遺傳規律。", answer: "葛雷哥·孟德爾 (Gregor Mendel)" }
+                            ]
+                        }
+                    ]
+                }
+            },
+            taiwan: {
+                country: { en: "Taiwan", zh: "台灣" },
+                categories: {
+                    en: [
+                        {
+                            name: "Formosa Geography",
+                            clues: [
+                                { value: 200, question: "This historical Portuguese name for Taiwan translates to 'Beautiful Island'.", answer: "Formosa" },
+                                { value: 400, question: "This is the tallest mountain peak in Taiwan and Northeast Asia, standing at 3,952 meters.", answer: "Mount Jade (Yushan)" },
+                                { value: 600, question: "This spectacular marble canyon is carved by the Liwu River and protected as a national park.", answer: "Taroko Gorge" },
+                                { value: 800, question: "Located in Nantou County, this is the largest alpine body of water in Taiwan.", answer: "Sun Moon Lake" },
+                                { value: 1000, question: "This offshore archipelago in the Taiwan Strait is famous for its basalt columns and Double-Heart Stone Weir.", answer: "Penghu Islands" }
+                            ]
+                        },
+                        {
+                            name: "Night Market Bites",
+                            clues: [
+                                { value: 200, question: "This globally famous sweet tea beverage features chewy tapioca pearls and originated in Taichung.", answer: "Bubble Tea (Boba)" },
+                                { value: 400, question: "This deeply aromatic fermented bean curd dish is typically served deep-fried with pickled cabbage.", answer: "Stinky Tofu" },
+                                { value: 600, question: "This hearty Taiwanese comfort bowl features slow-braised beef, wheat noodles, and rich spiced broth.", answer: "Beef Noodle Soup" },
+                                { value: 800, question: "This crumbly butter pastry filled with sweet candied pineapple is Taiwan's top edible souvenir.", answer: "Pineapple Cake" },
+                                { value: 1000, question: "This classic comfort dish consists of minced pork belly slow-cooked in soy sauce and ladled over rice.", answer: "Lu Rou Fan (Minced Pork Rice)" }
+                            ]
+                        },
+                        {
+                            name: "Landmarks & Tech",
+                            clues: [
+                                { value: 200, question: "This iconic skyscraper was the world's tallest building from 2004 to 2010.", answer: "Taipei 101" },
+                                { value: 400, question: "This Hsinchu-based tech titan is the world's largest dedicated independent semiconductor foundry.", answer: "TSMC" },
+                                { value: 600, question: "Located in Taipei, this is widely considered the largest and most famous night market in Taiwan.", answer: "Shilin Night Market" },
+                                { value: 800, question: "This museum houses nearly 700,000 ancient Chinese imperial artifacts, including the Jadeite Cabbage.", answer: "The National Palace Museum" },
+                                { value: 1000, question: "This prominent landmark in Taipei features a blue octagonal roof and 89 white marble steps.", answer: "Chiang Kai-shek Memorial Hall" }
+                            ]
+                        },
+                        {
+                            name: "Indigenous & History",
+                            clues: [
+                                { value: 200, question: "Linguistic and genetic evidence indicates Taiwan is the ancestral homeland of this global language family.", answer: "Austronesian" },
+                                { value: 400, question: "From 1624 to 1662, this European colonial power established Fort Zeelandia in Tainan.", answer: "The Dutch East India Company" },
+                                { value: 600, question: "This Ming-loyalist general expelled the European colonizers in 1662, establishing his own kingdom in Tainan.", answer: "Koxinga (Zheng Chenggong)" },
+                                { value: 800, question: "This indigenous group, originally inhabiting the Yilan plain, lends its name to Taiwan's world-champion whisky.", answer: "Kavalan" },
+                                { value: 1000, question: "Signed in 1895, this treaty ceded sovereignty of Taiwan from the Qing Dynasty to the Empire of Japan.", answer: "Treaty of Shimonoseki" }
+                            ]
+                        },
+                        {
+                            name: "Nature & Mountains",
+                            clues: [
+                                { value: 200, question: "This unique endemic subspecies of bear features a distinctive white V-shaped mark on its chest.", answer: "The Formosan Black Bear" },
+                                { value: 400, question: "This mountain resort is famous for its historic forest railway, sea of clouds, and spectacular sunrises.", answer: "Alishan" },
+                                { value: 600, question: "Located at Taiwan's southern tip, this tropical paradise is famous for white sand beaches and coral reefs.", answer: "Kenting" },
+                                { value: 800, question: "This spotted deer species, once nearly extinct in the wild, has been successfully restored in Kenting.", answer: "Formosan Sika Deer" },
+                                { value: 1000, question: "This national park near Taipei is active with volcanic fumaroles, hot springs, and seasonal cherry blossoms.", answer: "Yangmingshan" }
+                            ]
+                        }
+                    ],
+                    zh: [
+                        {
+                            name: "美麗島地理",
+                            clues: [
+                                { value: 200, question: "這個由葡萄牙船員賦予台灣的歷史名稱，其意為「美麗之島」。", answer: "福爾摩沙 (Formosa)" },
+                                { value: 400, question: "這是台灣暨整個東北亞地區的第一高峰，海拔高達 3,952 公尺。", answer: "玉山 (Mount Jade)" },
+                                { value: 600, question: "這座世界級的雄偉大理石峽谷，是由立霧溪深切切割而成並受到國家公園保護。", answer: "太魯閣峽谷 (Taroko Gorge)" },
+                                { value: 800, question: "位於南投縣，這是台灣面積最大且風景秀麗的半天然高山湖泊。", answer: "日月潭 (Sun Moon Lake)" },
+                                { value: 1000, question: "這個位於台灣海峽的離島群島以其壯麗的玄武岩石柱、陽光沙灘及雙心石滬聞名。", answer: "澎湖群島 (Penghu Islands)" }
+                            ]
+                        },
+                        {
+                            name: "夜市美食",
+                            clues: [
+                                { value: 200, question: "這款風靡全球的甜茶飲料以帶有嚼勁的粉圓（珍珠）為特色，起源於台中地區。", answer: "珍珠奶茶 (Bubble Tea / Boba)" },
+                                { value: 400, question: "這道香氣（或臭氣）獨特的發酵豆腐料理，通常經油炸後搭配台式酸甜泡菜一同食用。", answer: "臭豆腐 (Stinky Tofu)" },
+                                { value: 600, question: "這道暖胃的台灣平民美食以慢火紅燒燉煮的牛肉、小麥麵條和香濃湯頭為特色。", answer: "牛肉麵 (Beef Noodle Soup)" },
+                                { value: 800, question: "這款外皮香酥、內餡填滿甜美金黃鳳梨餡的奶油糕點是台灣最具代表性的伴手禮。", answer: "鳳梨酥 (Pineapple Cake)" },
+                                { value: 1000, question: "這道經典家常美食是由切碎的豬五花肉與醬油、五香及紅蔥頭慢火燉煮後澆淋在白飯上。", answer: "滷肉飯 (Lu Rou Fan)" }
+                            ]
+                        },
+                        {
+                            name: "地標與科技",
+                            clues: [
+                                { value: 200, question: "這座高度達到 508 公尺的標誌性建築，在 2004 年至 2010 年間曾榮登世界第一高樓。", answer: "台北 101 (Taipei 101)" },
+                                { value: 400, question: "這家總部位於新竹科學園區的全球科技巨頭，是全世界最大的獨立半導體晶圓代工廠。", answer: "台積電 (TSMC)" },
+                                { value: 600, question: "這座位於台北市士林區的市集，被廣泛公認為台灣規模最大、外國觀光客最喜愛朝聖的夜市。", answer: "士林夜市 (Shilin Night Market)" },
+                                { value: 800, question: "這家國家級博物館收藏了近 70 萬件古代中華皇家精美文物，包括鎮館之寶「翠玉白菜」。", answer: "國立故宮博物院 (National Palace Museum)" },
+                                { value: 1000, question: "這座位於台北市中心的宏偉歷史地標，擁有蔚藍八角形屋頂與 89 階白色大理石階梯。", answer: "中正紀念堂 (Chiang Kai-shek Memorial Hall)" }
+                            ]
+                        },
+                        {
+                            name: "原住民與歷史",
+                            clues: [
+                                { value: 200, question: "現今語言學與基因證據皆指向，台灣是這個分布於半個地球的全球龐大語族的共同祖居地。", answer: "南島語族 (Austronesian)" },
+                                { value: 400, question: "自 1624 年至 1662 年間，這個歐洲殖民強權佔領台灣南部並建立大本營「熱蘭遮城」。", answer: "荷蘭東印度公司 (The Dutch)" },
+                                { value: 600, question: "這位奉明朝為正統的明鄭將領在 1662 年擊敗並驅逐了荷蘭殖民者，在台南建立了自己的政權。", answer: "鄭成功 / 國姓爺 (Koxinga)" },
+                                { value: 800, question: "這個最初居住於宜蘭平原的原住民族，其部族名稱成為了台灣榮獲多項世界冠軍威士忌的品牌名稱。", answer: "噶瑪蘭族 (Kavalan)" },
+                                { value: 1000, question: "簽署於 1895 年，清廷因甲午戰爭戰敗在此合約中將台灣與澎湖之主權永久割讓給大日本帝國。", answer: "馬關條約 (Treaty of Shimonoseki)" }
+                            ]
+                        },
+                        {
+                            name: "自然與山脈",
+                            clues: [
+                                { value: 200, question: "這種台灣特有的亞洲黑熊亞種，最顯著的辨識特徵是其胸前有著耀眼的白色 V 字形斑紋。", answer: "台灣黑熊 (Formosan Black Bear)" },
+                                { value: 400, question: "這處森林風景區以其歷史悠久的森林小火車、夢幻雲海、參天神木與阿里山日出聞名遐邇。", answer: "阿里山 (Alishan)" },
+                                { value: 600, question: "位於台灣最南端的熱帶半島，這座度假天堂以金黃沙灘、海浪與發育良好的珊瑚礁群著稱。", answer: "墾丁 (Kenting)" },
+                                { value: 800, question: "這種帶有美麗白色梅花斑點的鹿科動物曾一度在台灣野外絕跡，近年在墾丁國家公園成功進行了野外復育。", answer: "台灣梅花鹿 (Formosan Sika Deer)" },
+                                { value: 1000, question: "這座鄰近台北都會區的國家公園至今仍有活躍的火山地質，擁有多個火山噴氣孔、溫泉以及成片的季節櫻花。", answer: "陽明山 (Yangmingshan)" }
+                            ]
+                        }
+                    ]
+                }
+            }
+        };
+
+        // Live Application State Variables
+        let activeBoard = JSON.parse(JSON.stringify(localDatabase.greece)); // Default start state
+        let players = [
+            { id: 1, name: "Voyager 1", score: 0 }
+        ];
+        let completedClues = {}; // key: categoryIndex-clueIndex (true if answered)
+        let activeClue = null; // store {categoryIndex, clueIndex, clueRef}
+        let countdownInterval = null;
+        let isMuted = false;
+
+        // Custom Sound System using Web Audio API to bypass asset file dependencies!
+        function playTone(freq, type, duration) {
+            if (isMuted) return;
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+
+                oscillator.type = type || 'sine';
+                oscillator.frequency.value = freq;
+                
+                gainNode.gain.setValueAtTime(0.12, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                oscillator.start();
+                oscillator.stop(audioCtx.currentTime + duration);
+            } catch (err) {
+                console.log("Audio API blocked or not supported by browser security policy.", err);
+            }
+        }
+
+        function playSuccessSound() {
+            playTone(523.25, 'triangle', 0.15); // C5
+            setTimeout(() => playTone(659.25, 'triangle', 0.25), 150); // E5
+        }
+
+        function playFailureSound() {
+            playTone(392.00, 'sawtooth', 0.2); // G4
+            setTimeout(() => playTone(293.66, 'sawtooth', 0.3), 150); // D4
+        }
+
+        function playClockSound() {
+            playTone(880, 'sine', 0.05); // High pitch tick
+        }
+
+        function playSelectSound() {
+            playTone(440, 'sine', 0.1); // Moderate pick
+        }
+
+        // Initialize state on window load
+        window.onload = function() {
+            updateUILocale();
+            showScreen('landing');
+            renderPlayerList();
+        };
+
+        // Toggle Language & translate everything instantly
+        function toggleLanguage() {
+            currentLang = (currentLang === 'en') ? 'zh' : 'en';
+            playSelectSound();
+            updateUILocale();
+            
+            // Re-render components that rely on language
+            if (document.getElementById('screen-game').style.display === 'block') {
+                updateGameUI();
+                buildGameBoard();
+            }
+            showToast(currentLang === 'en' ? "Language toggled to English" : "語言已切換至 繁體中文", "info");
+        }
+
+        // Update all static UI elements inside the DOM
+        function updateUILocale() {
+            const dict = i18n[currentLang];
+            
+            // Text values updates
+            document.getElementById('ui-nav-title').innerText = dict.navTitle;
+            document.getElementById('ui-nav-subtitle').innerText = dict.navSub;
+            document.getElementById('ui-btn-change-country').innerText = dict.btnChangeCountry;
+            document.getElementById('ui-btn-custom-gist').innerText = dict.btnCustomGist;
+            document.getElementById('ui-lang-indicator').innerText = currentLang === 'en' ? "繁中" : "English";
+            
+            // Landing screen
+            document.getElementById('ui-hero-badge').innerText = dict.heroBadge;
+            document.getElementById('ui-hero-title').innerHTML = dict.heroTitle;
+            document.getElementById('ui-hero-subtitle').innerText = dict.heroSub;
+            document.getElementById('ui-section-playable').innerText = dict.sectionPlayable;
+            document.getElementById('ui-section-upcoming').innerText = dict.sectionUpcoming;
+            document.getElementById('ui-tag-default').innerText = dict.tagDefault;
+            document.getElementById('ui-tag-ready-1').innerText = dict.tagReady;
+            document.getElementById('ui-tag-ready-2').innerText = dict.tagReady;
+            document.getElementById('ui-tag-ready-3').innerText = dict.tagReady;
+            document.getElementById('ui-tag-upcoming-1').innerText = dict.tagUpcoming;
+            document.getElementById('ui-tag-upcoming-2').innerText = dict.tagUpcoming;
+            document.getElementById('ui-tag-upcoming-3').innerText = dict.tagUpcoming;
+            document.getElementById('ui-promo-title').innerText = dict.promoTitle;
+            document.getElementById('ui-promo-desc').innerText = dict.promoDesc;
+            document.getElementById('ui-promo-btn').innerText = dict.promoBtn;
+
+            // Room screen
+            document.getElementById('ui-btn-reset-board').innerText = dict.btnResetBoard;
+            document.getElementById('ui-tips').innerText = dict.tips;
+            document.getElementById('ui-scoreboard-title').innerText = dict.scoreboardTitle;
+            document.getElementById('ui-btn-add-player').innerText = dict.btnAddPlayer;
+            document.getElementById('ui-btn-reset-scores').innerText = dict.btnResetScores;
+            document.getElementById('ui-inst-title').innerText = dict.instTitle;
+            document.getElementById('ui-inst-desc').innerText = dict.instDesc;
+            document.getElementById('ui-inst-link').innerHTML = dict.instLink;
+
+            // Clue Popups
+            document.getElementById('ui-clue-timer-label').innerText = dict.clueTimerLabel;
+            document.getElementById('ui-clue-label').innerText = dict.clueLabel;
+            document.getElementById('ui-btn-reveal').innerText = dict.btnReveal;
+            document.getElementById('ui-clue-ans-label').innerText = dict.clueAnsLabel;
+            document.getElementById('ui-clue-award-label').innerText = dict.clueAwardLabel;
+            document.getElementById('ui-btn-skip').innerText = dict.btnSkip;
+
+            // Configurations Popups
+            document.getElementById('ui-config-title').innerText = dict.configTitle;
+            document.getElementById('ui-config-sub').innerText = dict.configSub;
+            document.getElementById('ui-config-url-label').innerText = dict.configUrlLabel;
+            document.getElementById('ui-config-btn-load').innerText = dict.configBtnLoad;
+            document.getElementById('ui-config-note').innerText = dict.configNote;
+            document.getElementById('ui-config-schema-title').innerText = dict.configSchemaTitle;
+            document.getElementById('copy-status-text').innerText = dict.btnCopySchema;
+            document.getElementById('ui-config-guide-title').innerText = dict.configGuideTitle;
+            document.getElementById('ui-config-guide-steps').innerHTML = dict.configGuideSteps;
+            document.getElementById('ui-config-btn-close').innerText = dict.configBtnClose;
+
+            // Update Card descriptions based on current active language
+            const cards_desc = {
+                en: {
+                    greece: "Acropolis architecture, ancient gods, Mediterranean islands, and historic philosophy.",
+                    hungary: "Danube riverscapes, therapeutic thermal baths, Rubik puzzles, and sweet Tokaji wine.",
+                    czech: "Prague architecture, ancient Bohemian castles, Kafka literature, and historic Pilsners.",
+                    taiwan: "Bustling night markets, towering Taipei 101, semiconductor tech, and high alpine ridges.",
+                    peru: "Machu Picchu, ancient Inca empires, and wild Amazonian ecology.",
+                    australia: "Great Barrier Reef corals, Outback adventures, and Sydney Opera landmark.",
+                    kazakhstan: "Central Asian Silk Road trails, Charyn Canyon, and vast wild steppes."
+                },
+                zh: {
+                    greece: "衛城遺址、古希臘神祇、迷人的愛琴海島嶼以及深奧的古代西方哲學。",
+                    hungary: "多瑙河畔風光、療癒的溫泉、魔術方塊發源地以及著名的托卡伊甜酒。",
+                    czech: "布拉格的歌德式建築、古老波希米亞城堡、卡夫卡文學以及頂級皮爾森啤酒。",
+                    taiwan: "熱鬧非凡的夜市美食、高聳的台北 101、世界級晶圓科技以及高山自然生態。",
+                    peru: "馬丘比丘天空之城、神秘的古印加帝國遺跡以及豐富的亞馬遜雨林生態系統。",
+                    australia: "壯觀的大堡礁珊瑚群、紅土內陸冒險之旅以及雪梨歌劇院世界級地標。",
+                    kazakhstan: "中亞古絲路歷史文化、壯麗的恰倫大峽谷以及遼闊無際的塞外野生大草原。"
+                }
+            };
+
+            const langDesc = cards_desc[currentLang];
+            document.getElementById('country-desc-greece').innerText = langDesc.greece;
+            document.getElementById('country-desc-hungary').innerText = langDesc.hungary;
+            document.getElementById('country-desc-czech').innerText = langDesc.czech;
+            document.getElementById('country-desc-taiwan').innerText = langDesc.taiwan;
+            document.getElementById('country-desc-peru').innerText = langDesc.peru;
+            document.getElementById('country-desc-australia').innerText = langDesc.australia;
+            document.getElementById('country-desc-kazakhstan').innerText = langDesc.kazakhstan;
+        }
+
+        // Navigation Controller
+        function showScreen(screenId) {
+            document.getElementById('screen-landing').style.display = (screenId === 'landing') ? 'block' : 'none';
+            document.getElementById('screen-game').style.display = (screenId === 'game') ? 'block' : 'none';
+            playSelectSound();
+        }
+
+        // Mute / Unmute
+        function toggleMute() {
+            isMuted = !isMuted;
+            document.getElementById('toggle-sounds-btn').innerText = isMuted ? "🔇" : "🔊";
+        }
+
+        // Select and initialize predefined countries
+        function selectCountry(countryKey) {
+            if (localDatabase[countryKey]) {
+                activeBoard = JSON.parse(JSON.stringify(localDatabase[countryKey]));
+                completedClues = {};
+                
+                // Update Badge and state UI
+                updateGameUI();
+                buildGameBoard();
+                showScreen('game');
+            }
+        }
+
+        // Alert message for locked, upcoming countries
+        function triggerLockAlert(countryKey) {
+            playFailureSound();
+            showToast(i18n[currentLang].alertLock, "error");
+        }
+
+        // Refactored Game details header translation
+        function updateGameUI() {
+            const dict = i18n[currentLang];
+            const countryName = (typeof activeBoard.country === 'object') ? activeBoard.country[currentLang] : activeBoard.country;
+            
+            // Check if activeBoard is Gist vs Local Database
+            const isGist = activeBoard.isCustomGist ? true : false;
+            
+            const badgeEl = document.getElementById('game-badge');
+            if (isGist) {
+                badgeEl.innerText = dict.badgeGist;
+                badgeEl.className = "inline-block px-2 py-0.5 bg-purple-500/20 border border-purple-500/40 rounded text-[10px] uppercase font-semibold text-purple-400 tracking-wider";
+            } else {
+                badgeEl.innerText = dict.badgeLocal;
+                badgeEl.className = "inline-block px-2 py-0.5 bg-green-500/20 border border-green-500/40 rounded text-[10px] uppercase font-semibold text-green-400 tracking-wider";
+            }
+            
+            document.getElementById('game-title').innerText = `${countryName} ${currentLang === 'en' ? 'Trivia Expedition' : '探索益智問答'}`;
+        }
+
+        // Generate Grid Columns dynamically based on loaded array
+        function buildGameBoard() {
+            const gridContainer = document.getElementById('jeopardy-grid');
+            gridContainer.innerHTML = '';
+
+            // Standardize categories retrieval (supports localized en/zh nodes OR basic categories array)
+            let categories = [];
+            if (activeBoard.categories && Array.isArray(activeBoard.categories)) {
+                categories = activeBoard.categories;
+            } else if (activeBoard.categories && typeof activeBoard.categories === 'object') {
+                categories = activeBoard.categories[currentLang] || activeBoard.categories['en'] || [];
+            }
+
+            // Fallback safety if loaded categories is completely blank
+            if (categories.length === 0) {
+                gridContainer.innerHTML = `<p class="col-span-5 text-center text-red-400 py-6">No loaded questions found. Please check data structures.</p>`;
+                return;
+            }
+
+            // Setup Categories Headers
+            categories.forEach((category) => {
+                const header = document.createElement('div');
+                header.className = "text-center bg-travel-ocean/40 border border-gray-800 p-3 rounded-xl flex items-center justify-center min-h-[70px] shadow-sm";
+                header.innerHTML = `<span class="font-cinzel text-xs md:text-sm text-travel-sand tracking-wide font-bold">${escapeHTML(category.name)}</span>`;
+                gridContainer.appendChild(header);
+            });
+
+            // Grid Rows (200 to 1000)
+            const rowsCount = 5;
+            for (let rowIdx = 0; rowIdx < rowsCount; rowIdx++) {
+                for (let catIdx = 0; catIdx < categories.length; catIdx++) {
+                    const category = categories[catIdx];
+                    const clue = category.clues ? category.clues[rowIdx] : null;
+                    
+                    const clueId = `${catIdx}-${rowIdx}`;
+                    const isDone = completedClues[clueId];
+
+                    const cell = document.createElement('div');
+                    cell.id = `clue-cell-${clueId}`;
+                    
+                    if (isDone) {
+                        cell.className = "text-center bg-gray-900/60 border border-gray-950 p-6 rounded-xl flex items-center justify-center min-h-[90px] select-none text-gray-700 font-bold cursor-not-allowed line-through";
+                        cell.innerText = "—";
+                    } else if (clue) {
+                        cell.className = "clue-card cursor-pointer text-center bg-travel-ocean/80 border border-gray-700/80 p-6 rounded-xl flex items-center justify-center min-h-[90px] text-travel-gold font-extrabold text-xl md:text-2xl hover:text-white transition shadow-sm select-none";
+                        cell.innerHTML = `<span>$${clue.value}</span>`;
+                        cell.onclick = () => launchClue(catIdx, rowIdx, categories);
+                    } else {
+                        cell.className = "bg-gray-950/20 border border-gray-900 rounded-xl min-h-[90px]";
+                    }
+                    gridContainer.appendChild(cell);
+                }
+            }
+        }
+
+        // Load Custom Gist Data
+        async function loadGistData() {
+            const dict = i18n[currentLang];
+            const urlInput = document.getElementById('gist-url-input').value.trim();
+            if (!urlInput) {
+                showToast(dict.toastGistErrorUrl, "error");
+                return;
+            }
+
+            showToast(dict.toastGistFetching, "info");
+            playSelectSound();
+
+            try {
+                const response = await fetch(urlInput);
+                if (!response.ok) {
+                    throw new Error(`Failed to load file. Status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Validate Schema Structure before injecting
+                if (!data.country || (!data.categories && !data.categories_en && !data.categories_zh)) {
+                    throw new Error("Invalid schema structure. Must contain a 'country' and questions categories array.");
+                }
+
+                // Inject Custom indicators
+                data.isCustomGist = true;
+
+                // Support both unified flat categories or explicitly localized nodes
+                if (data.categories_en && data.categories_zh) {
+                    data.categories = {
+                        en: data.categories_en,
+                        zh: data.categories_zh
+                    };
+                }
+
+                activeBoard = data;
+                completedClues = {};
+                
+                // Render game board
+                updateGameUI();
+                buildGameBoard();
+                closeConfigModal();
+                showScreen('game');
+                showToast(dict.toastGistSuccess, "success");
+            } catch (err) {
+                console.error(err);
+                showToast(`Gist Load Error: ${err.message}`, "error");
+            }
+        }
+
+        // Reset game board completely
+        function resetEntireBoard() {
+            const dict = i18n[currentLang];
+            if (confirm(dict.resetConfirm)) {
+                completedClues = {};
+                buildGameBoard();
+                playSuccessSound();
+                showToast(dict.toastResetBoard, "success");
+            }
+        }
+
+        // Launch Clue Popup Modal
+        function launchClue(catIdx, rowIdx, categoriesList) {
+            const category = categoriesList[catIdx];
+            const clue = category.clues[rowIdx];
+            activeClue = { catIdx, rowIdx, clue };
+
+            // Setup display text
+            document.getElementById('clue-category').innerText = category.name;
+            document.getElementById('clue-value').innerText = `$${clue.value}`;
+            document.getElementById('clue-question-text').innerText = clue.question;
+            document.getElementById('clue-answer-text').innerText = clue.answer;
+
+            // Display active view state
+            document.getElementById('clue-view-question').classList.remove('hidden');
+            document.getElementById('clue-view-answer').classList.add('hidden');
+
+            // Open Modal
+            const modal = document.getElementById('clue-modal');
+            const content = document.getElementById('clue-modal-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 50);
+
+            playSelectSound();
+            startCountdown();
+        }
+
+        // Reveal correct response answer
+        function revealAnswer() {
+            clearInterval(countdownInterval);
+            document.getElementById('clue-view-question').classList.add('hidden');
+            document.getElementById('clue-view-answer').classList.remove('hidden');
+            playTone(330, 'sine', 0.15); // Beep
+
+            // Render Player scoring options
+            const awardContainer = document.getElementById('score-award-list');
+            awardContainer.innerHTML = '';
+
+            players.forEach((player) => {
+                const btn = document.createElement('button');
+                btn.className = "px-4 py-2 bg-travel-ocean/80 hover:bg-green-600 border border-gray-700 hover:border-transparent rounded-lg text-xs font-semibold text-white transition flex items-center gap-1.5";
+                btn.innerHTML = `<span>✔</span> ${escapeHTML(player.name)} (+ $${activeClue.clue.value})`;
+                btn.onclick = () => awardPoints(player.id, activeClue.clue.value);
+                awardContainer.appendChild(btn);
+            });
+
+            // Penalty button options to deduct score
+            if (players.length > 0) {
+                const deductDivider = document.createElement('div');
+                deductDivider.className = "w-full my-1 border-t border-gray-800";
+                awardContainer.appendChild(deductDivider);
+
+                players.forEach((player) => {
+                    const btn = document.createElement('button');
+                    btn.className = "px-3 py-1.5 bg-red-950/40 hover:bg-red-800 border border-red-900/60 hover:border-transparent rounded-lg text-[10px] text-red-300 transition";
+                    btn.innerHTML = `❌ ${escapeHTML(player.name)} (- $${activeClue.clue.value})`;
+                    btn.onclick = () => awardPoints(player.id, -activeClue.clue.value);
+                    awardContainer.appendChild(btn);
+                });
+            }
+        }
+
+        // Close Clue Modal & update cell
+        function closeClueModal(wasAnswered) {
+            clearInterval(countdownInterval);
+            
+            // Apply scale-out animation
+            const content = document.getElementById('clue-modal-content');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+
+            setTimeout(() => {
+                document.getElementById('clue-modal').classList.add('hidden');
+            }, 300);
+
+            if (wasAnswered && activeClue) {
+                const key = `${activeClue.catIdx}-${activeClue.rowIdx}`;
+                completedClues[key] = true;
+                buildGameBoard();
+            }
+            activeClue = null;
+        }
+
+        // Award points or apply penalties to scores
+        function awardPoints(playerId, value) {
+            const dict = i18n[currentLang];
+            const player = players.find(p => p.id === playerId);
+            if (player) {
+                player.score += value;
+                renderPlayerList();
+                
+                if (value > 0) {
+                    playSuccessSound();
+                    let msg = dict.toastCorrect.replace("[VAL]", value).replace("[NAME]", player.name);
+                    showToast(msg, "success");
+                } else {
+                    playFailureSound();
+                    let msg = dict.toastIncorrect.replace("[VAL]", Math.abs(value)).replace("[NAME]", player.name);
+                    showToast(msg, "error");
+                }
+            }
+            closeClueModal(true);
+        }
+
+        // Timer controller
+        function startCountdown() {
+            let timeLeft = 15;
+            const timerEl = document.getElementById('clue-timer');
+            timerEl.innerText = timeLeft;
+            timerEl.className = "font-mono text-sm font-bold text-travel-terracotta";
+
+            clearInterval(countdownInterval);
+            countdownInterval = setInterval(() => {
+                timeLeft--;
+                timerEl.innerText = timeLeft;
+                
+                if (timeLeft <= 5) {
+                    timerEl.className = "font-mono text-sm font-bold text-red-500 animate-pulse";
+                    playClockSound();
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    playFailureSound();
+                    showToast(i18n[currentLang].toastTimeUp, "info");
+                    revealAnswer();
+                }
+            }, 1000);
+        }
+
+        // Scoreboard Operations: Add Player
+        function promptAddPlayer() {
+            const dict = i18n[currentLang];
+            const defaultNames = ["Atlas", "Athena", "Voyager", "Rover", "Curator", "Nomad", "Explorer"];
+            const rName = defaultNames[Math.floor(Math.random() * defaultNames.length)];
+            const name = prompt(dict.promptAddPlayer, `${rName} ${players.length + 1}`);
+            
+            if (name && name.trim()) {
+                const newId = players.length > 0 ? Math.max(...players.map(p => p.id)) + 1 : 1;
+                players.push({
+                    id: newId,
+                    name: name.trim(),
+                    score: 0
+                });
+                renderPlayerList();
+                playSuccessSound();
+                showToast(`${dict.toastCreatedPlayer} "${name.trim()}"`, "success");
+            }
+        }
+
+        // Scoreboard Operations: Remove Player
+        function removePlayer(id) {
+            players = players.filter(p => p.id !== id);
+            renderPlayerList();
+            playFailureSound();
+        }
+
+        // Scoreboard Operations: Reset score totals
+        function resetScores() {
+            const dict = i18n[currentLang];
+            if (confirm(dict.toastResetScores)) {
+                players.forEach(p => p.score = 0);
+                renderPlayerList();
+                playSuccessSound();
+                showToast(dict.toastResetScoresSuccess, "success");
+            }
+        }
+
+        // Render Scoreboard DOM
+        function renderPlayerList() {
+            const container = document.getElementById('player-list');
+            container.innerHTML = '';
+
+            if (players.length === 0) {
+                container.innerHTML = `<p class="text-xs text-gray-500 text-center py-4">${currentLang === 'en' ? 'No active travelers. Please add players to keep score!' : '目前沒有活躍的旅行家。請新增玩家以記錄分數！'}</p>`;
+                return;
+            }
+
+            players.forEach((player) => {
+                const card = document.createElement('div');
+                card.className = "flex items-center justify-between p-3 bg-travel-ocean/30 hover:bg-travel-ocean/50 border border-gray-800 rounded-xl transition duration-150";
+                
+                const formattedScore = player.score >= 0 ? `$${player.score}` : `-$${Math.abs(player.score)}`;
+                const scoreColor = player.score >= 0 ? 'text-travel-gold' : 'text-red-400';
+
+                card.innerHTML = `
+                    <div class="flex-grow min-w-0 pr-2">
+                        <h5 class="text-sm font-semibold truncate text-white" title="${escapeHTML(player.name)}">${escapeHTML(player.name)}</h5>
+                        <p class="text-xs font-mono font-bold ${scoreColor}">${formattedScore}</p>
+                    </div>
+                    <button onclick="removePlayer(${player.id})" class="text-gray-500 hover:text-red-400 transition text-xs p-1" title="Delete Team profile">
+                        ✕
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // CONFIG MODAL LOGIC
+        function openConfigModal() {
+            document.getElementById('config-modal').classList.remove('hidden');
+            playSelectSound();
+        }
+
+        function closeConfigModal() {
+            document.getElementById('config-modal').classList.add('hidden');
+        }
+
+        function copySchemaTemplate() {
+            const templateText = `{
+  "country": "Italy / 義大利",
+  "categories_en": [
+    {
+      "name": "Historical Monuments",
+      "clues": [
+        { "value": 200, "question": "This amphitheater in Rome welcomed gladiator battles.", "answer": "The Colosseum" }
+      ]
+    }
+  ],
+  "categories_zh": [
+    {
+      "name": "歷史古蹟遺跡",
+      "clues": [
+        { "value": 200, "question": "這座位於羅馬的宏偉圓形競技場曾是古羅馬角鬥士廝殺的舞台。", "answer": "羅馬競技場 (The Colosseum)" }
+      ]
+    }
+  ]
+}`;
+            // Use browser-native text area select to bypass copy sandbox restriction
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = templateText;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    const statusText = document.getElementById('copy-status-text');
+                    statusText.innerText = currentLang === 'en' ? "Copied Success!" : "複製成功！";
+                    setTimeout(() => {
+                        statusText.innerText = i18n[currentLang].btnCopySchema;
+                    }, 2000);
+                    showToast(currentLang === 'en' ? "Schema copied to clipboard!" : "程式架構已成功複製！", "success");
+                } else {
+                    showToast("Could not copy automatically. Please select text manually.", "error");
+                }
+            } catch (err) {
+                showToast("Clipboard write permission failure.", "error");
+            }
+            document.body.removeChild(tempTextArea);
+        }
+
+        // UTILITY: Custom UI Toast/Message helper (no external alert packages!)
+        function showToast(message, type = "info") {
+            const existingToast = document.getElementById('system-toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+
+            const toast = document.createElement('div');
+            toast.id = "system-toast";
+            
+            let bgStyle = "bg-travel-ocean border-travel-terracotta text-white";
+            if (type === "success") bgStyle = "bg-green-950/90 border-green-500 text-green-200";
+            if (type === "error") bgStyle = "bg-red-950/90 border-red-500 text-red-200";
+
+            toast.className = `fixed bottom-6 right-6 z-50 px-5 py-3 rounded-xl border shadow-xl flex items-center gap-3 max-w-sm transition-all duration-300 transform translate-y-2 opacity-0 ${bgStyle}`;
+            toast.innerHTML = `
+                <span class="text-xs md:text-sm font-semibold">${escapeHTML(message)}</span>
+            `;
+            document.body.appendChild(toast);
+
+            // Animate In
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+            }, 50);
+
+            // Animate Out
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-2', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 4500);
+        }
+
+        // Secure parsing wrapper
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+            );
+        }
+    </script>
+</body>
+</html>
