@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reverse Trivia for Global Trotter | 環球旅行家特約益智問答</title>
+    <title>Reverse Trivia for Global Trotters | 環球旅行家的倒裝問答王</title>
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -115,7 +115,7 @@
                     Where is your next <span class="text-travel-terracotta">Destination</span>?
                 </h2>
                 <p class="text-gray-400 text-sm md:text-base leading-relaxed" id="ui-hero-subtitle">
-                    Select a destination below to initialize a high-stakes Jeopardy-style board themed entirely around the chosen nation's history, landmarks, cuisine, culture, and mysteries. Now featuring 6 expanded categories!
+                    Select a destination below to initialize a Jeopardy-inspired board themed entirely around the chosen nation's history, landmarks, cuisine, culture, and mysteries. 
                 </p>
             </div>
 
@@ -323,10 +323,19 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="mt-auto py-6 border-t border-gray-900 bg-gray-950 text-center text-xs text-gray-500">
-        <p>© 2026 Reverse Trivia for Global Trotter. Pure Client-Side Bilingual Implementation.</p>
-    </footer>
+  <!-- --- FOOTER --- -->
+  <footer class="border-t border-slate-900 py-8 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+      <p>© 2026 KATHERINE SCHAUGHENCY</p>
+      <div class="flex items-center gap-4">
+        <span><a href="https://www.linkedin.com/in/kschaughency/">LinkedIn</a></span>
+        <span>●</span>
+        <span><a href="https://github.com/kcmlin">GitHub</a></span>
+        <span>●</span>
+        <span><a href="https://kcmlin.github.io">Website</a></span>
+      </div>
+    </div>
+  </footer>
 
     <!-- GLOBAL MODAL: Dynamic Clue Popup Modal -->
     <div id="clue-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm hidden">
@@ -522,13 +531,13 @@
                 resetConfirm: "Are you sure you want to reset the current trivia board progress? All completed cells will be unlocked."
             },
             zh: {
-                navTitle: "環球旅行問答",
+                navTitle: "倒裝問答王",
                 navSub: "專為環球旅行家打造",
                 btnChangeCountry: "切換國家",
                 btnCustomGist: "載入自訂 Gist",
                 heroBadge: "雙語環球旅行益智問答",
-                heroTitle: "你的下一個<span class='text-travel-terracotta'>目的地</span>是哪裡？",
-                heroSub: "在下方選擇一個目的地，開啟專為該國歷史、地標、美食、文化及奧秘設計的經典 Jeopardy 益智問答板。現在全新升級為 6 個類別！",
+                heroTitle: "你的下一個<span class='text-travel-terracotta'>目的地</span>在哪裡？",
+                heroSub: "在下方選擇一個目的地，開啟以經典 Jeopardy 為啟發的、專為該國歷史、地標、美食、文化及奧秘設計的益智問答遊戲。",
                 sectionPlayable: "可遊玩目的地",
                 sectionUpcoming: "即將推出目的地",
                 tagDefault: "預設",
@@ -810,7 +819,7 @@
                                 { value: 200, question: "這款由匈牙利建築學教授於 1974 年發明的 3D 組合謎題，成為了風靡全球的益智玩具。", answer: "什麼是魔術方塊（Rubik's Cube）？" },
                                 { value: 400, question: "匈牙利裔科學家卡塔林·考里科（Katalin Karikó）因對這項技術的研究而榮獲 2023 年諾貝爾醫學獎，該技術在新冠肺炎疫苗中發揮了關鍵作用。", answer: "什麼是mRNA / 微體核糖核酸（mRNA）？" },
                                 { value: 600, question: "這位 19 世紀的匈牙利內科醫生被譽為「母親的救星」，他發現洗手能大幅降低產褥熱的死亡率。", answer: "誰是伊格納茲·塞麥爾維斯（Ignaz Semmelweis）？" },
-                                { value: 800, question: "匈牙利發明家拉斯洛·比羅（László Bíró）在 1930 年代發明了這項革命性的日常書寫工具，在許多英語國家，該工具至今仍以他的名字命名。", answer: "蘭什麼是原子筆（Ballpoint pen）？" },
+                                { value: 800, question: "匈牙利發明家拉斯洛·比羅（László Bíró）在 1930 年代發明了這項革命性的日常書寫工具，在許多英語國家，該工具至今仍以他的名字命名。", answer: "什麼是原子筆（Ballpoint pen）？" },
                                 { value: 1000, question: "這位匈牙利裔全才科學家被譽為「電腦之父」之一，他提出了現代電腦的儲存程序架構，並對博弈論做出了巨大貢獻。", answer: "誰是約翰·馮·紐曼（John von Neumann）？" }
                             ]
                         },
@@ -839,7 +848,7 @@
                             clues: [
                                 { value: 200, question: "布達佩斯以其豐富的地熱資源聞名，擁有塞切尼（Széchenyi）和蓋勒特（Gellért）等著名場所，使其獲得了這個悠久的稱號。", answer: "什麼是溫泉之都（City of Baths）？" },
                                 { value: 400, question: "與鄰近的斯拉夫或日耳曼語系不同，匈牙利語屬於這個獨特的語系，與芬蘭語和愛沙尼亞語有著遙遠的親緣關係。", answer: "什麼是烏拉爾語系／芬蘭-烏格爾語族（Uralic / Finno-Ugric language family）？" },
-                                { value: 600, question: "什麼是烏拉爾語系／芬蘭-烏格爾語族（Uralic / Finno-Ugric language family）？", answer: "什麼是廢墟酒吧（Ruin Bars / Romkocsma）？" },
+                                { value: 600, question: "在布達佩斯，由二戰前廢棄建築改建而成的獨特酒吧非常受歡迎，它們被統稱為這個名字。", answer: "什麼是廢墟酒吧（Ruin Bars / Romkocsma）？" },
                                 { value: 800, question: "當向別人介紹自己時，匈牙利語在姓名排列上與東亞（如中文）相同，都遵循這個特殊的西方例外規則。", answer: "什麼是姓氏在前，名字在後／東方姓名順序（Eastern name order / Surname first）？" },
                                 { value: 1000, question: "這種發源於匈牙利南部莫哈奇（Mohács）的傳統春季面具遊行，已被列入聯合國教科文組織人類非物質文化遺產，旨在嚇走冬天。", answer: "什麼是布索狂歡節（Busójárás）？" }
                             ]
@@ -877,7 +886,7 @@
                                 { value: 200, question: "Born in Prague, this German-language Jewish writer achieved worldwide fame with his novella 'The Metamorphosis', in which the protagonist transforms into an insect.", answer: "Who is Franz Kafka?" },
                                 { value: 400, question: "This Art Nouveau master gained international fame for his stylized posters of elegant women and decorative panels, notably those creating a sensation for actress Sarah Bernhardt.", answer: "Who is Alphonse Mucha?" },
                                 { value: 600, question: "This titan of contemporary Czech literature authored 'The Unbearable Lightness of Being', exploring existentialism and life under communist totalitarianism.", answer: "Who is Milan Kundera?" },
-                                { value: 800, question: "Author Karel Čapek introduced this now-ubiquitous technological term to the world in his 1920 science fiction play "R.U.R." (Rossum's Universal Robots).", answer: "What is a Robot?" },
+                                { value: 800, question: "Author Karel Čapek introduced this now-ubiquitous technological term to the world in his 1920 science fiction play 'R.U.R.' (Rossum's Universal Robots).", answer: "What is a Robot?" },
                                 { value: 1000, question: "This 19th-century Romantic poet wrote the epic masterpiece 'Máj' (May), a cornerstone of modern Czech poetry, and is honored with a statue on Prague's Petřín Hill.", answer: "Who is Karel Hynek Mácha?" }
                             ]
                         },
